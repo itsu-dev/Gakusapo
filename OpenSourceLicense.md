@@ -1,5 +1,9 @@
+## Android Navigation Fragment
+Apache 2.0 / Google  
+https://developer.android.com/topic/libraries/architecture/index.html  
+  
 ## Open Weather Map
-天気予報の取得に使っています。  
+天気予報の取得に使用しています。  
 https://home.openweathermap.org  
   
 ## HeartRails Geo API
