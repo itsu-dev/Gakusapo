@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--<!DOCTYPE manifest SYSTEM "https://raw.githubusercontent.com/CoSSeDevelopmentTeam/CPhone/master/CPhoneManifest.dtd">-->
+
+<manifest>
+    <application>
+        <title>テストアプリケーション</title>
+        <description>テスト用アプリ</description>
+        <author>itsu</author>
+        <version>1.0.0</version>
+        <mcbeversion>1.8.1</mcbeversion>
+        <icon>null</icon>
+        <price>10</price>
+        <initialize>itsu.java.test.InitializeController</initialize>
+    </application>
+
+    <permission type = "default" />
+
+    <activity>
+        <name>MainActivity</name>
+        <main>itsu.java.test.MyActivity</main>
+    </activity>
+</manifest>

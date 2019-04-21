@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="_temp :: header('404 - Not Found')"></head>
+
+<header class="fixed-top">
+    <div th:replace="_temp :: nav"></div>
+</header>
+
+<body>
+<div th:replace="_temp :: body_header"></div>
+
+<h2 class="h1-responsive font-weight-bold my-3 text-center">404 - Not Found</h2>
+
+<div style="padding-bottom: 300px">
+    <p class="text-center">お探しのページは見つかりませんでした。</p>
+</div>
+
+<div th:replace="_temp :: body_footer"></div>
+<div th:replace="_temp :: script"></div>
+</body>
+
+<!-- Footer -->
+<footer class="font-small default-color pt-4">
+    <div th:replace="_temp :: footer"></div>
+</footer>
+<!-- Footer -->
+
+</html>

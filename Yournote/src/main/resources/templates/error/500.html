@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="_temp :: header('500 - Internal Server Error')"></head>
+
+<header class="fixed-top">
+    <div th:replace="_temp :: nav"></div>
+</header>
+
+<body>
+<div th:replace="_temp :: body_header"></div>
+
+<h2 class="h1-responsive font-weight-bold my-3 text-center">500 - Internal Server Error</h2>
+
+<div style="padding-bottom: 300px">
+    <p class="text-center">内部エラーが発生しました。お不便をおかけして申し訳ありません。</p>
+</div>
+
+<div th:replace="_temp :: body_footer"></div>
+<div th:replace="_temp :: script"></div>
+</body>
+
+<!-- Footer -->
+<footer class="font-small default-color pt-4">
+    <div th:replace="_temp :: footer"></div>
+</footer>
+<!-- Footer -->
+
+</html>

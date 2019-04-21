@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "392548014241",
+    "firebase_url": "https://mirmapp-cdfb9.firebaseio.com",
+    "project_id": "mirmapp-cdfb9",
+    "storage_bucket": "mirmapp-cdfb9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392548014241:android:ec4d0bc3bd7389aa",
+        "android_client_info": {
+          "package_name": "jp.mirm.mirmapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392548014241-sql6u81f2bd0r1clef1kd6dbkcjv20la.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZ34Ds8xalz_yb-290wF8t1TgYj7_UA8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

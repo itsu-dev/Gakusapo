@@ -1,0 +1,92 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="_temp :: header('新規登録')"></head>
+
+<header class="fixed-top">
+    <div th:replace="_temp :: nav"></div>
+</header>
+
+<body>
+<div th:replace="_temp :: body_header"></div>
+
+<form action="/register" th:action="@{/register}" th:object="${registerForm}" method="post">
+    <div class="container" style="padding-bottom: 100px">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title text-center">新規登録</h4>
+                        <hr>
+                        <div style="padding-top: 15px;"></div>
+                        <p th:text="${error}" class="red-text text-center"></p>
+
+                        <div class="md-form" th:classappend="${#fields.hasErrors('mail')}? 'has-error'">
+                            <i class="fas fa-envelope prefix grey-text"></i>
+                            <input type="email" id="mail" name="mail" class="form-control" th:field="*{mail}">
+                            <label for="mail">メールアドレス</label>
+                            <span th:if="${#fields.hasErrors('mail')}" th:errors="*{mail}">正しく入力してください！</span>
+                        </div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <div class="md-form" th:classappend="${#fields.hasErrors('password')}? 'has-error'">
+                            <i class="fas fa-key prefix grey-text"></i>
+                            <input type="password" id="password" name="password" class="form-control" th:field="*{password}">
+                            <label for="password">パスワード（6文字以上）</label>
+                            <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">正しく入力してください！</span>
+                        </div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <div class="md-form" th:classappend="${#fields.hasErrors('passwordConfirm')}? 'has-error'">
+                            <i class="fas fa-key prefix grey-text"></i>
+                            <input type="password" id="passwordConfirm" name="passwordConfirm" class="form-control" th:field="*{passwordConfirm}">
+                            <label for="passwordConfirm">パスワード（確認）</label>
+                            <span th:if="${#fields.hasErrors('passwordConfirm')}" th:errors="*{passwordConfirm}">正しく入力してください！</span>
+                        </div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <div class="md-form" th:classappend="${#fields.hasErrors('username')}? 'has-error'">
+                            <i class="fas fa-user prefix grey-text"></i>
+                            <input type="text" id="username" name="username" class="form-control" th:field="*{username}">
+                            <label for="username">ユーザー名（1~20文字）</label>
+                            <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">正しく入力してください！</span>
+                        </div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <div class="custom-control custom-checkbox" th:classappend="${#fields.hasErrors('allowFormula')}? 'has-error'">
+                            <input type="checkbox" class="custom-control-input" id="defaultUnchecked" th:field="*{allowFormula}">
+                            <label class="custom-control-label" for="defaultUnchecked"><a href="#" class="text-primary">利用規約</a>に同意します</label>
+                            <span th:if="${#fields.hasErrors('allowFormula')}" th:errors="*{allowFormula}">利用規約に同意してください！</span>
+                        </div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <div style="padding-top: 25px;"></div>
+
+                        <button type="submit" value="Submit" class="btn default-color btn-lg btn-block">登録</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+</form>
+
+<div style="padding-top: 50px;"></div>
+
+<div th:replace="_temp :: body_footer"></div>
+<div th:replace="_temp :: script"></div>
+</body>
+
+<!-- Footer -->
+<footer class="font-small default-color pt-4">
+    <div th:replace="_temp :: footer"></div>
+</footer>
+<!-- Footer -->
+
+</html>
+

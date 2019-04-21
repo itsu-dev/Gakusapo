@@ -1,0 +1,29 @@
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head th:replace="_temp :: header('403 - Forbidden')"></head>
+
+<header class="fixed-top">
+    <div th:replace="_temp :: nav"></div>
+</header>
+
+<body>
+<div th:replace="_temp :: body_header"></div>
+
+<h2 class="h1-responsive font-weight-bold my-3 text-center">403 - Forbidden</h2>
+
+<div style="padding-bottom: 100px">
+    <p class="text-center">立ち入り禁止エリアです！</p>
+    <div align="center"><img th:src="@{/img/403.png}"></div>
+</div>
+
+<div th:replace="_temp :: body_footer"></div>
+<div th:replace="_temp :: script"></div>
+</body>
+
+<!-- Footer -->
+<footer class="font-small default-color pt-4">
+    <div th:replace="_temp :: footer"></div>
+</footer>
+<!-- Footer -->
+
+</html>
