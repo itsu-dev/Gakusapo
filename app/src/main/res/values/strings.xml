@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Gakusapo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_timetable">時間割表</string>
+    <string name="navigation_schedule">予定</string>
+    <string name="navigation_today_and_tomorrow">今日と明日</string>
+    <string name="navigation_info">情報</string>
+    <string name="navigation_settings">設定</string>
+
+    <string name="mainactivity_permission_error">権限を設定してください。</string>
+
+    <string name="information_forecast_title">現在地の天気予報</string>
+    <string name="information_forecast_temp">%d℃</string>
+    <string name="information_forecast_max">最高気温</string>
+    <string name="information_forecast_min">最低気温</string>
+</resources>

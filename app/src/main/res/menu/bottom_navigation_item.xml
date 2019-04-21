@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/nav_timetable"
+            android:icon="@drawable/ic_timetable"
+            android:title="@string/navigation_timetable"/>
+    <item
+            android:id="@+id/nav_schedule"
+            android:icon="@drawable/ic_schedule"
+            android:title="@string/navigation_schedule"/>
+    <item
+            android:id="@+id/nav_today_and_tomorrow"
+            android:icon="@drawable/ic_today_and_tomorrow"
+            android:title="@string/navigation_today_and_tomorrow"/>
+    <item
+            android:id="@+id/nav_info"
+            android:icon="@drawable/ic_info"
+            android:title="@string/navigation_info"/>
+    <item
+            android:id="@+id/nav_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="@string/navigation_settings"/>
+
+</menu>

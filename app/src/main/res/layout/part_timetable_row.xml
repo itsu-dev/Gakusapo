@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_marginRight="4dp" android:layout_width="0dp"
+            android:layout_weight="1" android:id="@+id/day1Layout" android:layout_marginLeft="4dp">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day1Title" android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space1" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day1Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_marginRight="4dp" android:layout_width="0dp"
+            android:layout_weight="1" android:id="@+id/day2Layout">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day2Title" android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space2" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day2Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_marginRight="4dp" android:layout_width="0dp"
+            android:layout_weight="1" android:id="@+id/day3Layout">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day3Title" android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space3" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day3Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_marginRight="4dp" android:layout_width="0dp"
+            android:layout_weight="1" android:id="@+id/day4Layout">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day4Title" android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space4" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day4Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_marginRight="4dp" android:id="@+id/day5Layout">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day5Title" android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space5" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day5Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_height="wrap_content" android:layout_width="0dp"
+            android:layout_weight="1" android:layout_marginRight="4dp" android:id="@+id/day6Layout">
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day6Title"
+                android:textAlignment="center"
+                android:textSize="18sp"/>
+        <Space
+                android:layout_width="match_parent"
+                android:id="@+id/space6" android:layout_height="4dp"/>
+        <TextView
+                android:text=""
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/day6Teacher"
+                android:textAlignment="center"/>
+    </LinearLayout>
+</TableRow>
