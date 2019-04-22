@@ -1,5 +1,6 @@
 package gakusapo.android.itsu.information;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import gakusapo.andoid.itsu.R;
+import org.w3c.dom.Text;
 
 public class InformationFragment extends Fragment implements InformationContract.View {
 
@@ -29,6 +32,14 @@ public class InformationFragment extends Fragment implements InformationContract
         this.view = view;
         this.presenter = new InformationPresenter(this);
         presenter.reloadWeatherForecast();
+        presenter.reloadTrainInfo();
+
+        this.view.findViewById(R.id.trainInfoSettingButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onTrainInfoSettingButtonClicked();
+            }
+        });
     }
 
     @Override
@@ -56,12 +67,6 @@ public class InformationFragment extends Fragment implements InformationContract
     }
 
     @Override
-    public void setWeather(String weather) {
-        //TextView textView = view.findViewById(R.id.weatherForecast);
-        //textView.setText(weather);
-    }
-
-    @Override
     public void setIcon(Bitmap icon) {
         ImageView imageView = view.findViewById(R.id.weatherIcon);
         imageView.setImageBitmap(icon);
@@ -73,6 +78,49 @@ public class InformationFragment extends Fragment implements InformationContract
         imageView.setImageBitmap(image);
     }
 
+    @Override
+    public void addTrainInfo(String trainName, int statusId) {
+        LinearLayout layout = view.findViewById(R.id.trainInfoLayout);
+        View view;
 
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            view = layout.getChildAt(i);
+            if (!(view instanceof TextView)) continue;
 
+            TextView trainNameView = (TextView) view;
+            if (trainNameView.getText().toString().contains(trainName)) {
+                trainNameView.setVisibility(View.GONE);
+                TextView trainStatusView = (TextView) layout.getChildAt(i + 1);
+                trainStatusView.setVisibility(View.GONE);
+            }
+        }
+
+        int padding = getActivity().getResources().getDimensionPixelSize(R.dimen.padding_8);
+
+        TextView name = new TextView(getActivity());
+        name.setPadding(padding, padding, padding, padding);
+        name.setText(trainName);
+
+        TextView status = new TextView(getActivity());
+        status.setPadding(padding, 0, padding, padding);
+        status.setText(statusId);
+
+        if (statusId == R.string.information_train_unavailable) status.setTextColor(getActivity().getColor(R.color.red));
+        else status.setTextColor(getActivity().getColor(R.color.black));
+
+        layout.addView(name);
+        layout.addView(status);
+    }
+
+    @Override
+    public void removeAllTrainInfo() {
+        LinearLayout layout = view.findViewById(R.id.trainInfoLayout);
+        View view;
+
+        for (int i = 0; i < layout.getChildCount(); i++) {
+            view = layout.getChildAt(i);
+            if (!(view instanceof TextView)) continue;
+            layout.removeView(view);
+        }
+    }
 }

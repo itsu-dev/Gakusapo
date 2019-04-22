@@ -13,19 +13,23 @@ public interface InformationContract {
         void setMaxTemp(String temp);
         void setMinTemp(String temp);
         void setTemp(String temp);
-        void setWeather(String weather);
         void setIcon(Bitmap icon);
         void setImage(Bitmap image);
+        void addTrainInfo(String trainName, int trainStatus);
+        void removeAllTrainInfo();
     }
 
     interface Presenter {
         void reloadWeatherForecast();
+        void reloadTrainInfo();
         Map<String, Integer> getPosition();
         void onWeatherLoaded(String json);
         void onWeatherIconGot(Bitmap bitmap);
         void onWeatherCityGot(String json);
         void onGPSPermissionGranted();
         void onGPSPermissionNotGranted();
+        void onTrainInfoGot(String json);
+        void onTrainInfoSettingButtonClicked();
     }
 
 }

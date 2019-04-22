@@ -13,12 +13,12 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import gakusapo.andoid.itsu.R;
 import gakusapo.android.itsu.mainactivity.MainActivity;
+import gakusapo.android.itsu.utils.TrainInfoFormatter;
 import gakusapo.android.itsu.utils.WeatherFormatter;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -104,6 +104,39 @@ public class InformationPresenter implements InformationContract.Presenter, Loca
     @Override
     public void onWeatherCityGot(String json) {
         view.setWeatherCity(WeatherFormatter.getCity(json));
+    }
+
+    @Override
+    public void reloadTrainInfo() {
+        view.removeAllTrainInfo();
+        GetTrainInfoTask task = new GetTrainInfoTask(this);
+        task.execute();
+    }
+
+    @Override
+    public void onTrainInfoGot(String json) {
+        List<Map<String, Object>> data = TrainInfoFormatter.getData(json);
+        List<String> registeredTrain = new ArrayList<>();
+        registeredTrain.add("JR東日本:山手線");
+        registeredTrain.add("JR東日本:五日市線");
+        registeredTrain.add("JR北海道:函館本線");
+        registeredTrain.add("JR西日本:芸備線");
+
+        for (String str : registeredTrain) {
+            int status = R.string.information_train_available;
+            String trainName = str.split(":")[1];
+            for (Map<String, Object> entry : data) {
+                if (String.valueOf(entry.get("name")).contains(trainName)) {
+                    status = R.string.information_train_unavailable;
+                }
+                view.addTrainInfo(str.split(":")[0] + " " + str.split(":")[1], status);
+            }
+        }
+    }
+
+    @Override
+    public void onTrainInfoSettingButtonClicked() {
+
     }
 
     @Override
