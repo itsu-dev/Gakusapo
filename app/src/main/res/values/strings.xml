@@ -20,4 +20,28 @@
     <string name="information_train_title">運行状況</string>
     <string name="information_train_available">通常通り運転しています。</string>
     <string name="information_train_unavailable">遅延の情報があります。</string>
+    <string name="information_now_refreshing">更新中です&#8230;</string>
+    <string name="information_refreshed">最新の情報に更新しました。</string>
+    <string name="information_refresh_error">エラーが発生しました。再度お試しください。</string>
+
+    <string name="timetable_primary_title">新しい時間割</string>
+    <string name="timetable_editmode_toast">編集モード</string>
+    <string name="timetable_uneditmode_toast">編集モードを解除しました。</string>
+    <string name="timetable_select">[編集]選択モード</string>
+    <string name="timetable_unselect">[編集]選択モードを解除しました。</string>
+    <string name="timetable_already_exists">同じ名前の時間割が既に存在しています。</string>
+
+    <string name="today_and_tomorrow_timetable">時間割</string>
+    <string name="today_and_tomorrow_today">今日の予定</string>
+    <string name="today_and_tomorrow_tomorrow">明日の予定</string>
+    <string name="today_and_tomorrow_nothing">なし</string>
+    <string name="today_and_tomorrow_homework">宿題</string>
+    <string name="today_and_tomorrow_submission">提出物</string>
+    <string name="today_and_tomorrow_test">テスト</string>
+    <string name="today_and_tomorrow_class">補習</string>
+    <string name="today_and_tomorrow_event">行事</string>
+
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

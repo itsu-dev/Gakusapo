@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="時間割タイプ設定"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView8" android:padding="16dp"
+                android:background="@color/colorPrimary" android:textColor="#fff"/>
+        <TextView
+                android:text="時間割名（設定後は変更できません）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView9" android:paddingTop="16dp"
+                android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingBottom="8dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/dialogTimetableNewName" android:hint="時間割名" android:layout_marginRight="16dp"
+                android:layout_marginLeft="16dp" android:layout_marginBottom="16dp"/>
+        <TextView
+                android:text="時間割タイプ（設定後は変更できません）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView16" android:paddingRight="16dp"
+                android:paddingLeft="16dp" android:paddingTop="16dp" android:paddingBottom="8dp"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogDayTypeSpinner" android:layout_margin="16dp"
+                android:entries="@array/timetableDayType"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogTimeTypeSpinner"
+                android:layout_marginBottom="16dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                android:entries="@array/timetableTimeType"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogErrorAlreadyExists" android:padding="16dp"
+                android:text="@string/timetable_already_exists" android:textColor="@color/red"
+                android:visibility="gone"/>
+        <Button
+                android:text="作成"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogTimetableCreateButton"
+                android:layout_margin="16dp"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+    </LinearLayout>
+</ScrollView>

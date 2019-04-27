@@ -5,7 +5,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="gakusapo.android.itsu.mainactivity.MainActivity">
+        tools:context="gakusapo.android.itsu.ui.activity.MainActivity">
 
     <fragment
             android:id="@+id/nav_fragment"
@@ -17,7 +17,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/navigation"/>
+            app:layout_constraintBottom_toBottomOf="@id/navigation"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"

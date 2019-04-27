@@ -1,4 +1,4 @@
-package gakusapo.andoid.itsu
+package gakusapo.android.itsu
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getTargetContext()
-        assertEquals("gakusapo.andoid.itsu", appContext.packageName)
+        assertEquals("gakusapo.android.itsu", appContext.packageName)
     }
 }

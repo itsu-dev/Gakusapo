@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogDetailTime" android:padding="16dp"
+                android:textColor="#fff" android:background="@color/colorPrimary"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="16dp">
+            <TextView
+                    android:text="科目"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView20" android:layout_weight="1"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/dialogDetailName" android:layout_weight="1"
+                    android:textAlignment="textEnd"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingTop="16dp" android:paddingRight="16dp"
+                android:paddingLeft="16dp">
+            <TextView
+                    android:text="場所"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView22" android:layout_weight="1"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/dialogDetailClassName"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"/>
+        </LinearLayout>
+        <TextView
+                android:text="メモ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView24"
+                tools:layout_editor_absoluteY="136dp" tools:layout_editor_absoluteX="16dp" android:paddingLeft="16dp"
+                android:paddingRight="16dp" android:paddingTop="16dp" android:paddingBottom="8dp"/>
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogDetailDescription"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp" android:paddingBottom="16dp"/>
+        <Button
+                android:text="閉じる"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogDetailCloseButton"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp" android:layout_marginBottom="16dp"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+    </LinearLayout>
+</RelativeLayout>

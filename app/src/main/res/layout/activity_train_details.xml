@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="gakusapo.android.itsu.ui.activity.TrainDetailsActivity" android:orientation="vertical">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:layout_width="match_parent"
+                        app:srcCompat="@drawable/train" android:id="@+id/trainDetailsImage"
+                        android:scaleType="matrix" android:layout_height="240dp"
+                        android:transitionName="trainImage"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <Space
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"/>
+                <TextView
+                        android:text="@string/information_train_title"
+                        android:layout_width="match_parent"
+                        android:id="@+id/trainDetailsTitle"
+                        android:textSize="18sp" android:textColor="#fff"
+                        android:paddingLeft="16dp" android:layout_height="40dp" android:gravity="center_vertical"
+                        android:background="#9f000000" android:transitionName="trainTitle" android:paddingRight="16dp"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+                android:text="登録済みの路線"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView" android:padding="16dp"/>
+        <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/trainDetailsAddedTrainList"/>
+    </LinearLayout>
+
+    <android.support.v7.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/dr_appbar_gradient_black"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar"/>
+
+    <android.support.design.widget.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true" app:srcCompat="@drawable/ic_add" android:id="@+id/floatingActionButton"
+            app:backgroundTint="@color/colorPrimary" app:elevation="0dp" android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true" android:layout_margin="16dp"
+            app:fabSize="normal" android:keepScreenOn="false"/>
+</RelativeLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        <TextView
+                android:text="教科を編集"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView10" android:padding="16dp"
+                android:background="@color/colorPrimary" android:textColor="#fff"/>
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView18"
+                android:text="教科情報を入力してください。" android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="16dp" android:paddingBottom="8dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/dialogName" android:hint="教科名"
+                android:layout_marginBottom="8dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/dialogClassName" android:hint="教室名"
+                android:layout_marginBottom="8dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textMultiLine"
+                android:ems="10"
+                android:id="@+id/dialogDescription" android:layout_marginBottom="8dp" android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp" android:layout_marginTop="8dp" android:hint="メモ"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:padding="16dp" android:gravity="center_vertical">
+            <TextView
+                    android:text="教科の色"
+                    android:layout_height="wrap_content" android:id="@+id/textView19" android:layout_weight="1"
+                    android:layout_width="0dp"/>
+            <View
+                    android:layout_width="0dp"
+                    android:id="@+id/dialogBackgroundView" android:layout_weight="1" android:layout_height="36dp"
+                    android:background="@color/subjectBrown"/>
+        </LinearLayout>
+        <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:padding="16dp">
+
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button2" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectBrown"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button3" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectDarkBlue"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button4" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectDarkGreen"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button5" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectDarkOrange"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button6" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectDarkPurple"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button7" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectDarkYellow"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button8" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectDiamond"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button9" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectForest"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button10" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectGray"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button11" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectIndigo"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button12" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectLightBlue"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button13" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectLightGreen"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button14" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectLightOrange"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button15" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectLightPurple"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button16" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectMagenta"/>
+            </TableRow>
+            <TableRow android:layout_width="match_parent" android:layout_height="match_parent">
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button17" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="@color/subjectOrange"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button18" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="@color/subjectRed"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button19" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="#00000000"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button20" android:layout_width="0dp"
+                        android:layout_weight="1" android:background="#00000000"/>
+                <Button
+                        android:layout_height="wrap_content" android:id="@+id/button21" android:layout_weight="1"
+                        android:layout_width="0dp" android:background="#00000000"/>
+            </TableRow>
+        </TableLayout>
+        <Button
+                android:text="登録"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/dialogRegisterButton"
+                style="@style/Widget.AppCompat.Button.Colored" android:layout_margin="16dp"/>
+    </LinearLayout>
+</ScrollView>

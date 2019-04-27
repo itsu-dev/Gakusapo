@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="@drawable/background">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/todayTitle"
+                android:textSize="24sp" android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:paddingTop="16dp" android:paddingBottom="8dp" android:text="今日の予定"/>
+        <TextView
+                android:text="2017年5月1日"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/todayDate" android:paddingLeft="16dp"
+                android:paddingRight="16dp" android:paddingBottom="16dp"/>
+        <TextView
+                android:text="@string/today_and_tomorrow_timetable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/todayTimetableTitle" android:paddingLeft="16dp"
+                android:paddingRight="16dp"/>
+        <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:paddingBottom="16dp" android:paddingTop="8dp" android:layout_height="108dp"
+                android:id="@+id/todayScrollView">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:id="@+id/todayTimetableLayout"
+                    android:paddingTop="8dp" android:layout_height="108dp">
+            </LinearLayout>
+        </HorizontalScrollView>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="メモ"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView31" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+            />
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayMemoButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <TextView
+                android:text="memo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/todayMemo"
+                android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingBottom="32dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="課題"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView23" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+            />
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayHomeworkButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todayHomeworkLayout">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="提出物"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView28" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+                    android:layout_weight="1"/>
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todaySubmissionButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todaySubmissionLayout">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="テスト"
+                    android:layout_height="wrap_content" android:id="@+id/textView30" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+                    android:layout_weight="1" android:layout_width="wrap_content"/>
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayTestButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todayTestLayout">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="補習"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView27" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+                    android:layout_weight="1"/>
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayClassButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todayClassLayout">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="行事"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView29" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+                    android:layout_weight="1"/>
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayEventButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todayEventLayout">
+        </LinearLayout>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="60dp"/>
+    </LinearLayout>
+</ScrollView>

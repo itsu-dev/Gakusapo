@@ -1,4 +1,4 @@
-package gakusapo.andoid.itsu
+package gakusapo.android.itsu
 
 import org.junit.Test
 

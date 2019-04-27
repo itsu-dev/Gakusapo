@@ -4,7 +4,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import gakusapo.andoid.itsu.R;
+import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.MainApplication;
 
 import java.util.HashMap;
