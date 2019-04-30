@@ -16,6 +16,7 @@ public interface InformationContract {
         void setTemp(String temp);
         void setIcon(Bitmap icon);
         void setImage(Bitmap image);
+        void setWeatherName(String name);
         void addTrainInfo(String trainName, int trainStatus);
         void removeAllTrainInfo();
         void setRefreshing(boolean bool);

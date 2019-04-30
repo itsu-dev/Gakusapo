@@ -31,8 +31,8 @@ public class DateEventDBService {
         Cursor cursor = db.query(
                 DateEventDBHelper.DB_TABLENAME,
                 new String[]{"date", "memo", "homeworks", "submissions", "tests", "classes", "events"},
-                null,
-                null,
+                "date = ?",
+                new String[]{date},
                 null,
                 null,
                 null

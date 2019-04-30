@@ -85,6 +85,12 @@ public class InformationFragment extends Fragment implements InformationContract
     }
 
     @Override
+    public void setWeatherName(String name) {
+        TextView textView = view.findViewById(R.id.weatherName);
+        textView.setText(name);
+    }
+
+    @Override
     public void setIcon(Bitmap icon) {
         ImageView imageView = view.findViewById(R.id.weatherIcon);
         imageView.setImageBitmap(icon);

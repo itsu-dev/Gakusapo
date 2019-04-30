@@ -23,6 +23,7 @@ import gakusapo.android.itsu.entity.Train;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 import gakusapo.android.itsu.ui.activity.MainActivity;
 import gakusapo.android.itsu.ui.activity.TrainDetailsActivity;
+import gakusapo.android.itsu.ui.fragment.AlertDialogFragment;
 import gakusapo.android.itsu.utils.LocationProviderClient;
 import gakusapo.android.itsu.utils.TrainInfoFormatter;
 import gakusapo.android.itsu.utils.WeatherFormatter;
@@ -89,6 +90,7 @@ public class InformationPresenter implements InformationContract.Presenter {
             view.setSunset(String.valueOf(weatherData.get("sunset")));
             view.setWeatherCity(view.getActivity().getResources().getString(R.string.information_forecast_city, String.valueOf(((Map<String, Object>) data.get("city")).get("name")), String.valueOf(weatherData.get("time"))));
             view.setImage(WeatherFormatter.getImage(String.valueOf(weatherData.get("name"))));
+            view.setWeatherName(String.valueOf(weatherData.get("name")));
 
             GetWeatherForecastIconTask task = new GetWeatherForecastIconTask(this);
             task.execute(String.valueOf(weatherData.get("icon")));
@@ -126,6 +128,21 @@ public class InformationPresenter implements InformationContract.Presenter {
         List<Map<String, Object>> data = TrainInfoFormatter.getData(json);
         TrainDBService service = new TrainDBService(view.getActivity());
         Collection<Train> registeredTrain = service.getTrains().values();
+
+        if (data == null) {
+            final MainActivity activity = (MainActivity) view.getActivity();
+            AlertDialogFragment fragment = AlertDialogFragment.newInstance(R.string.error,R.string.information_network_error, R.string.close, R.string.information_network_error_button, true);
+            fragment.setPositiveButtonListener(new AlertDialogFragment.OnClickListener() {
+                @Override
+                public void onClicked() {
+                    Intent intent = new Intent();
+                    intent.setAction(Settings.ACTION_WIFI_SETTINGS);
+                    activity.startActivity(intent);
+                }
+            });
+            fragment.show(activity.getSupportFragmentManager(), "dialog");
+            return;
+        }
 
         for (Train train : registeredTrain) {
             int status = R.string.information_train_available;
