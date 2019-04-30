@@ -2,7 +2,7 @@
 Apache 2.0 / Google  
 https://developer.android.com/topic/libraries/architecture/index.html  
   
-## WNI wethernews
+## WNI weathernews
 天気予報の取得に使用しています。  
 http://weathernews.jp  
   
