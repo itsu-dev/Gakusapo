@@ -25,8 +25,8 @@ import gakusapo.android.itsu.ui.activity.MainActivity;
 import gakusapo.android.itsu.ui.activity.TrainDetailsActivity;
 import gakusapo.android.itsu.ui.fragment.AlertDialogFragment;
 import gakusapo.android.itsu.utils.LocationProviderClient;
-import gakusapo.android.itsu.utils.TrainInfoFormatter;
-import gakusapo.android.itsu.utils.WeatherFormatter;
+import gakusapo.android.itsu.utils.TrainInfoUtils;
+import gakusapo.android.itsu.utils.WeatherUtils;
 
 import java.util.*;
 
@@ -89,7 +89,7 @@ public class InformationPresenter implements InformationContract.Presenter {
             view.setHumidity(Integer.parseInt(String.valueOf(weatherData.get("humidity"))));
             view.setSunset(String.valueOf(weatherData.get("sunset")));
             view.setWeatherCity(view.getActivity().getResources().getString(R.string.information_forecast_city, String.valueOf(((Map<String, Object>) data.get("city")).get("name")), String.valueOf(weatherData.get("time"))));
-            view.setImage(WeatherFormatter.getImage(String.valueOf(weatherData.get("name"))));
+            view.setImage(WeatherUtils.getImage(String.valueOf(weatherData.get("name"))));
             view.setWeatherName(String.valueOf(weatherData.get("name")));
 
             GetWeatherForecastIconTask task = new GetWeatherForecastIconTask(this);
@@ -108,24 +108,21 @@ public class InformationPresenter implements InformationContract.Presenter {
     }
 
     @Override
-    public void onWeatherCityGot(String json) {
-        view.setWeatherCity(WeatherFormatter.getCity(json));
-    }
-
-    @Override
     public void reloadTrainInfo() {
+        //TODO for test
         TrainDBService service = new TrainDBService(view.getActivity());
         service.addTrain("JR東日本", "山手線");
         service.addTrain("JR西日本", "芸備線");
 
         view.removeAllTrainInfo();
+
         GetTrainInfoTask task = new GetTrainInfoTask(this);
         task.execute();
     }
 
     @Override
     public void onTrainInfoGot(String json) {
-        List<Map<String, Object>> data = TrainInfoFormatter.getData(json);
+        List<Map<String, Object>> data = TrainInfoUtils.getData(json);
         TrainDBService service = new TrainDBService(view.getActivity());
         Collection<Train> registeredTrain = service.getTrains().values();
 

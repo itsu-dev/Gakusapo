@@ -31,7 +31,6 @@ public interface InformationContract {
         void onWeatherDetailsButtonClicked();
         void onWeatherLoaded(Map<String, Object> data);
         void onWeatherIconGot(Bitmap bitmap);
-        void onWeatherCityGot(String json);
         void onGPSPermissionGranted();
         void onGPSPermissionNotGranted();
         void onLocationChanged(Location location);

@@ -6,7 +6,7 @@ import com.google.gson.reflect.TypeToken;
 import java.util.List;
 import java.util.Map;
 
-public class TrainInfoFormatter {
+public class TrainInfoUtils {
 
     public static List<Map<String, Object>> getData(String json) {
         Gson gson = new Gson();
