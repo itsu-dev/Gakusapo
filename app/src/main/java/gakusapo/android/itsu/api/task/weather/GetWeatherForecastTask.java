@@ -1,13 +1,15 @@
 package gakusapo.android.itsu.api.task.weather;
 
 import android.os.AsyncTask;
+import gakusapo.android.itsu.api.service.WeatherService;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
-public class GetWeatherForecastTask extends AsyncTask<Double, Void, String> {
+public class GetWeatherForecastTask extends AsyncTask<Double, Void, Map<String, Object>> {
 
     private InformationContract.Presenter presenter;
 
@@ -16,31 +18,14 @@ public class GetWeatherForecastTask extends AsyncTask<Double, Void, String> {
     }
 
     @Override
-    protected String doInBackground(Double... data) {
-        URL url;
-        try {
-            url = new URL(String.format("https://api.openweathermap.org/data/2.5/weather?lat=%s&lon=%s&APPID=%s", data[0], data[1], "000d34efd13d2d874b623c232aa563cb"));
-            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setReadTimeout(10000);
-
-            String temp;
-            StringBuffer buffer = new StringBuffer();
-            BufferedReader stream = new BufferedReader(new InputStreamReader(connection.getInputStream()));
-            while ((temp = stream.readLine()) != null) {
-                buffer.append(temp);
-            }
-
-            stream.close();
-            return buffer.toString();
-        } catch (IOException e) {
-            return null;
-        }
+    protected Map<String, Object> doInBackground(Double... data) {
+        WeatherService service = new WeatherService();
+        return service.getWeather(data[0], data[1]);
     }
 
     @Override
-    protected void onPostExecute(String json) {
-        presenter.onWeatherLoaded(json);
+    protected void onPostExecute(Map<String, Object> data) {
+        presenter.onWeatherLoaded(data);
     }
 
 }

@@ -61,13 +61,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" android:gravity="right|center_vertical">
                                 <TextView
-                                        android:text="@string/information_forecast_max"
+                                        android:text="@string/information_forecast_humidity"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"/>
                                 <TextView
                                         android:text="N/A"
-                                        android:layout_height="wrap_content" android:id="@+id/weatherMaxTemp"
+                                        android:layout_height="wrap_content" android:id="@+id/weatherHumidity"
                                         android:layout_weight="1" android:textColor="#000" android:layout_width="60dp"
                                         android:textAlignment="textEnd"/>
                             </LinearLayout>
@@ -76,13 +76,13 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content" android:gravity="right|center_vertical">
                                 <TextView
-                                        android:text="@string/information_forecast_min"
+                                        android:text="@string/information_forecast_sunset"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_weight="1"/>
                                 <TextView
                                         android:text="N/A"
-                                        android:layout_height="wrap_content" android:id="@+id/weatherMinTemp"
+                                        android:layout_height="wrap_content" android:id="@+id/weatherSunset"
                                         android:layout_weight="1" android:textColor="#000" android:layout_width="60dp"
                                         android:textAlignment="textEnd"/>
                             </LinearLayout>

@@ -9,7 +9,8 @@ public interface RegisterTimetableDialogContract {
         String getTimetableName();
         String getDayType();
         String getTimeType();
-        void showErrorText();
+        void showErrorText(int id);
+        void dismiss();
     }
 
     interface Presenter {

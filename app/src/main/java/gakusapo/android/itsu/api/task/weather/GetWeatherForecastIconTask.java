@@ -21,7 +21,7 @@ public class GetWeatherForecastIconTask extends AsyncTask<String, Void, Bitmap> 
     protected Bitmap doInBackground(String... data) {
         URL url;
         try {
-            url = new URL(String.format("http://openweathermap.org/img/w/%s.png", data[0]));
+            url = new URL(data[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setReadTimeout(10000);

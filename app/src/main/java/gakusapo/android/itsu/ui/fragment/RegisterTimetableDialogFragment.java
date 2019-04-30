@@ -32,7 +32,6 @@ public class RegisterTimetableDialogFragment extends DialogFragment implements R
             @Override
             public void onClick(View v) {
                 presenter.onCreateButtonClicked();
-                dialog.dismiss();
             }
         });
 
@@ -58,8 +57,10 @@ public class RegisterTimetableDialogFragment extends DialogFragment implements R
     }
 
     @Override
-    public void showErrorText() {
-        dialog.findViewById(R.id.dialogErrorAlreadyExists).setVisibility(View.VISIBLE);
+    public void showErrorText(int id) {
+        TextView textView = dialog.findViewById(R.id.dialogTimetableErrorView);
+        textView.setText(id);
+        dialog.findViewById(R.id.dialogTimetableErrorView).setVisibility(View.VISIBLE);
     }
 
     private void setTimetablePresenter(TimetableContract.Presenter presenter) {

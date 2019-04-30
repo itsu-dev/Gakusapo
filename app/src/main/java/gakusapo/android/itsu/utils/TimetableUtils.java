@@ -1,6 +1,5 @@
 package gakusapo.android.itsu.utils;
 
-import android.content.res.Resources;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import gakusapo.android.itsu.MainApplication;
@@ -8,7 +7,6 @@ import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.entity.Subject;
 import gakusapo.android.itsu.entity.Timetable;
 
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -87,7 +85,7 @@ public class TimetableUtils {
             return calendar.get(Calendar.DAY_OF_WEEK) - 2;
         } catch (ParseException e) {
             e.printStackTrace();
-            return 0;
+            return -1;
         }
     }
 

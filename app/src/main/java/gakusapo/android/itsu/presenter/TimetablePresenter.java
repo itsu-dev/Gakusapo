@@ -1,8 +1,10 @@
 package gakusapo.android.itsu.presenter;
 
+import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.AdapterView;
 import gakusapo.android.itsu.R;
+import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.api.service.TimetableEditService;
 import gakusapo.android.itsu.api.service.TimetableDBService;
 import gakusapo.android.itsu.entity.Subject;
@@ -10,6 +12,7 @@ import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.presenter.contract.TimetableContract;
 import gakusapo.android.itsu.ui.activity.MainActivity;
 import gakusapo.android.itsu.ui.adapter.TimetableAdapter;
+import gakusapo.android.itsu.ui.fragment.AlertDialogFragment;
 import gakusapo.android.itsu.ui.fragment.RegisterSubjectDialogFragment;
 import gakusapo.android.itsu.ui.fragment.RegisterTimetableDialogFragment;
 import gakusapo.android.itsu.ui.fragment.SubjectDetailsDialogFragment;
@@ -30,18 +33,40 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     public TimetablePresenter(TimetableContract.View view) {
         this.view = view;
-        this.currentTimetableName = "test";
     }
 
     @Override
     public void reloadTimetable() {
         Timetable timetable;
+        currentTimetableName = PreferencesService.get().getString("CurrentTimetable", null);
 
         if (currentTimetableName != null) {
             TimetableDBService service = new TimetableDBService(view.getActivity());
             timetable = service.getTimetables().get(currentTimetableName);
         } else {
             timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
+        }
+
+        if (PreferencesService.get().getBoolean("Editing", false) && PreferencesService.get().getString("EditData", null) != null) {
+            MainActivity activity = (MainActivity) view.getActivity();
+            AlertDialogFragment fragment = AlertDialogFragment.newInstance(R.string.notice, R.string.timetable_edited_date_exists, R.string.close, R.string.yes, false);
+
+            fragment.setPositiveButtonListener(new AlertDialogFragment.OnClickListener() {
+                @Override
+                public void onClicked() {
+                    reloadTimetable(TimetableEditService.getEditingTimetable());
+                    setEditMode(true);
+                }
+            });
+
+            fragment.setNegativeButtonListener(new AlertDialogFragment.OnClickListener() {
+                @Override
+                public void onClicked() {
+                    TimetableEditService.deleteEditingTimetable();
+                }
+            });
+
+            fragment.show(activity.getSupportFragmentManager(), "dialog");
         }
 
         reloadTimetable(timetable);
@@ -167,6 +192,7 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     @Override
     public void onCreateTimetableDialogCallback(String name, int dayType, int timeType) {
+        if (name.isEmpty()) return;
         reloadTimetable(TimetableUtils.createNewTimetable(name, dayType, timeType));
         setEditMode(true);
     }
@@ -184,12 +210,16 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
             editService.save(view.getActivity());
 
+            SharedPreferences.Editor editor = PreferencesService.getEditor();
+            editor.putString("CurrentTimetable", currentTimetable.getName());
+            editor.apply();
+
             editMode = false;
             selectMode = false;
             editService = null;
             view.setEditmode(false);
             view.showEditmodeToast(false);
-            view.setTimetableTitle(currentTimetableName);
+            view.setTimetableTitle(currentTimetable.getName());
         }
     }
 

@@ -67,15 +67,15 @@ public class InformationFragment extends Fragment implements InformationContract
     }
 
     @Override
-    public void setMaxTemp(String temp) {
-        TextView textView = view.findViewById(R.id.weatherMaxTemp);
-        textView.setText(temp);
+    public void setHumidity(int humidity) {
+        TextView textView = view.findViewById(R.id.weatherHumidity);
+        textView.setText(humidity + "%");
     }
 
     @Override
-    public void setMinTemp(String temp) {
-        TextView textView = view.findViewById(R.id.weatherMinTemp);
-        textView.setText(temp);
+    public void setSunset(String time) {
+        TextView textView = view.findViewById(R.id.weatherSunset);
+        textView.setText(time);
     }
 
     @Override

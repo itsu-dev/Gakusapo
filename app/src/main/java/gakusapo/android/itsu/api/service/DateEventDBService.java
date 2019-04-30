@@ -95,7 +95,7 @@ public class DateEventDBService {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         String date;
 
-        if (hour >= 16) {
+        if (hour >= PreferencesService.get().getInt("ReloadTime", 16)) {
             date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE) + 1);
         } else {
             date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
@@ -110,7 +110,7 @@ public class DateEventDBService {
     }
 
     public static boolean isTomorrow() {
-        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= 16;
+        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= PreferencesService.get().getInt("ReloadTime", 16);
     }
 
 }

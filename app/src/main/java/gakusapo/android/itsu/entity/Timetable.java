@@ -12,6 +12,8 @@ public class Timetable {
     public static final int TIME_TYPE_7 = 7;
     public static final int TIME_TYPE_8 = 8;
 
+    public static final String DEFAULT_TIMETABLE_NAME = "ba2b084d-2592-4c06-91c8-3bf10c68caa7";
+
     private String name;
     private int dayType;
     private int timeType;

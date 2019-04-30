@@ -11,8 +11,8 @@ public interface InformationContract {
     interface View {
         Activity getActivity();
         void setWeatherCity(String title);
-        void setMaxTemp(String temp);
-        void setMinTemp(String temp);
+        void setHumidity(int humidity);
+        void setSunset(String time);
         void setTemp(String temp);
         void setIcon(Bitmap icon);
         void setImage(Bitmap image);
@@ -28,7 +28,7 @@ public interface InformationContract {
         void reloadWeatherForecast();
         void reloadTrainInfo();
         void onWeatherDetailsButtonClicked();
-        void onWeatherLoaded(String json);
+        void onWeatherLoaded(Map<String, Object> data);
         void onWeatherIconGot(Bitmap bitmap);
         void onWeatherCityGot(String json);
         void onGPSPermissionGranted();

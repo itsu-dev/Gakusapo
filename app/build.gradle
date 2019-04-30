@@ -8,7 +8,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "gakusapo.android.itsu"
-        minSdkVersion 21
+        minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
@@ -41,5 +41,6 @@ dependencies {
     implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-alpha07"
 
     implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'org.jsoup:jsoup:1.7.3'
     implementation 'com.google.android.gms:play-services-location:11.8.0'
 }

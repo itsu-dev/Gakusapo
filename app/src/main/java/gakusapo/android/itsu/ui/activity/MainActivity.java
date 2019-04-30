@@ -1,6 +1,9 @@
 package gakusapo.android.itsu.ui.activity;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,9 +14,13 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import gakusapo.android.itsu.R;
+import gakusapo.android.itsu.api.notification.TimetableAlarmNotifier;
+import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.presenter.InformationPresenter;
 import gakusapo.android.itsu.presenter.contract.MainActivityContract;
 import gakusapo.android.itsu.presenter.MainActivityPresenter;
+
+import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 
@@ -31,6 +38,20 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         NavController controller = Navigation.findNavController(findViewById(R.id.nav_fragment));
         NavigationUI.setupWithNavController((BottomNavigationView) findViewById(R.id.navigation), controller);
+
+        PreferencesService.initialize(this);
+
+        //TODO
+        Calendar triggerTime = Calendar.getInstance();
+        triggerTime.set(Calendar.HOUR_OF_DAY, 16);
+        triggerTime.set(Calendar.MINUTE, 5);
+        triggerTime.set(Calendar.SECOND, 0);
+
+        Intent intent = new Intent(MainActivity.this, TimetableAlarmNotifier.class);
+        PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);
     }
 
     @Override

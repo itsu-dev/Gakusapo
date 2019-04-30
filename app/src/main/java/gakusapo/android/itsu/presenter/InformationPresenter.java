@@ -17,7 +17,6 @@ import android.widget.Toast;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.service.TrainDBService;
 import gakusapo.android.itsu.api.task.train.GetTrainInfoTask;
-import gakusapo.android.itsu.api.task.weather.GetWeatherForecastCityTask;
 import gakusapo.android.itsu.api.task.weather.GetWeatherForecastIconTask;
 import gakusapo.android.itsu.api.task.weather.GetWeatherForecastTask;
 import gakusapo.android.itsu.entity.Train;
@@ -33,7 +32,6 @@ import java.util.*;
 public class InformationPresenter implements InformationContract.Presenter {
 
     private InformationContract.View view;
-    private Location location;
 
     private boolean isRefreshing;
 
@@ -78,30 +76,22 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void onLocationChanged(Location location) {
-        this.location = location;
-
         GetWeatherForecastTask task = new GetWeatherForecastTask(this);
         task.execute(location.getLatitude(), location.getLongitude());
     }
 
     @Override
-    public void onWeatherLoaded(String json) {
+    public void onWeatherLoaded(Map<String, Object> data) {
         try {
-            Map<String, Long> temps = WeatherFormatter.getTemps(json);
-            view.setTemp(view.getActivity().getResources().getString(R.string.information_forecast_temp, temps.get("temp")));
-            view.setMaxTemp(view.getActivity().getResources().getString(R.string.information_forecast_temp, temps.get("temp_max")));
-            view.setMinTemp(view.getActivity().getResources().getString(R.string.information_forecast_temp, temps.get("temp_min")));
+            Map<String, Object> weatherData = (Map<String, Object>) data.get("latest");
+            view.setTemp(view.getActivity().getResources().getString(R.string.information_forecast_temp, String.valueOf(weatherData.get("temp"))));
+            view.setHumidity(Integer.parseInt(String.valueOf(weatherData.get("humidity"))));
+            view.setSunset(String.valueOf(weatherData.get("sunset")));
+            view.setWeatherCity(view.getActivity().getResources().getString(R.string.information_forecast_city, String.valueOf(((Map<String, Object>) data.get("city")).get("name")), String.valueOf(weatherData.get("time"))));
+            view.setImage(WeatherFormatter.getImage(String.valueOf(weatherData.get("name"))));
 
-            Map<String, Object> weather = WeatherFormatter.getWeather(json);
             GetWeatherForecastIconTask task = new GetWeatherForecastIconTask(this);
-            task.execute(String.valueOf(weather.get("icon")));
-
-            view.setImage(WeatherFormatter.getImage(String.valueOf(weather.get("main"))));
-
-            if (location != null) {
-                GetWeatherForecastCityTask task1 = new GetWeatherForecastCityTask(this);
-                task1.execute(location.getLatitude(), location.getLongitude());
-            }
+            task.execute(String.valueOf(weatherData.get("icon")));
 
             onRefreshed();
         } catch (Exception e) {
