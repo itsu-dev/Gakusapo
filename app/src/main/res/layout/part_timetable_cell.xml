@@ -24,6 +24,6 @@
                 android:text="TextView"
                 android:layout_width="match_parent"
                 android:id="@+id/timetableClass" android:layout_height="0dp" android:layout_weight="1"
-                android:textAlignment="center" android:gravity="center"/>
+                android:textAlignment="center" android:gravity="center" android:textSize="12sp"/>
     </LinearLayout>
 </android.support.v7.widget.CardView>

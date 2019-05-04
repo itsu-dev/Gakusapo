@@ -82,11 +82,15 @@ public class TimetableUtils {
             Date date = new SimpleDateFormat("yyyy/MM/dd").parse(dateStr);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(date);
-            return calendar.get(Calendar.DAY_OF_WEEK) - 2;
+            return calendar.get(Calendar.DAY_OF_WEEK) - 2;//TODO DAY_TO_WEEK -2
         } catch (ParseException e) {
             e.printStackTrace();
             return -1;
         }
+    }
+
+    public static String parseDate(Date date) {
+        return new SimpleDateFormat("yyyy/MM/dd").format(date);
     }
 
     public static String positionToDayAndTime(int position, int dayType, int timeType) {

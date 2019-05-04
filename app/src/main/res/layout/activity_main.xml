@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
@@ -7,18 +7,46 @@
         android:layout_height="match_parent"
         tools:context="gakusapo.android.itsu.ui.activity.MainActivity">
 
-    <fragment
-            android:id="@+id/nav_fragment"
+    <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            app:navGraph="@navigation/part_bottom_navigation_view"
-            app:defaultNavHost="true"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="@id/navigation"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+            android:layout_height="wrap_content"
+            android:orientation="vertical" android:clipToPadding="false">
+
+        <android.support.v7.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:theme="?attr/actionBarTheme"
+                android:minHeight="?attr/actionBarSize" android:id="@+id/mainToolbar" android:elevation="4dp"
+        >
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gakusapo"
+                        android:textSize="18sp"
+                        android:textColor="#fff"
+                        android:paddingRight="16dp"/>
+            </LinearLayout>
+        </android.support.v7.widget.Toolbar>
+
+        <fragment
+                android:id="@+id/nav_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                app:navGraph="@navigation/part_bottom_navigation_view"
+                app:defaultNavHost="true"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="@id/navigation"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+    </LinearLayout>
 
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigation"
@@ -30,6 +58,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:itemTextColor="@drawable/dr_bottom_navigation_item_state"
             app:itemIconTint="@drawable/dr_bottom_navigation_item_state"
-            app:menu="@menu/bottom_navigation_item"/>
+            app:menu="@menu/bottom_navigation_item"
+            android:layout_alignParentBottom="true"/>
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

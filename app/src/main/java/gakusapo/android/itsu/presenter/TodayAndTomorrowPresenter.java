@@ -2,6 +2,7 @@ package gakusapo.android.itsu.presenter;
 
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.service.DateEventDBService;
+import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.api.service.TimetableDBService;
 import gakusapo.android.itsu.entity.DateEvent;
 import gakusapo.android.itsu.entity.Timetable;
@@ -143,10 +144,11 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
     private void processTimetable(String date) {
         TimetableDBService service = new TimetableDBService(view.getActivity());
-        Timetable timetable = service.getTimetables().get("test");
+        Timetable timetable = service.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
+
         int day = TimetableUtils.dayToWeek(date);
 
-        if (day == -1) {
+        if (day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) {
             view.setHoliday(true);
         } else {
             view.setTimetables(TimetableUtils.getDaySubjects(timetable, day));

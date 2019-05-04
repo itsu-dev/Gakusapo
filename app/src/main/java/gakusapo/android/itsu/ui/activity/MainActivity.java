@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
+import android.support.v7.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         NavController controller = Navigation.findNavController(findViewById(R.id.nav_fragment));
         NavigationUI.setupWithNavController((BottomNavigationView) findViewById(R.id.navigation), controller);
+
+        Toolbar toolbar = findViewById(R.id.mainToolbar);
+        setSupportActionBar(toolbar);
 
         PreferencesService.initialize(this);
 

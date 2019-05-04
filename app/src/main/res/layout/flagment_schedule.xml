@@ -41,11 +41,11 @@
         <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:paddingBottom="16dp" android:paddingTop="8dp" android:layout_height="108dp"
-                android:id="@+id/todayScrollView">
+                android:id="@+id/scheduleScrollView">
             <LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:id="@+id/todayTimetableLayout"
+                    android:id="@+id/scheduleTimetableLayout"
                     android:paddingTop="8dp" android:layout_height="108dp">
             </LinearLayout>
         </HorizontalScrollView>

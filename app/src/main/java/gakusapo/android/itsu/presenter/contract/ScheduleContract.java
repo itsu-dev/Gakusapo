@@ -11,7 +11,14 @@ public interface ScheduleContract {
     interface View {
         Activity getActivity();
         void addEvent(DateEvent event);
-        void setTimetables(List<Subject> subjects);
+        void setSubjects(List<Subject> subjects);
+        void setHoliday(boolean bool);
+    }
+
+    interface Presenter {
+        void reloadSubjects(String date);
+        void reloadSubjects();
+        void reloadEvents();
     }
 
 }
