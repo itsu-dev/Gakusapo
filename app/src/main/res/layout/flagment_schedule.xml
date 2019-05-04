@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="@drawable/background">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:gravity="center_vertical">
+            <TextView
+                    android:text="予定"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" android:id="@+id/textView21" android:padding="16dp"
+                    android:textSize="24sp" android:layout_weight="1"/>
+            <TextView
+                    android:text="TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/calendarMonth" android:textSize="18sp"
+                    android:padding="16dp"/>
+        </LinearLayout>
+
+        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:paddingRight="16dp"
+                android:paddingLeft="16dp"
+                app:compactCalendarTargetHeight="250dp"
+                app:compactCalendarTextSize="12sp"
+                app:compactCalendarBackgroundColor="#00000000"
+                app:compactCalendarTextColor="#000"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="@color/colorPrimary"
+                app:compactCalendarCurrentDayBackgroundColor="@color/colorPrimaryDark"
+                app:compactCalendarMultiEventIndicatorColor="#000"
+                android:layout_height="208dp"/>
+        <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:paddingBottom="16dp" android:paddingTop="8dp" android:layout_height="108dp"
+                android:id="@+id/todayScrollView">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:id="@+id/todayTimetableLayout"
+                    android:paddingTop="8dp" android:layout_height="108dp">
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</ScrollView>

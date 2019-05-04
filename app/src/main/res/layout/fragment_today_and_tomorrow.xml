@@ -13,7 +13,7 @@
                 android:textSize="24sp" android:paddingLeft="16dp" android:paddingRight="16dp"
                 android:paddingTop="16dp" android:paddingBottom="8dp" android:text="今日の予定"/>
         <TextView
-                android:text="2017年5月1日"
+                android:text=""
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/todayDate" android:paddingLeft="16dp"
                 android:paddingRight="16dp" android:paddingBottom="16dp"/>

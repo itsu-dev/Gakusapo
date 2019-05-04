@@ -16,7 +16,7 @@
     <string name="information_forecast_title">現在地の天気</string>
     <string name="information_forecast_temp">%s℃</string>
     <string name="information_forecast_percent">%s"%"</string>
-    <string name="information_forecast_city">%s（%s 更新）</string>
+    <string name="information_forecast_city">%s（%s 発表）</string>
     <string name="information_forecast_humidity">湿度</string>
     <string name="information_forecast_sunset">日の入り</string>
     <string name="information_train_title">運行状況</string>

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -35,6 +36,7 @@ public class InformationPresenter implements InformationContract.Presenter {
     private InformationContract.View view;
 
     private boolean isRefreshing;
+    private boolean destroyed;
 
     public InformationPresenter(InformationContract.View view) {
         this.view = view;
@@ -122,6 +124,8 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void onTrainInfoGot(String json) {
+        if (destroyed) return;
+
         List<Map<String, Object>> data = TrainInfoUtils.getData(json);
         TrainDBService service = new TrainDBService(view.getActivity());
         Collection<Train> registeredTrain = service.getTrains().values();
@@ -187,15 +191,23 @@ public class InformationPresenter implements InformationContract.Presenter {
     @Override
     public void onRefreshed() {
         isRefreshing = false;
-        view.showRefreshedToast();
-        view.setRefreshing(false);
+        if (!destroyed) {
+            view.showRefreshedToast();
+            view.setRefreshing(false);
+        }
     }
 
     @Override
     public void onRefreshError() {
         isRefreshing = false;
-        view.showRefreshErrorToast();
-        view.setRefreshing(false);
+        if (!destroyed) {
+            view.showRefreshErrorToast();
+            view.setRefreshing(false);
+        }
     }
 
+    @Override
+    public void onDestroy() {
+        destroyed = true;
+    }
 }

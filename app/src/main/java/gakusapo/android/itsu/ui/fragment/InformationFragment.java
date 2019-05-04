@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import gakusapo.android.itsu.MainApplication;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 import gakusapo.android.itsu.presenter.InformationPresenter;
@@ -151,17 +152,17 @@ public class InformationFragment extends Fragment implements InformationContract
 
     @Override
     public void showRefreshingToast() {
-        Toast.makeText(this.getActivity(), R.string.information_now_refreshing, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.information_now_refreshing, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showRefreshedToast() {
-        Toast.makeText(this.getActivity(), R.string.information_refreshed, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.information_refreshed, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showRefreshErrorToast() {
-        Toast.makeText(this.getActivity(), R.string.information_refresh_error, Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), R.string.information_refresh_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -172,5 +173,11 @@ public class InformationFragment extends Fragment implements InformationContract
     @Override
     public void onRefresh() {
         presenter.onRefresh();
+    }
+
+    @Override
+    public void onPause() {
+        super.onDetach();
+        presenter.onDestroy();
     }
 }
