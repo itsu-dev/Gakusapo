@@ -13,6 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Map;
 
 public class DateEventDBService {
 
@@ -30,7 +31,7 @@ public class DateEventDBService {
 
         Cursor cursor = db.query(
                 DateEventDBHelper.DB_TABLENAME,
-                new String[]{"date", "memo", "homeworks", "submissions", "tests", "classes", "events"},
+                new String[]{"date", "memo", "homeworks", "submissions", "tests", "classes", "events", "reminders"},
                 "date = ?",
                 new String[]{date},
                 null,
@@ -48,6 +49,7 @@ public class DateEventDBService {
             event.setTests((List<String>) gson.fromJson(cursor.getString(4), new TypeToken<List>(){}.getType()));
             event.setClasses((List<String>) gson.fromJson(cursor.getString(5), new TypeToken<List>(){}.getType()));
             event.setEvents((List<String>) gson.fromJson(cursor.getString(6), new TypeToken<List>(){}.getType()));
+            event.setReminders((Map<String, Boolean>) gson.fromJson(cursor.getString(7), new TypeToken<Map<String, Boolean>>(){}.getType()));
         }
 
         return event;
@@ -66,6 +68,7 @@ public class DateEventDBService {
         values.put("tests", gson.toJson(event.getTests()));
         values.put("classes", gson.toJson(event.getClasses()));
         values.put("events", gson.toJson(event.getEvents()));
+        values.put("reminders", gson.toJson(event.getReminders()));
 
         db.insert(DateEventDBHelper.DB_TABLENAME, null, values);
         return true;
@@ -84,6 +87,7 @@ public class DateEventDBService {
         values.put("tests", gson.toJson(event.getTests()));
         values.put("classes", gson.toJson(event.getClasses()));
         values.put("events", gson.toJson(event.getEvents()));
+        values.put("reminders", gson.toJson(event.getReminders()));
 
         db.update(DateEventDBHelper.DB_TABLENAME, values,  "date = '" + event.getDate() + "'", null);
         return true;

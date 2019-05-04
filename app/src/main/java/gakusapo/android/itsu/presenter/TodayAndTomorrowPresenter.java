@@ -13,7 +13,9 @@ import gakusapo.android.itsu.ui.fragment.RegisterDateEventListDialogFragment;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Presenter {
 
@@ -22,6 +24,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     public static final int TYPE_TEST = 2;
     public static final int TYPE_CLASS = 3;
     public static final int TYPE_EVENT = 4;
+    public static final int TYPE_REMINDER = 5;
 
     private TodayAndTomorrowContract.View view;
 
@@ -50,6 +53,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
             view.setTests(defaultList);
             view.setClasses(defaultList);
             view.setEvents(defaultList);
+            view.setReminders(new HashMap<String, Boolean>());
 
         } else {
             view.setMemo(currentDateEvent.getMemo());
@@ -58,6 +62,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
             view.setTests(currentDateEvent.getTests().isEmpty() ? defaultList : currentDateEvent.getTests());
             view.setClasses(currentDateEvent.getClasses().isEmpty() ? defaultList : currentDateEvent.getClasses());
             view.setEvents(currentDateEvent.getEvents().isEmpty() ? defaultList : currentDateEvent.getEvents());
+            view.setReminders(currentDateEvent.getReminders().isEmpty() ? new HashMap<String, Boolean>() : currentDateEvent.getReminders());
         }
 
         view.setDate(currentDateEvent.getDate());
@@ -101,6 +106,10 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
                 data = currentDateEvent.getEvents();
                 titleId = R.string.today_and_tomorrow_event;
                 break;
+            case TYPE_REMINDER:
+                data = new ArrayList<>(currentDateEvent.getReminders().keySet());
+                titleId = R.string.today_and_tomorrow_reminder;
+                break;
             default:
                 return;
         }
@@ -128,6 +137,17 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
             case TYPE_EVENT:
                 currentDateEvent.setEvents(data);
                 break;
+            case TYPE_REMINDER:
+                Map<String, Boolean> reminders = new HashMap<>();
+                for (String s : data) {
+                    if (currentDateEvent.getReminders().containsKey(s)) {
+                        reminders.put(s, currentDateEvent.getReminders().get(s));
+                    } else {
+                        reminders.put(s, false);
+                    }
+                }
+                currentDateEvent.setReminders(reminders);
+                break;
             default:
                 return;
         }
@@ -138,6 +158,14 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     public void onMemoDialogCallback(String memo) {
         if (memo != null && !memo.isEmpty()) {
             currentDateEvent.setMemo(memo);
+            refresh();
+        }
+    }
+
+    @Override
+    public void onReminderChecked(String text, boolean checked) {
+        if (currentDateEvent.getReminders().containsKey(text)) {
+            currentDateEvent.getReminders().put(text, checked);
             refresh();
         }
     }

@@ -9,9 +9,7 @@ import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.Space;
-import android.widget.TextView;
+import android.widget.*;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.service.DateEventDBService;
 import gakusapo.android.itsu.entity.Subject;
@@ -20,6 +18,7 @@ import gakusapo.android.itsu.presenter.contract.TodayAndTomorrowContract;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
 import java.util.List;
+import java.util.Map;
 
 public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorrowContract.View {
 
@@ -83,6 +82,13 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
                 presenter.onContentButtonClicked(TodayAndTomorrowPresenter.TYPE_EVENT);
             }
         });
+
+        view.findViewById(R.id.todayReminderButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onContentButtonClicked(TodayAndTomorrowPresenter.TYPE_REMINDER);
+            }
+        });
     }
 
     @Override
@@ -126,6 +132,11 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
     @Override
     public void setEvents(List<String> data) {
         setData(R.id.todayEventLayout, data);
+    }
+
+    @Override
+    public void setReminders(Map<String, Boolean> data) {
+        setReminderData(data);
     }
 
     @Override
@@ -192,4 +203,26 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
             layout.addView(textView);
         }
     }
+
+    private void setReminderData(Map<String, Boolean> data) {
+        LinearLayout layout = view.findViewById(R.id.todayReminderLayout);
+        layout.removeAllViews();
+
+        int bottom = getActivity().getResources().getDimensionPixelSize(R.dimen.padding_8);
+        int leftRight = getActivity().getResources().getDimensionPixelSize(R.dimen.padding_16);
+
+        for (String s : data.keySet()) {
+            final CheckBox checkBox = new CheckBox(getActivity());
+            checkBox.setText(s);
+            checkBox.setChecked(data.get(s));
+            checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    presenter.onReminderChecked(checkBox.getText().toString(), isChecked);
+                }
+            });
+            layout.addView(checkBox);
+        }
+    }
+
 }

@@ -1,7 +1,9 @@
 package gakusapo.android.itsu.entity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DateEvent {
 
@@ -12,6 +14,7 @@ public class DateEvent {
     private List<String> tests;
     private List<String> classes;
     private List<String> events;
+    private Map<String, Boolean> reminders;
 
     public DateEvent(String date) {
         this.date = date;
@@ -21,6 +24,7 @@ public class DateEvent {
         tests = new ArrayList<>();
         classes = new ArrayList<>();
         events = new ArrayList<>();
+        reminders = new HashMap<>();
     }
 
     public String getDate() {
@@ -77,5 +81,13 @@ public class DateEvent {
 
     public void setEvents(List<String> events) {
         this.events = events;
+    }
+
+    public Map<String, Boolean> getReminders() {
+        return reminders;
+    }
+
+    public void setReminders(Map<String, Boolean> reminders) {
+        this.reminders = reminders;
     }
 }

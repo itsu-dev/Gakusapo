@@ -168,7 +168,31 @@
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:id="@+id/todayEventLayout">
+                android:layout_height="match_parent" android:id="@+id/todayEventLayout" android:paddingBottom="32dp">
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:paddingRight="16dp">
+            <TextView
+                    android:text="リマインダー"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView29" android:paddingLeft="16dp"
+                    android:paddingRight="16dp" android:paddingBottom="8dp" android:paddingTop="8dp"
+                    android:layout_weight="1"/>
+            <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:layout_weight="1"/>
+            <Button
+                    android:id="@+id/todayReminderButton"
+                    android:background="@drawable/dr_edit_ripple" android:layout_height="24dp"
+                    android:layout_width="24dp"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:id="@+id/todayReminderLayout" android:paddingLeft="16dp"
+                android:paddingRight="16dp">
         </LinearLayout>
         <Space
                 android:layout_width="match_parent"

@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class DateEventDBHelper extends SQLiteOpenHelper {
 
-    public static final int VERSION = 1;
+    public static final int VERSION = 2;
     public static final String DB_NAME = "dateevent.db";
     public static final String DB_TABLENAME = "dateevent";
 
@@ -19,7 +19,8 @@ public class DateEventDBHelper extends SQLiteOpenHelper {
                     "submissions TEXT NOT NULL, " +
                     "tests TEXT NOT NULL, " +
                     "classes TEXT NOT NULL, " +
-                    "events TEXT NOT NULL)";
+                    "events TEXT NOT NULL, " +
+                    "reminders TEXT NOT NULL)";
 
     private static final String SQL_DELETE_TABLE = "DROP TABLE IF EXISTS " + DB_TABLENAME;
 

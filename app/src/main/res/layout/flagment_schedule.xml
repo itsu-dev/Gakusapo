@@ -6,7 +6,7 @@
     <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
         <LinearLayout
                 android:orientation="horizontal"
@@ -49,5 +49,8 @@
                     android:paddingTop="8dp" android:layout_height="108dp">
             </LinearLayout>
         </HorizontalScrollView>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="480dp"/>
     </LinearLayout>
 </ScrollView>

@@ -46,6 +46,7 @@
     <string name="today_and_tomorrow_test">テスト</string>
     <string name="today_and_tomorrow_class">補習</string>
     <string name="today_and_tomorrow_event">行事</string>
+    <string name="today_and_tomorrow_reminder">リマインダー</string>
 
     <string name="notification_title">Gakusapo - 明日の時間割</string>
     <string name="notification_message">明日の準備もしっかりと！</string>

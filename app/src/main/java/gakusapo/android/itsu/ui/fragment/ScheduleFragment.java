@@ -44,6 +44,7 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
         this.view = view;
 
         this.presenter = new SchedulePresenter(this);
+        presenter.reloadCalendar();
         presenter.reloadSubjects();
 
         final CompactCalendarView calendarView = view.findViewById(R.id.calendarView);
@@ -52,18 +53,12 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
         calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
             @Override
             public void onDayClick(Date dateClicked) {
-                /*
-                List<Event> events = calendarView.getEvents(dateClicked);
-                Log.d(TAG, "Day was clicked: " + dateClicked + " with events " + events);*/
-                presenter.reloadSubjects(TimetableUtils.parseDate(dateClicked));
+                presenter.onCalendarDateClicked(dateClicked);
             }
 
             @Override
             public void onMonthScroll(Date firstDayOfNewMonth) {
-                TextView textView = view.findViewById(R.id.calendarMonth);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(firstDayOfNewMonth);
-                textView.setText(calendar.get(Calendar.YEAR) + "年 " + (calendar.get(Calendar.MONTH) + 1) + "月");
+                presenter.onCalendarScrolled(firstDayOfNewMonth);
             }
         });
     }
@@ -71,6 +66,12 @@ public class ScheduleFragment extends Fragment implements ScheduleContract.View 
     @Override
     public void addEvent(DateEvent event) {
 
+    }
+
+    @Override
+    public void setDateText(String dateText) {
+        TextView textView = view.findViewById(R.id.calendarMonth);
+        textView.setText(dateText);
     }
 
     @Override

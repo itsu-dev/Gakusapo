@@ -7,12 +7,21 @@ import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.presenter.contract.ScheduleContract;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class SchedulePresenter implements ScheduleContract.Presenter {
 
     private ScheduleContract.View view;
 
     public SchedulePresenter(ScheduleContract.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void reloadCalendar() {
+        Calendar calendar = Calendar.getInstance();
+        view.setDateText(calendar.get(Calendar.YEAR) + "年 " + (calendar.get(Calendar.MONTH) + 1) + "月");
     }
 
     @Override
@@ -40,4 +49,15 @@ public class SchedulePresenter implements ScheduleContract.Presenter {
 
     }
 
+    @Override
+    public void onCalendarScrolled(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        view.setDateText(calendar.get(Calendar.YEAR) + "年 " + (calendar.get(Calendar.MONTH) + 1) + "月");
+    }
+
+    @Override
+    public void onCalendarDateClicked(Date date) {
+        reloadSubjects(TimetableUtils.parseDate(date));
+    }
 }
