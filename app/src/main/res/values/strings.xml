@@ -40,6 +40,7 @@
     <string name="today_and_tomorrow_timetable">時間割</string>
     <string name="today_and_tomorrow_today">今日の予定</string>
     <string name="today_and_tomorrow_tomorrow">明日の予定</string>
+    <string name="today_and_tomorrow_schedule">予定</string>
     <string name="today_and_tomorrow_nothing">なし</string>
     <string name="today_and_tomorrow_homework">課題</string>
     <string name="today_and_tomorrow_submission">提出物</string>

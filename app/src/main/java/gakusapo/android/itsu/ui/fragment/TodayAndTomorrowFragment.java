@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.service.DateEventDBService;
 import gakusapo.android.itsu.entity.Subject;
@@ -17,6 +18,8 @@ import gakusapo.android.itsu.presenter.TodayAndTomorrowPresenter;
 import gakusapo.android.itsu.presenter.contract.TodayAndTomorrowContract;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -89,6 +92,27 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
                 presenter.onContentButtonClicked(TodayAndTomorrowPresenter.TYPE_REMINDER);
             }
         });
+
+        final CompactCalendarView calendarView = view.findViewById(R.id.calendarView);
+        calendarView.setFirstDayOfWeek(Calendar.SUNDAY);
+        calendarView.setShouldDrawDaysHeader(true);
+        calendarView.setListener(new CompactCalendarView.CompactCalendarViewListener() {
+            @Override
+            public void onDayClick(Date dateClicked) {
+                presenter.onCalendarDateClicked(dateClicked);
+            }
+
+            @Override
+            public void onMonthScroll(Date firstDayOfNewMonth) {
+                presenter.onCalendarScrolled(firstDayOfNewMonth);
+            }
+        });
+    }
+
+    @Override
+    public void setSelectedDate(Date date) {
+        CompactCalendarView calendarView = view.findViewById(R.id.calendarView);
+        calendarView.setCurrentDate(date);
     }
 
     @Override
@@ -163,6 +187,7 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
         Space space2 = new Space(getActivity());
         space2.setLayoutParams(new LinearLayout.LayoutParams(padding8, padding8));
 
+        layout.removeAllViews();
         layout.addView(space1);
         layout.addView(space2);
 

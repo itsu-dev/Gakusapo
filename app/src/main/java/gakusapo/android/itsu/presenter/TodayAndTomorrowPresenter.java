@@ -12,10 +12,7 @@ import gakusapo.android.itsu.ui.fragment.MemoDialogFragment;
 import gakusapo.android.itsu.ui.fragment.RegisterDateEventListDialogFragment;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Presenter {
 
@@ -36,14 +33,18 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
     @Override
     public void reloadData() {
-        String date = DateEventDBService.getDate();
+        reloadData(DateEventDBService.getDate());
+    }
+
+    @Override
+    public void reloadData(String date) {
+        currentDateEvent = null;
+
         List<String> defaultList = new ArrayList<>();
         defaultList.add(view.getActivity().getResources().getString(R.string.today_and_tomorrow_nothing));
 
-        if (currentDateEvent == null) {
-            DateEventDBService service = new DateEventDBService(view.getActivity());
-            currentDateEvent = service.getDateEvent(date);
-        }
+        DateEventDBService service = new DateEventDBService(view.getActivity());
+        currentDateEvent = service.getDateEvent(date);
 
         if (currentDateEvent == null) {
             currentDateEvent = new DateEvent(date);
@@ -67,10 +68,30 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
         view.setDate(currentDateEvent.getDate());
 
-        if (DateEventDBService.isTomorrow()) view.setTitle(R.string.today_and_tomorrow_tomorrow);
-        else view.setTitle(R.string.today_and_tomorrow_today);
+        if (date.equals(DateEventDBService.getDate())) {
+            if (DateEventDBService.isTomorrow()) {
+                view.setTitle(R.string.today_and_tomorrow_tomorrow);
+            } else {
+                view.setTitle(R.string.today_and_tomorrow_today);
+            }
+        } else {
+            view.setTitle(R.string.today_and_tomorrow_schedule);
+        }
 
         processTimetable(date);
+    }
+
+    @Override
+    public void onCalendarScrolled(Date date) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+        view.setDate(calendar.get(Calendar.YEAR) + "/" + (calendar.get(Calendar.MONTH) + 1));
+    }
+
+    @Override
+    public void onCalendarDateClicked(Date date) {
+        view.setDate(TimetableUtils.parseDate(date));
+        reloadData(TimetableUtils.parseDate(date));
     }
 
     @Override
@@ -179,13 +200,14 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
         if (day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) {
             view.setHoliday(true);
         } else {
+            view.setHoliday(false);
             view.setTimetables(TimetableUtils.getDaySubjects(timetable, day));
         }
     }
 
     private void saveDateEvent() {
         DateEventDBService service = new DateEventDBService(view.getActivity());
-        if (service.getDateEvent(DateEventDBService.getDate()) == null) {
+        if (service.getDateEvent(currentDateEvent.getDate()) == null) {
             service.addDateEvent(currentDateEvent);
         } else {
             service.updateDateEvent(currentDateEvent);
@@ -194,6 +216,6 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
     private void refresh() {
         saveDateEvent();
-        reloadData();
+        reloadData(currentDateEvent.getDate());
     }
 }

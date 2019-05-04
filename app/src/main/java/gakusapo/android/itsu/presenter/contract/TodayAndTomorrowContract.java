@@ -3,6 +3,7 @@ package gakusapo.android.itsu.presenter.contract;
 import android.app.Activity;
 import gakusapo.android.itsu.entity.Subject;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,14 +22,19 @@ public interface TodayAndTomorrowContract {
         void setReminders(Map<String, Boolean> data);
         void setTimetables(List<Subject> subjects);
         void setHoliday(boolean bool);
+        void setSelectedDate(Date date);
     }
 
     interface Presenter {
         void reloadData();
+        void reloadData(String date);
         void onMemoButtonClicked();
         void onContentButtonClicked(int type);
         void onMemoDialogCallback(String memo);
         void onDateEventDialogCallback(List<String> data, int type);
         void onReminderChecked(String text, boolean checked);
+
+        void onCalendarScrolled(Date date);
+        void onCalendarDateClicked(Date date);
     }
 }
