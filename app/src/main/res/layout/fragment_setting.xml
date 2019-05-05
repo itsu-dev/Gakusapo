@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+            android:layout_height="match_parent" android:background="@drawable/background">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" android:paddingLeft="16dp" android:paddingRight="16dp">
+        <TextView
+                android:text="設定"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView25"
+                android:textSize="24sp" android:paddingTop="16dp" android:paddingBottom="16dp"/>
+        <TextView
+                android:text="表示する時間割"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView26"/>
+        <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingTimetableSpinner"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+        <TextView
+                android:text="時間割を通知する時間（24時間表記）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView32"/>
+        <TextView
+                android:text="0~24の値で設定してください。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingNotificationError"
+                android:textColor="@color/default_red" android:visibility="gone"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <EditText
+                    android:layout_height="wrap_content"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/settingNotificationTime" android:maxLength="2" android:layout_weight="3"
+                    android:layout_width="0dp"/>
+            <TextView
+                    android:text="時"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView38" android:layout_weight="1"
+                    android:textAlignment="center"/>
+        </LinearLayout>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+        <TextView
+                android:text="「明日の予定」に表示を更新する時間（24時間表記）"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/textView34"/>
+        <TextView
+                android:text="0~24の値で設定してください。"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingScheduleError"
+                android:textColor="@color/default_red" android:visibility="gone"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <EditText
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/settingScheduleTime" android:inputType="number" android:maxLength="2"
+                    android:layout_weight="3" android:layout_width="0dp"/>
+            <TextView
+                    android:text="時"
+                    android:layout_height="wrap_content" android:id="@+id/textView37" android:textAlignment="center"
+                    android:layout_width="0dp" android:layout_weight="1"/>
+        </LinearLayout>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp"/>
+        <Button
+                android:text="保存"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingSaveButton"
+                style="@style/Widget.AppCompat.Button.Colored"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="32dp"/>
+        <Button
+                android:text="オープンソースライセンス"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingOSLicenseButton"/>
+        <Button
+                android:text="ライセンス"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingLicenseButton"/>
+        <Button
+                android:text="利用規約"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/settingFormulaButton"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="240dp"/>
+    </LinearLayout>
+</ScrollView>

@@ -84,7 +84,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
         List<DateEvent> events = DatabaseDAO.getDateEvents();
         for (DateEvent event : events) {
             if (!event.getTests().isEmpty()) {
-                view.addEvent(R.color.red, TimetableUtils.fromString(event.getDate()));
+                view.addEvent(R.color.default_red, TimetableUtils.fromString(event.getDate()));
             } else {
                 view.addEvent(R.color.colorPrimaryDark, TimetableUtils.fromString(event.getDate()));
             }
@@ -224,7 +224,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
     private void refresh() {
         if (!currentDateEvent.getTests().isEmpty()) {
-            view.addEvent(R.color.red, TimetableUtils.fromString(currentDateEvent.getDate()));
+            view.addEvent(R.color.default_red, TimetableUtils.fromString(currentDateEvent.getDate()));
         } else {
             view.addEvent(R.color.colorPrimaryDark, TimetableUtils.fromString(currentDateEvent.getDate()));
         }

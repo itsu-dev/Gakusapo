@@ -9,7 +9,7 @@
     <color name="default_gray_dark">#9E9E9E</color>
 
     <color name="black">#000</color>
-    <color name="red">#C62828</color>
+    <color name="default_red">#C62828</color>
 
     <color name="subjectRed">#EF9A9A</color>
     <color name="subjectMagenta">#F48FB1</color>

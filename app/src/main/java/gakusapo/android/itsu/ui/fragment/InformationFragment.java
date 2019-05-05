@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-import gakusapo.android.itsu.MainApplication;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 import gakusapo.android.itsu.presenter.InformationPresenter;
@@ -131,7 +130,7 @@ public class InformationFragment extends Fragment implements InformationContract
         status.setPadding(padding16, 0, padding16, padding8);
         status.setText(statusId);
 
-        if (statusId == R.string.information_train_unavailable) status.setTextColor(getActivity().getColor(R.color.red));
+        if (statusId == R.string.information_train_unavailable) status.setTextColor(getActivity().getColor(R.color.default_red));
         else status.setTextColor(getActivity().getColor(R.color.black));
 
         layout.addView(name);

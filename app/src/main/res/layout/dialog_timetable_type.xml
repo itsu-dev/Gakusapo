@@ -41,7 +41,7 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/dialogTimetableErrorView" android:padding="16dp"
-                android:text="@string/timetable_already_exists" android:textColor="@color/red"
+                android:text="@string/timetable_already_exists" android:textColor="@color/default_red"
                 android:visibility="gone"/>
         <Button
                 android:text="作成"

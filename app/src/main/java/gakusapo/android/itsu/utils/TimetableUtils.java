@@ -210,7 +210,7 @@ public class TimetableUtils {
         int hour = calendar.get(Calendar.HOUR_OF_DAY);
         String date;
 
-        if (hour >= PreferencesService.getReloadtime()) {
+        if (hour >= PreferencesService.getScheduleReloadTime()) {
             date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE) + 1);
         } else {
             date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
@@ -225,6 +225,6 @@ public class TimetableUtils {
     }
 
     public static boolean isTomorrow() {
-        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= PreferencesService.getReloadtime();
+        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= PreferencesService.getScheduleReloadTime();
     }
 }

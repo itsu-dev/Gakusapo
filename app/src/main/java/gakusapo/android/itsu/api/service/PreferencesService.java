@@ -48,13 +48,23 @@ public class PreferencesService {
         editor.apply();
     }
 
-    public static int getReloadtime() {
-        return preferences.getInt("ReloadTime", 16);
+    public static int getScheduleReloadTime() {
+        return preferences.getInt("ScheduleReloadTime", 16);
     }
 
-    public static void setReloadTime(int time) {
+    public static void setScheduleReloadTime(int time) {
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putInt("ReloadTime", time);
+        editor.putInt("ScheduleReloadTime", time);
+        editor.apply();
+    }
+
+    public static int getNotificationtime() {
+        return preferences.getInt("NotificationTime", 16);
+    }
+
+    public static void setNotificationTime(int time) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("NotificationTime", time);
         editor.apply();
     }
 
