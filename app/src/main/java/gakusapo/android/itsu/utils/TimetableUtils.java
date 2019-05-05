@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import gakusapo.android.itsu.MainApplication;
 import gakusapo.android.itsu.R;
+import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.entity.Subject;
 import gakusapo.android.itsu.entity.Timetable;
 
@@ -201,5 +202,29 @@ public class TimetableUtils {
             case 16: return R.color.subjectGray;
             default: return R.color.subjectGray;
         }
+    }
+
+    public static String getDate() {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
+        int hour = calendar.get(Calendar.HOUR_OF_DAY);
+        String date;
+
+        if (hour >= PreferencesService.get().getInt("ReloadTime", 16)) {
+            date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE) + 1);
+        } else {
+            date = String.format("%s/%s/%s", calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH) + 1, calendar.get(Calendar.DATE));
+        }
+
+        try {
+            return sdf.format(sdf.parse(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static boolean isTomorrow() {
+        return Calendar.getInstance().get(Calendar.HOUR_OF_DAY) >= PreferencesService.get().getInt("ReloadTime", 16);
     }
 }

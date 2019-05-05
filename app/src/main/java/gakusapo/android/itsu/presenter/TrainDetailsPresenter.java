@@ -1,6 +1,6 @@
 package gakusapo.android.itsu.presenter;
 
-import gakusapo.android.itsu.api.service.TrainDBService;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.presenter.contract.TrainDetailsContract;
 import gakusapo.android.itsu.ui.adapter.TrainDetailsListAdapter;
 
@@ -14,8 +14,7 @@ public class TrainDetailsPresenter implements TrainDetailsContract.Presenter {
 
     @Override
     public void reloadAddedTrains() {
-        TrainDBService service = new TrainDBService(view.getActivity());
-        view.setAddedTrains(new TrainDetailsListAdapter(view.getActivity(), service.getTrains().values()));
+        view.setAddedTrains(new TrainDetailsListAdapter(view.getActivity(), DatabaseDAO.getTrains().values()));
     }
 
     @Override

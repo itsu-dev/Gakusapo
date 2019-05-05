@@ -1,9 +1,8 @@
 package gakusapo.android.itsu.presenter;
 
 import gakusapo.android.itsu.R;
-import gakusapo.android.itsu.api.service.DateEventDBService;
 import gakusapo.android.itsu.api.service.PreferencesService;
-import gakusapo.android.itsu.api.service.TimetableDBService;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.DateEvent;
 import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.presenter.contract.TodayAndTomorrowContract;
@@ -33,7 +32,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
     @Override
     public void reloadData() {
-        reloadData(DateEventDBService.getDate());
+        reloadData(TimetableUtils.getDate());
     }
 
     @Override
@@ -43,8 +42,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
         List<String> defaultList = new ArrayList<>();
         defaultList.add(view.getActivity().getResources().getString(R.string.today_and_tomorrow_nothing));
 
-        DateEventDBService service = new DateEventDBService(view.getActivity());
-        currentDateEvent = service.getDateEvent(date);
+        currentDateEvent = DatabaseDAO.getDateEvent(date);
 
         if (currentDateEvent == null) {
             currentDateEvent = new DateEvent(date);
@@ -68,8 +66,8 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
 
         view.setDate(currentDateEvent.getDate());
 
-        if (date.equals(DateEventDBService.getDate())) {
-            if (DateEventDBService.isTomorrow()) {
+        if (date.equals(TimetableUtils.getDate())) {
+            if (TimetableUtils.isTomorrow()) {
                 view.setTitle(R.string.today_and_tomorrow_tomorrow);
             } else {
                 view.setTitle(R.string.today_and_tomorrow_today);
@@ -192,8 +190,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     }
 
     private void processTimetable(String date) {
-        TimetableDBService service = new TimetableDBService(view.getActivity());
-        Timetable timetable = service.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
+        Timetable timetable = DatabaseDAO.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
 
         int day = TimetableUtils.dayToWeek(date);
 
@@ -206,11 +203,10 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     }
 
     private void saveDateEvent() {
-        DateEventDBService service = new DateEventDBService(view.getActivity());
-        if (service.getDateEvent(currentDateEvent.getDate()) == null) {
-            service.addDateEvent(currentDateEvent);
+        if (DatabaseDAO.getDateEvent(currentDateEvent.getDate()) == null) {
+            DatabaseDAO.addDateEvent(currentDateEvent);
         } else {
-            service.updateDateEvent(currentDateEvent);
+            DatabaseDAO.updateDateEvent(currentDateEvent);
         }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Subject;
 import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.utils.TimetableUtils;
@@ -126,11 +127,10 @@ public class TimetableEditService {
     }
 
     public void save(Context context) {
-        TimetableDBService service = new TimetableDBService(context);
-        if (service.getTimetables().containsKey(timetable.getName())) {
-            service.updateTimetable(timetable);
+        if (DatabaseDAO.getTimetables().containsKey(timetable.getName())) {
+            DatabaseDAO.updateTimetable(timetable);
         } else {
-            service.addTimetable(timetable);
+            DatabaseDAO.addTimetable(timetable);
         }
 
         SharedPreferences.Editor editor = PreferencesService.getEditor();

@@ -17,6 +17,7 @@ import androidx.navigation.ui.NavigationUI;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.notification.TimetableAlarmNotifier;
 import gakusapo.android.itsu.api.service.PreferencesService;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.presenter.InformationPresenter;
 import gakusapo.android.itsu.presenter.contract.MainActivityContract;
 import gakusapo.android.itsu.presenter.MainActivityPresenter;
@@ -94,5 +95,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 toast.show();
             }
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        DatabaseDAO.closeDatabase();
     }
 }

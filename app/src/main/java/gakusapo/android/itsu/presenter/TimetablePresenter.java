@@ -6,7 +6,7 @@ import android.widget.AdapterView;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.api.service.TimetableEditService;
-import gakusapo.android.itsu.api.service.TimetableDBService;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Subject;
 import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.presenter.contract.TimetableContract;
@@ -41,8 +41,7 @@ public class TimetablePresenter implements TimetableContract.Presenter {
         currentTimetableName = PreferencesService.get().getString("CurrentTimetable", null);
 
         if (currentTimetableName != null) {
-            TimetableDBService service = new TimetableDBService(view.getActivity());
-            timetable = service.getTimetables().get(currentTimetableName);
+            timetable = DatabaseDAO.getTimetables().get(currentTimetableName);
         } else {
             timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
         }

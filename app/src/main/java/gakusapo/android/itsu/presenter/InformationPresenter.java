@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
-import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -16,10 +15,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import gakusapo.android.itsu.R;
-import gakusapo.android.itsu.api.service.TrainDBService;
 import gakusapo.android.itsu.api.task.train.GetTrainInfoTask;
 import gakusapo.android.itsu.api.task.weather.GetWeatherForecastIconTask;
 import gakusapo.android.itsu.api.task.weather.GetWeatherForecastTask;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Train;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 import gakusapo.android.itsu.ui.activity.MainActivity;
@@ -112,9 +111,8 @@ public class InformationPresenter implements InformationContract.Presenter {
     @Override
     public void reloadTrainInfo() {
         //TODO for test
-        TrainDBService service = new TrainDBService(view.getActivity());
-        service.addTrain("JR東日本", "山手線");
-        service.addTrain("JR西日本", "芸備線");
+        DatabaseDAO.addTrain("JR東日本", "山手線");
+        DatabaseDAO.addTrain("JR西日本", "芸備線");
 
         view.removeAllTrainInfo();
 
@@ -127,8 +125,7 @@ public class InformationPresenter implements InformationContract.Presenter {
         if (destroyed) return;
 
         List<Map<String, Object>> data = TrainInfoUtils.getData(json);
-        TrainDBService service = new TrainDBService(view.getActivity());
-        Collection<Train> registeredTrain = service.getTrains().values();
+        Collection<Train> registeredTrain = DatabaseDAO.getTrains().values();
 
         if (data == null) {
             final MainActivity activity = (MainActivity) view.getActivity();

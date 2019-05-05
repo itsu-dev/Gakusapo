@@ -7,9 +7,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import gakusapo.android.itsu.R;
-import gakusapo.android.itsu.api.service.DateEventDBService;
-import gakusapo.android.itsu.api.service.TimetableDBService;
+import gakusapo.android.itsu.api.service.PreferencesService;
+import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Subject;
+import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.ui.activity.MainActivity;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
@@ -24,12 +25,12 @@ public class TimetableAlarmNotifier extends BroadcastReceiver {
         Intent sendIntent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, sendIntent, 0);
 
-        TimetableDBService service = new TimetableDBService(context);
-        int day = TimetableUtils.dayToWeek(DateEventDBService.getDate());
+        Timetable timetable = DatabaseDAO.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
+        int day = TimetableUtils.dayToWeek(TimetableUtils.getDate());
 
-        if (day == -1) return;
+        if (timetable == null || day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) return;
 
-        List<Subject> subjects = TimetableUtils.getDaySubjects(service.getTimetables().get("test"), day);
+        List<Subject> subjects = TimetableUtils.getDaySubjects(timetable, day);
         String text = "";
 
         for (Subject subject : subjects) {
