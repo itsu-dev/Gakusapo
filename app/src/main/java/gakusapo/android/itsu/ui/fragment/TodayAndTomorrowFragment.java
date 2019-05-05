@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.github.sundeepk.compactcalendarview.domain.Event;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.entity.Subject;
 import gakusapo.android.itsu.presenter.TodayAndTomorrowPresenter;
@@ -37,8 +38,10 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
         super.onViewCreated(view, savedInstanceState);
 
         this.view = view;
+
         presenter = new TodayAndTomorrowPresenter(this);
         presenter.reloadData();
+        presenter.reloadCalendar();
 
         setDate(TimetableUtils.getDate());
 
@@ -170,6 +173,13 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
             view.findViewById(R.id.todayTimetableTitle).setVisibility(View.VISIBLE);
             view.findViewById(R.id.todayScrollView).setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void addEvent(int colorId, Date date) {
+        CompactCalendarView calendarView = view.findViewById(R.id.calendarView);
+        calendarView.removeEvents(date);
+        calendarView.addEvent(new Event(getActivity().getResources().getColor(colorId), date.getTime()));
     }
 
     @Override

@@ -11,6 +11,8 @@
     <color name="black">#000</color>
     <color name="red">#f00</color>
 
+    <color name="calendar_red">#C62828</color>
+
     <color name="subjectRed">#EF9A9A</color>
     <color name="subjectMagenta">#F48FB1</color>
     <color name="subjectLightPurple">#CE93D8</color>

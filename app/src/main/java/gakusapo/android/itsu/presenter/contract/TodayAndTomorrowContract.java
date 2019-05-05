@@ -22,12 +22,14 @@ public interface TodayAndTomorrowContract {
         void setReminders(Map<String, Boolean> data);
         void setTimetables(List<Subject> subjects);
         void setHoliday(boolean bool);
+        void addEvent(int colorId, Date date);
         void setSelectedDate(Date date);
     }
 
     interface Presenter {
         void reloadData();
         void reloadData(String date);
+        void reloadCalendar();
         void onMemoButtonClicked();
         void onContentButtonClicked(int type);
         void onMemoDialogCallback(String memo);

@@ -80,6 +80,18 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     }
 
     @Override
+    public void reloadCalendar() {
+        List<DateEvent> events = DatabaseDAO.getDateEvents();
+        for (DateEvent event : events) {
+            if (!event.getTests().isEmpty()) {
+                view.addEvent(R.color.calendar_red, TimetableUtils.fromString(event.getDate()));
+            } else {
+                view.addEvent(R.color.colorPrimaryDark, TimetableUtils.fromString(event.getDate()));
+            }
+        }
+    }
+
+    @Override
     public void onCalendarScrolled(Date date) {
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
@@ -211,6 +223,11 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     }
 
     private void refresh() {
+        if (!currentDateEvent.getTests().isEmpty()) {
+            view.addEvent(R.color.calendar_red, TimetableUtils.fromString(currentDateEvent.getDate()));
+        } else {
+            view.addEvent(R.color.colorPrimaryDark, TimetableUtils.fromString(currentDateEvent.getDate()));
+        }
         saveDateEvent();
         reloadData(currentDateEvent.getDate());
     }

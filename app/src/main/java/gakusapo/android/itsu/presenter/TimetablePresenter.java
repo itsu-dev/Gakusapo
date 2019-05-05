@@ -1,6 +1,5 @@
 package gakusapo.android.itsu.presenter;
 
-import android.content.SharedPreferences;
 import android.view.View;
 import android.widget.AdapterView;
 import gakusapo.android.itsu.R;

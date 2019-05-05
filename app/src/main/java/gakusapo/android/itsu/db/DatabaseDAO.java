@@ -10,10 +10,7 @@ import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.entity.Train;
 import gakusapo.android.itsu.utils.TimetableUtils;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class DatabaseDAO {
 
@@ -114,6 +111,39 @@ public class DatabaseDAO {
         }
 
         return event;
+    }
+
+    public static List<DateEvent> getDateEvents() {
+        List<DateEvent> result = new ArrayList<>();
+        Gson gson = new Gson();
+
+        Cursor cursor = writableDatabase.query(
+                DatabaseHelper.TABLE_DATEEVENT,
+                new String[]{"date", "memo", "homeworks", "submissions", "tests", "classes", "events", "reminders"},
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+        cursor.moveToFirst();
+
+        DateEvent event;
+        for (int i = 0; i < cursor.getCount(); i++) {
+            event = new DateEvent(cursor.getString(0));
+            event.setMemo(cursor.getString(1));
+            event.setHomeworks((List<String>) gson.fromJson(cursor.getString(2), new TypeToken<List>(){}.getType()));
+            event.setSubmissions((List<String>) gson.fromJson(cursor.getString(3), new TypeToken<List>(){}.getType()));
+            event.setTests((List<String>) gson.fromJson(cursor.getString(4), new TypeToken<List>(){}.getType()));
+            event.setClasses((List<String>) gson.fromJson(cursor.getString(5), new TypeToken<List>(){}.getType()));
+            event.setEvents((List<String>) gson.fromJson(cursor.getString(6), new TypeToken<List>(){}.getType()));
+            event.setReminders((Map<String, Boolean>) gson.fromJson(cursor.getString(7), new TypeToken<Map<String, Boolean>>(){}.getType()));
+
+            result.add(event);
+            cursor.moveToNext();
+        }
+
+        return result;
     }
 
     public static boolean addDateEvent(DateEvent event) {
