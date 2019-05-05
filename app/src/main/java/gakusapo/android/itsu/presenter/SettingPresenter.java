@@ -1,9 +1,12 @@
 package gakusapo.android.itsu.presenter;
 
+import android.content.Intent;
+import android.os.Bundle;
 import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Timetable;
 import gakusapo.android.itsu.presenter.contract.SettingContract;
+import gakusapo.android.itsu.ui.activity.WebActivity;
 
 import java.util.Map;
 
@@ -59,7 +62,7 @@ public class SettingPresenter implements SettingContract.Presenter {
             if (scheduleTime < 0 || scheduleTime > 24) {
                 view.showScheduleError(true);
             } else {
-                PreferencesService.setNotificationTime(scheduleTime);
+                PreferencesService.setScheduleReloadTime(scheduleTime);
                 view.showScheduleError(false);
             }
         } catch (NumberFormatException e) {
@@ -74,21 +77,29 @@ public class SettingPresenter implements SettingContract.Presenter {
 
     @Override
     public void onOSLicenseButtonClicked() {
-
+        openWeb("file:///android_asset/opensourcelicense.html");
     }
 
     @Override
     public void onLicenseButtonClicked() {
-
+        openWeb("file:///android_asset/license.html");
     }
 
     @Override
     public void onFormulaButtonClicked() {
-
+        openWeb("file:///android_asset/formula.html");
     }
 
     @Override
     public void onTimetableSpinnerSelected(String name) {
         if (name != null && !name.isEmpty()) PreferencesService.setCurrentTimetable(name);
+    }
+
+    private void openWeb(String url) {
+        Intent intent = new Intent(view.getActivity(), WebActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        intent.putExtras(bundle);
+        view.getActivity().startActivity(intent);
     }
 }
