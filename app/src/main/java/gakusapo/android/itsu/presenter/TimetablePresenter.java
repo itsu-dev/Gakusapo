@@ -38,15 +38,15 @@ public class TimetablePresenter implements TimetableContract.Presenter {
     @Override
     public void reloadTimetable() {
         Timetable timetable;
-        currentTimetableName = PreferencesService.get().getString("CurrentTimetable", null);
+        currentTimetableName = PreferencesService.getCurrentTimetable();
 
         if (currentTimetableName != null) {
-            timetable = DatabaseDAO.getTimetables().get(currentTimetableName);
+            timetable = DatabaseDAO.getTimetable(currentTimetableName);
         } else {
             timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
         }
 
-        if (PreferencesService.get().getBoolean("Editing", false) && PreferencesService.get().getString("EditData", null) != null) {
+        if (PreferencesService.isEditing() && PreferencesService.getEditdata() != null) {
             MainActivity activity = (MainActivity) view.getActivity();
             AlertDialogFragment fragment = AlertDialogFragment.newInstance(R.string.notice, R.string.timetable_edited_date_exists, R.string.close, R.string.yes, false);
 
@@ -207,11 +207,9 @@ public class TimetablePresenter implements TimetableContract.Presenter {
         } else {
             resetSelectedSubjectColor();
 
-            editService.save(view.getActivity());
+            editService.save();
 
-            SharedPreferences.Editor editor = PreferencesService.getEditor();
-            editor.putString("CurrentTimetable", currentTimetable.getName());
-            editor.apply();
+            PreferencesService.setCurrentTimetable(currentTimetable.getName());
 
             editMode = false;
             selectMode = false;

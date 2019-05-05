@@ -23,9 +23,7 @@ public class TimetableEditService {
         this.selectedSubject = new ArrayList<>();
         timetable.setSubjects(TimetableUtils.sortByPosition(timetable.getSubjects()));
 
-        SharedPreferences.Editor editor = PreferencesService.getEditor();
-        editor.putBoolean("Editing", true);
-        editor.apply();
+        PreferencesService.setEditing(true);
     }
 
     public void addSelectedSubject(int position) {
@@ -116,34 +114,28 @@ public class TimetableEditService {
     }
 
     public static Timetable getEditingTimetable() {
-        return (Timetable) new Gson().fromJson(PreferencesService.get().getString("EditData", null), new TypeToken<Timetable>(){}.getType());
+        return (Timetable) new Gson().fromJson(PreferencesService.getEditdata(), new TypeToken<Timetable>(){}.getType());
     }
 
     public static void deleteEditingTimetable() {
-        SharedPreferences.Editor editor = PreferencesService.getEditor();
-        editor.putBoolean("Editing", false);
-        editor.remove("EditData");
-        editor.apply();
+        PreferencesService.setEditing(false);
+        PreferencesService.removeEditData();
     }
 
-    public void save(Context context) {
-        if (DatabaseDAO.getTimetables().containsKey(timetable.getName())) {
+    public void save() {
+        if (DatabaseDAO.existsTimetable(timetable.getName())) {
             DatabaseDAO.updateTimetable(timetable);
         } else {
             DatabaseDAO.addTimetable(timetable);
         }
 
-        SharedPreferences.Editor editor = PreferencesService.getEditor();
-        editor.putBoolean("Editing", false);
-        editor.remove("EditData");
-        editor.apply();
+        PreferencesService.setEditing(false);
+        PreferencesService.removeEditData();
     }
 
     private void refresh() {
-        SharedPreferences.Editor editor = PreferencesService.getEditor();
-        editor.putBoolean("Editing", true);
-        editor.putString("EditData", new Gson().toJson(timetable));
-        editor.apply();
+        PreferencesService.setEditing(true);
+        PreferencesService.setEditData(new Gson().toJson(timetable));
     }
 
 }

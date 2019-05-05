@@ -21,7 +21,7 @@ public class RegisterTimetableDialogPresenter implements RegisterTimetableDialog
         if (view.getTimetableName().isEmpty()) {
             view.showErrorText(R.string.timetable_name_notinputed);
 
-        } else if (DatabaseDAO.getTimetables().containsKey(view.getTimetableName())) {
+        } else if (DatabaseDAO.existsTimetable(view.getTimetableName())) {
             view.showErrorText(R.string.timetable_already_exists);
 
         } else {

@@ -50,8 +50,16 @@ public class DatabaseDAO {
         return result;
     }
 
+    public static Timetable getTimetable(String name) {
+        return getTimetables().get(name);
+    }
+
+    public static boolean existsTimetable(String name) {
+        return getTimetables().containsKey(name);
+    }
+
     public static boolean addTimetable(Timetable timetable) {
-        if (getTimetables().containsKey(timetable.getName())) return false;
+        if (existsTimetable(timetable.getName())) return false;
 
         ContentValues values = new ContentValues();
         values.put("name", timetable.getName());
@@ -65,7 +73,7 @@ public class DatabaseDAO {
     }
 
     public static boolean updateTimetable(Timetable timetable) {
-        if (!getTimetables().containsKey(timetable.getName())) return false;
+        if (!existsTimetable(timetable.getName())) return false;
 
         ContentValues values = new ContentValues();
         values.put("name", timetable.getName());

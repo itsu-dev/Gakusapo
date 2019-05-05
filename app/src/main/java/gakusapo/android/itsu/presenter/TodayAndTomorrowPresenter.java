@@ -190,7 +190,7 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     }
 
     private void processTimetable(String date) {
-        Timetable timetable = DatabaseDAO.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
+        Timetable timetable = DatabaseDAO.getTimetable(PreferencesService.getCurrentTimetable());
 
         int day = TimetableUtils.dayToWeek(date);
 

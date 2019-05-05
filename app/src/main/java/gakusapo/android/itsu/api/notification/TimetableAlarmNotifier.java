@@ -25,7 +25,7 @@ public class TimetableAlarmNotifier extends BroadcastReceiver {
         Intent sendIntent = new Intent(context, MainActivity.class);
         PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, sendIntent, 0);
 
-        Timetable timetable = DatabaseDAO.getTimetables().get(PreferencesService.get().getString("CurrentTimetable", null));
+        Timetable timetable = DatabaseDAO.getTimetable(PreferencesService.getCurrentTimetable());
         int day = TimetableUtils.dayToWeek(TimetableUtils.getDate());
 
         if (timetable == null || day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) return;

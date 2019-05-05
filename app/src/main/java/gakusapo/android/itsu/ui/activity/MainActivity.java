@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
 
-        PreferencesService.initialize(this);
-
         //TODO
         Calendar triggerTime = Calendar.getInstance();
         triggerTime.set(Calendar.HOUR_OF_DAY, 16);
