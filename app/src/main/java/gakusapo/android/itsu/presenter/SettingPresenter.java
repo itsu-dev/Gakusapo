@@ -1,6 +1,5 @@
 package gakusapo.android.itsu.presenter;
 
-import android.widget.Spinner;
 import gakusapo.android.itsu.api.service.PreferencesService;
 import gakusapo.android.itsu.db.DatabaseDAO;
 import gakusapo.android.itsu.entity.Timetable;
@@ -36,7 +35,7 @@ public class SettingPresenter implements SettingContract.Presenter {
 
             view.setTimetableItem(data);
         }
-        
+
         view.setNotificationTime(String.valueOf(PreferencesService.getNotificationtime()));
         view.setScheduleTime(String.valueOf(PreferencesService.getScheduleReloadTime()));
     }
@@ -90,6 +89,6 @@ public class SettingPresenter implements SettingContract.Presenter {
 
     @Override
     public void onTimetableSpinnerSelected(String name) {
-        PreferencesService.setCurrentTimetable(name);
+        if (name != null && !name.isEmpty()) PreferencesService.setCurrentTimetable(name);
     }
 }
