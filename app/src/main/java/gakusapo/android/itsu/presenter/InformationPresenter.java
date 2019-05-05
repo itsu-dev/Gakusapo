@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.location.Location;
+import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -23,6 +24,7 @@ import gakusapo.android.itsu.entity.Train;
 import gakusapo.android.itsu.presenter.contract.InformationContract;
 import gakusapo.android.itsu.ui.activity.MainActivity;
 import gakusapo.android.itsu.ui.activity.TrainDetailsActivity;
+import gakusapo.android.itsu.ui.activity.WebActivity;
 import gakusapo.android.itsu.ui.fragment.AlertDialogFragment;
 import gakusapo.android.itsu.utils.LocationProviderClient;
 import gakusapo.android.itsu.utils.TrainInfoUtils;
@@ -36,6 +38,8 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     private boolean isRefreshing;
     private boolean destroyed;
+
+    private String weatherURL;
 
     public InformationPresenter(InformationContract.View view) {
         this.view = view;
@@ -93,6 +97,8 @@ public class InformationPresenter implements InformationContract.Presenter {
             view.setImage(WeatherUtils.getImage(String.valueOf(weatherData.get("name"))));
             view.setWeatherName(String.valueOf(weatherData.get("name")));
 
+            weatherURL = String.valueOf(((Map<String, Object>) data.get("city")).get("url"));
+
             GetWeatherForecastIconTask task = new GetWeatherForecastIconTask(this);
             task.execute(String.valueOf(weatherData.get("icon")));
 
@@ -111,8 +117,9 @@ public class InformationPresenter implements InformationContract.Presenter {
     @Override
     public void reloadTrainInfo() {
         //TODO for test
+        /*
         DatabaseDAO.addTrain("JR東日本", "山手線");
-        DatabaseDAO.addTrain("JR西日本", "芸備線");
+        DatabaseDAO.addTrain("JR西日本", "芸備線");*/
 
         view.removeAllTrainInfo();
 
@@ -170,7 +177,11 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void onWeatherDetailsButtonClicked() {
-        //TODO
+        if (weatherURL != null) {
+            openWeb(weatherURL);
+        } else {
+            view.showRefreshingToast();
+        }
     }
 
     @Override
@@ -207,4 +218,13 @@ public class InformationPresenter implements InformationContract.Presenter {
     public void onDestroy() {
         destroyed = true;
     }
+
+    private void openWeb(String url) {
+        Intent intent = new Intent(view.getActivity(), WebActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putString("url", url);
+        intent.putExtras(bundle);
+        view.getActivity().startActivity(intent);
+    }
+
 }

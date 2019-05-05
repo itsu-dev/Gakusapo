@@ -14,11 +14,12 @@ public class TrainDetailsPresenter implements TrainDetailsContract.Presenter {
 
     @Override
     public void reloadAddedTrains() {
-        view.setAddedTrains(new TrainDetailsListAdapter(view.getActivity(), DatabaseDAO.getTrains().values()));
+        view.setAddedTrains(new TrainDetailsListAdapter(view.getActivity(), DatabaseDAO.getTrains().values(), this));
     }
 
     @Override
     public void removeTrain(String trainName) {
-        System.out.println("=======================ANAL");
+        DatabaseDAO.removeTrain(trainName);
+        reloadAddedTrains();
     }
 }
