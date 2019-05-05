@@ -61,10 +61,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public static class DatabaseHelperFactory {
+    static class DatabaseHelperFactory {
         private static DatabaseHelper instance;
 
-        public static DatabaseHelper getInstance() {
+        static synchronized DatabaseHelper getInstance() {
             if (instance == null) instance = new DatabaseHelper(MainApplication.getContext(), DatabaseHelper.DATABASE_NAME, null, DatabaseHelper.DATABASE_VERSION);
             return instance;
         }

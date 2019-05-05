@@ -166,6 +166,10 @@ public class DatabaseDAO {
         return true;
     }
 
+    public static boolean existsDateEvent(String date) {
+        return getDateEvent(date) == null;
+    }
+
     public static boolean updateDateEvent(DateEvent event) {
         if (getDateEvent(event.getDate()) == null) return false;
 
@@ -220,5 +224,9 @@ public class DatabaseDAO {
 
     public static void closeDatabase() {
         writableDatabase.close();
+    }
+
+    public static void openDatabase() {
+        if (writableDatabase != null && !writableDatabase.isOpen()) writableDatabase = DatabaseHelper.DatabaseHelperFactory.getInstance().getWritableDatabase();
     }
 }
