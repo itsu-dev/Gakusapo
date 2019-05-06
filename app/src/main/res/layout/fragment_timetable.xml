@@ -155,13 +155,13 @@
                 <Space
                         android:layout_width="match_parent"
                         android:layout_height="8dp"/>
-                <gakusapo.android.itsu.ui.part.NonScrollGridView
+                <dev.itsu.gakusapo.ui.part.NonScrollGridView
                         android:layout_width="match_parent"
                         android:stretchMode="columnWidth"
                         android:id="@+id/timetableLayout"
                         android:numColumns="6" android:verticalSpacing="4dp" android:horizontalSpacing="4dp"
                         android:layout_height="match_parent">
-                </gakusapo.android.itsu.ui.part.NonScrollGridView>
+                </dev.itsu.gakusapo.ui.part.NonScrollGridView>
             </LinearLayout>
         </LinearLayout>
         <Space

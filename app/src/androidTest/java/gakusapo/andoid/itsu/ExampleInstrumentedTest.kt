@@ -1,4 +1,4 @@
-package gakusapo.android.itsu
+package dev.itsu.gakusapo
 
 import android.support.test.InstrumentationRegistry
 import android.support.test.runner.AndroidJUnit4
