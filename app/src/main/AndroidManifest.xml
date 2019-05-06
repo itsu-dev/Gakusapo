@@ -34,6 +34,10 @@
 
         <activity android:name=".ui.activity.WebActivity">
         </activity>
+
+        <meta-data
+                android:name="com.google.android.gms.ads.APPLICATION_ID"
+                android:value="ca-app-pub-5096422984251090~5581770338"/>
     </application>
 
 </manifest>

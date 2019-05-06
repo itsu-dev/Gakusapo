@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import com.google.android.gms.ads.MobileAds;
+import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.contract.MainActivityContract;
 
 public class MainActivityPresenter implements MainActivityContract.Presenter {
@@ -21,4 +23,9 @@ public class MainActivityPresenter implements MainActivityContract.Presenter {
         }
     }
 
+    @Override
+    public void initialize() {
+        DatabaseDAO.openDatabase();
+        MobileAds.initialize(view.getActivity(), "ca-app-pub-5096422984251090~5581770338");
+    }
 }

@@ -1,171 +1,205 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" android:background="@drawable/background">
-
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-        <LinearLayout
-                android:orientation="horizontal"
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:background="@drawable/background"
+>
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:paddingRight="16dp" android:gravity="center_vertical">
-            <EditText
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/timetableTitleField"
-                    android:textAppearance="@android:style/TextAppearance.Material.Small" android:text="AA"
-                    android:textSize="24sp" android:layout_height="60dp" android:padding="16dp"
-                    android:visibility="gone" android:layout_width="200dp"/>
-            <TextView
-                    android:text="TextView"
-                    android:layout_width="wrap_content"
-                    android:id="@+id/timetableTitle" android:textSize="24sp"
-                    android:padding="16dp" android:layout_height="60dp" android:gravity="center_vertical"
-                    android:visibility="visible"/>
-            <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:layout_weight="1"/>
-            <Button
-                    android:layout_height="36dp" android:id="@+id/timetableEditSubjectButton"
-                    android:layout_width="36dp"
-                    android:layout_margin="4dp" android:background="@drawable/dr_edit_ripple"
-                    android:visibility="gone"/>
-            <Button
-                    android:id="@+id/timetableSelectButton"
-                    android:background="@drawable/dr_select_ripple" android:layout_width="36dp"
-                    android:layout_height="36dp" android:layout_margin="4dp" android:visibility="gone"/>
-            <Button
-                    android:id="@+id/timetableAddButton"
-                    android:background="@drawable/dr_addbutton_ripple" android:layout_height="36dp"
-                    android:layout_width="36dp" android:layout_margin="4dp"/>
-            <Button
-                    android:id="@+id/timetableEditButton"
-                    android:background="@drawable/dr_editmode_ripple" android:layout_width="32dp"
-                    android:layout_height="32dp" android:layout_margin="4dp" android:padding="8dp"/>
-        </LinearLayout>
+                android:layout_height="match_parent">
+
         <LinearLayout
-                android:orientation="horizontal"
+                android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_height="match_parent" android:layout_width="16dp">
-                <Space
-                        android:layout_height="28dp" android:layout_width="16dp"/>
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:paddingRight="16dp" android:gravity="center_vertical">
+                <EditText
+                        android:inputType="textPersonName"
+                        android:ems="10"
+                        android:id="@+id/timetableTitleField"
+                        android:textAppearance="@android:style/TextAppearance.Material.Small" android:text="AA"
+                        android:textSize="24sp" android:layout_height="60dp" android:padding="16dp"
+                        android:visibility="gone" android:layout_width="200dp"/>
                 <TextView
-                        android:text="1"
-                        android:layout_height="64dp" android:id="@+id/textView11" android:layout_width="20dp"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"
-                />
+                        android:text="TextView"
+                        android:layout_width="wrap_content"
+                        android:id="@+id/timetableTitle" android:textSize="24sp"
+                        android:padding="16dp" android:layout_height="60dp" android:gravity="center_vertical"
+                        android:visibility="visible"/>
                 <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"/>
-                <TextView
-                        android:text="2"
-                        android:layout_height="64dp" android:id="@+id/textView12" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"/>
-                <TextView
-                        android:text="3"
-                        android:layout_height="64dp" android:id="@+id/textView13" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"/>
-                <TextView
-                        android:text="4"
-                        android:layout_height="64dp" android:id="@+id/textView14" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"/>
-                <TextView
-                        android:text="5"
-                        android:layout_height="64dp" android:id="@+id/textView15" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp"/>
-                <TextView
-                        android:text="6"
-                        android:layout_height="64dp" android:id="@+id/sixLabel" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp" android:id="@+id/sixSpace"/>
-                <TextView
-                        android:text="7"
-                        android:layout_height="64dp" android:id="@+id/sevenLabel" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp" android:id="@+id/sevenSpace"/>
-                <TextView
-                        android:text="8"
-                        android:layout_height="64dp" android:id="@+id/eightLabel" android:layout_width="match_parent"
-                        android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
-                <Space
-                        android:layout_width="match_parent"
-                        android:layout_height="4dp" android:id="@+id/eightSpace"/>
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:layout_weight="1"/>
+                <Button
+                        android:layout_height="36dp" android:id="@+id/timetableEditSubjectButton"
+                        android:layout_width="36dp"
+                        android:layout_margin="4dp" android:background="@drawable/dr_edit_ripple"
+                        android:visibility="gone"/>
+                <Button
+                        android:id="@+id/timetableSelectButton"
+                        android:background="@drawable/dr_select_ripple" android:layout_width="36dp"
+                        android:layout_height="36dp" android:layout_margin="4dp" android:visibility="gone"/>
+                <Button
+                        android:id="@+id/timetableAddButton"
+                        android:background="@drawable/dr_addbutton_ripple" android:layout_height="36dp"
+                        android:layout_width="36dp" android:layout_margin="4dp"/>
+                <Button
+                        android:id="@+id/timetableEditButton"
+                        android:background="@drawable/dr_editmode_ripple" android:layout_width="32dp"
+                        android:layout_height="32dp" android:layout_margin="4dp" android:padding="8dp"/>
             </LinearLayout>
             <LinearLayout
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
                 <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp">
+                        android:orientation="vertical"
+                        android:layout_height="match_parent" android:layout_width="16dp">
+                    <Space
+                            android:layout_height="28dp" android:layout_width="16dp"/>
                     <TextView
-                            android:text="月"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView2" android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@color/black"/>
+                            android:text="1"
+                            android:layout_height="64dp" android:id="@+id/textView11" android:layout_width="20dp"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"
+                    />
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"/>
                     <TextView
-                            android:text="火"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView3" android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@color/black"/>
+                            android:text="2"
+                            android:layout_height="64dp" android:id="@+id/textView12"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"/>
                     <TextView
-                            android:text="水"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView4" android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@android:color/black"/>
+                            android:text="3"
+                            android:layout_height="64dp" android:id="@+id/textView13"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"/>
                     <TextView
-                            android:text="木"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView5" android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@color/black"/>
+                            android:text="4"
+                            android:layout_height="64dp" android:id="@+id/textView14"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"/>
                     <TextView
-                            android:text="金"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/textView7" android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@color/black"/>
+                            android:text="5"
+                            android:layout_height="64dp" android:id="@+id/textView15"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp"/>
                     <TextView
-                            android:text="土"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content" android:id="@+id/saturdayLabel"
-                            android:layout_weight="1"
-                            android:textAlignment="center" android:textColor="@color/black"/>
+                            android:text="6"
+                            android:layout_height="64dp" android:id="@+id/sixLabel" android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp" android:id="@+id/sixSpace"/>
+                    <TextView
+                            android:text="7"
+                            android:layout_height="64dp" android:id="@+id/sevenLabel"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp" android:id="@+id/sevenSpace"/>
+                    <TextView
+                            android:text="8"
+                            android:layout_height="64dp" android:id="@+id/eightLabel"
+                            android:layout_width="match_parent"
+                            android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="4dp" android:id="@+id/eightSpace"/>
                 </LinearLayout>
-                <Space
+                <LinearLayout
+                        android:orientation="vertical"
                         android:layout_width="match_parent"
-                        android:layout_height="8dp"/>
-                <dev.itsu.gakusapo.ui.part.NonScrollGridView
-                        android:layout_width="match_parent"
-                        android:stretchMode="columnWidth"
-                        android:id="@+id/timetableLayout"
-                        android:numColumns="6" android:verticalSpacing="4dp" android:horizontalSpacing="4dp"
                         android:layout_height="match_parent">
-                </dev.itsu.gakusapo.ui.part.NonScrollGridView>
+                    <LinearLayout
+                            android:orientation="horizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="20dp">
+                        <TextView
+                                android:text="月"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView2"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@color/black"/>
+                        <TextView
+                                android:text="火"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView3"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@color/black"/>
+                        <TextView
+                                android:text="水"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView4"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@android:color/black"/>
+                        <TextView
+                                android:text="木"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView5"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@color/black"/>
+                        <TextView
+                                android:text="金"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/textView7"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@color/black"/>
+                        <TextView
+                                android:text="土"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" android:id="@+id/saturdayLabel"
+                                android:layout_weight="1"
+                                android:textAlignment="center" android:textColor="@color/black"/>
+                    </LinearLayout>
+                    <Space
+                            android:layout_width="match_parent"
+                            android:layout_height="8dp"/>
+                    <dev.itsu.gakusapo.ui.part.NonScrollGridView
+                            android:layout_width="match_parent"
+                            android:stretchMode="columnWidth"
+                            android:id="@+id/timetableLayout"
+                            android:numColumns="6" android:verticalSpacing="4dp" android:horizontalSpacing="4dp"
+                            android:layout_height="match_parent">
+                    </dev.itsu.gakusapo.ui.part.NonScrollGridView>
+                </LinearLayout>
             </LinearLayout>
+            <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"/>
         </LinearLayout>
-        <Space
+    </ScrollView>
+    <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+        <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/timetableAdView"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"/>
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            <!-- 本番用 ca-app-pub-5096422984251090/9137871968 -->
+        </com.google.android.gms.ads.AdView>
+        <android.support.v4.widget.Space android:layout_width="wrap_content" android:layout_height="60dp"/>
     </LinearLayout>
-</ScrollView>
+</RelativeLayout>

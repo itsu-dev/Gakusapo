@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.presenter.TimetablePresenter;
@@ -34,6 +36,8 @@ public class TimetableFragment extends Fragment implements TimetableContract.Vie
         this.presenter = new TimetablePresenter(this);
         presenter.reloadTimetable();
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ((AdView) view.findViewById(R.id.timetableAdView)).loadAd(adRequest);
 
         GridView gridView = view.findViewById(R.id.timetableLayout);
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

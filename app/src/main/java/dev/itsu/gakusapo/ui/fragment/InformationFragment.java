@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.presenter.contract.InformationContract;
 import dev.itsu.gakusapo.presenter.InformationPresenter;
@@ -58,6 +60,9 @@ public class InformationFragment extends Fragment implements InformationContract
                 presenter.onWeatherDetailsButtonClicked();
             }
         });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ((AdView) view.findViewById(R.id.informationAdView)).loadAd(adRequest);
     }
 
     @Override

@@ -36,14 +36,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         this.presenter = new MainActivityPresenter(this);
         presenter.checkPermission();
+        presenter.initialize();
 
         NavController controller = Navigation.findNavController(findViewById(R.id.nav_fragment));
         NavigationUI.setupWithNavController((BottomNavigationView) findViewById(R.id.navigation), controller);
 
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
-
-        DatabaseDAO.openDatabase();
 
         //TODO
         /*

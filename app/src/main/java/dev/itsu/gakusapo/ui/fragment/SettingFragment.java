@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.presenter.SettingPresenter;
 import dev.itsu.gakusapo.presenter.contract.SettingContract;
@@ -70,6 +72,8 @@ public class SettingFragment extends Fragment implements SettingContract.View {
             }
         });
 
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ((AdView) view.findViewById(R.id.settingAdView)).loadAd(adRequest);
     }
 
     @Override

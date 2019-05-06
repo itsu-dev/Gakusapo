@@ -1,183 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- android.support.v4.widget.SwipeRefreshLayout -->
-<android.support.v4.widget.SwipeRefreshLayout
+<RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/informationRefresh" android:layout_width="match_parent"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" android:background="@drawable/background">
-    <ScrollView android:layout_width="match_parent"
-                android:layout_height="match_parent" android:background="@drawable/background">
-        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
-                      android:orientation="vertical">
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textAlignment="textStart" android:textSize="24sp"
-                    android:text="情報" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
-                    android:layout_marginTop="16dp"/>
 
-            <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" android:layout_margin="16dp" app:cardCornerRadius="8dp"
-                    android:id="@+id/weatherForecast">
-                <LinearLayout
-                        android:orientation="vertical"
+    <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/informationRefresh" android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <ScrollView android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:background="@drawable/background">
+            <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                          android:orientation="vertical">
+                <TextView
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent" android:background="#fff">
-                    <ImageView
+                        android:layout_height="wrap_content"
+                        android:textAlignment="textStart" android:textSize="24sp"
+                        android:text="情報" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                        android:layout_marginTop="16dp"/>
+
+                <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" android:layout_margin="16dp" app:cardCornerRadius="8dp"
+                        android:id="@+id/weatherForecast">
+                    <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            app:srcCompat="@drawable/clear" android:id="@+id/weatherImage"
-                            android:scaleType="matrix" android:layout_height="240dp"/>
-                    <TextView
-                            android:text="取得中"
+                            android:layout_height="match_parent" android:background="#fff">
+                        <ImageView
+                                android:layout_width="match_parent"
+                                app:srcCompat="@drawable/clear" android:id="@+id/weatherImage"
+                                android:scaleType="matrix" android:layout_height="240dp"/>
+                        <TextView
+                                android:text="取得中"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:id="@+id/weatherCity"
+                                android:layout_marginTop="16dp"
+                                android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                                android:layout_marginBottom="8dp"/>
+                        <LinearLayout
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content" android:gravity="left|center_vertical">
+                            <ImageView
+                                    android:layout_width="32dp"
+                                    app:srcCompat="@drawable/ic_cloud"
+                                    android:id="@+id/weatherIcon" android:layout_height="32dp"
+                                    android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
+                                    android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
+                            <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content" android:gravity="center_vertical">
+                                <TextView
+                                        android:text="N/A"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" android:id="@+id/weatherName"/>
+                                <TextView
+                                        android:text="N/A"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content" android:id="@+id/weatherTemp"
+                                        android:textColor="#000" android:textSize="18sp"/>
+                            </LinearLayout>
+                            <Space
+                                    android:layout_width="16dp" android:layout_height="16dp"/>
+                            <LinearLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" android:gravity="right|center_vertical"
+                                    android:layout_marginRight="16dp">
+                                <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" android:gravity="right|center_vertical">
+                                    <TextView
+                                            android:text="@string/information_forecast_humidity"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"/>
+                                    <TextView
+                                            android:text="N/A"
+                                            android:layout_height="wrap_content" android:id="@+id/weatherHumidity"
+                                            android:layout_weight="1" android:textColor="#000"
+                                            android:layout_width="60dp"
+                                            android:textAlignment="textEnd"/>
+                                </LinearLayout>
+                                <LinearLayout
+                                        android:orientation="horizontal"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content" android:gravity="right|center_vertical">
+                                    <TextView
+                                            android:text="@string/information_forecast_sunset"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"/>
+                                    <TextView
+                                            android:text="N/A"
+                                            android:layout_height="wrap_content" android:id="@+id/weatherSunset"
+                                            android:layout_weight="1" android:textColor="#000"
+                                            android:layout_width="60dp"
+                                            android:textAlignment="textEnd"/>
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <View android:layout_width="match_parent" android:layout_height="1dp"
+                              android:background="#E0E0E0" android:layout_marginBottom="8dp"
+                              android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
+                              android:layout_marginRight="16dp"/>
+                        <Button android:layout_width="match_parent" android:layout_height="wrap_content"
+                                android:textColor="@color/colorPrimary" android:text="詳しくみる"
+                                android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
+                                android:layout_marginBottom="8dp"
+                                style="@style/Widget.MaterialComponents.Button.TextButton" android:textSize="14sp"
+                                android:textAlignment="textStart" android:id="@+id/weatherDetailsButton"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:id="@+id/weatherCity"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
-                            android:layout_marginBottom="8dp"/>
+                            android:layout_height="match_parent">
+                        <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="200dp"/>
+                        <TextView
+                                android:text="@string/information_forecast_title"
+                                android:layout_width="match_parent"
+                                android:id="@+id/textView6"
+                                android:textSize="18sp" android:textColor="#fff"
+                                android:paddingLeft="16dp" android:layout_height="40dp"
+                                android:gravity="center_vertical"
+                                android:background="@color/information_black_opaque"
+                                android:layout_marginBottom="8dp" android:paddingRight="16dp"/>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+                <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:background="#fff" android:layout_margin="16dp"
+                        app:cardCornerRadius="8dp" android:id="@+id/trainInfo">
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" android:background="#fff"
+                            android:id="@+id/trainInfoLayout">
+                        <ImageView
+                                android:layout_width="match_parent"
+                                app:srcCompat="@drawable/train" android:id="@+id/trainImage"
+                                android:scaleType="matrix" android:layout_height="240dp"
+                                android:transitionName="trainImage"/>
+                    </LinearLayout>
+                    <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+                        <Space
+                                android:layout_width="match_parent"
+                                android:layout_height="172dp"/>
+                        <TextView
+                                android:text="@string/information_train_title"
+                                android:layout_width="match_parent"
+                                android:id="@+id/trainTitle"
+                                android:textSize="18sp" android:textColor="#fff"
+                                android:layout_height="40dp" android:gravity="center_vertical"
+                                android:background="@color/information_black_opaque" android:transitionName="trainTitle"
+                                android:paddingLeft="16dp" android:paddingRight="16dp"
+                        />
+                        <TextView
+                                android:text="以下の情報が正確とは限りません。"
+                                android:layout_width="match_parent"
+                                android:layout_height="28dp" android:id="@+id/textView36"
+                                android:background="@color/information_black_opaque"
+                                android:paddingLeft="16dp" android:paddingRight="16dp" android:textColor="#fff"
+                                android:layout_marginBottom="8dp" android:paddingBottom="8dp"/>
+                    </LinearLayout>
                     <LinearLayout
                             android:orientation="horizontal"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" android:gravity="left|center_vertical">
-                        <ImageView
-                                android:layout_width="32dp"
-                                app:srcCompat="@drawable/ic_cloud"
-                                android:id="@+id/weatherIcon" android:layout_height="32dp"
-                                android:layout_marginBottom="8dp" android:layout_marginTop="8dp"
-                                android:layout_marginLeft="16dp" android:layout_marginRight="16dp"/>
-                        <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" android:gravity="center_vertical">
-                            <TextView
-                                    android:text="N/A"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" android:id="@+id/weatherName"/>
-                            <TextView
-                                    android:text="N/A"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content" android:id="@+id/weatherTemp"
-                                    android:textColor="#000" android:textSize="18sp"/>
-                        </LinearLayout>
-                        <Space
-                                android:layout_width="16dp" android:layout_height="16dp"/>
-                        <LinearLayout
-                                android:orientation="vertical"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content" android:gravity="right|center_vertical"
-                                android:layout_marginRight="16dp">
-                            <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:gravity="right|center_vertical">
-                                <TextView
-                                        android:text="@string/information_forecast_humidity"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"/>
-                                <TextView
-                                        android:text="N/A"
-                                        android:layout_height="wrap_content" android:id="@+id/weatherHumidity"
-                                        android:layout_weight="1" android:textColor="#000" android:layout_width="60dp"
-                                        android:textAlignment="textEnd"/>
-                            </LinearLayout>
-                            <LinearLayout
-                                    android:orientation="horizontal"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content" android:gravity="right|center_vertical">
-                                <TextView
-                                        android:text="@string/information_forecast_sunset"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"/>
-                                <TextView
-                                        android:text="N/A"
-                                        android:layout_height="wrap_content" android:id="@+id/weatherSunset"
-                                        android:layout_weight="1" android:textColor="#000" android:layout_width="60dp"
-                                        android:textAlignment="textEnd"/>
-                            </LinearLayout>
-                        </LinearLayout>
+                            android:layout_height="wrap_content" android:gravity="right">
+                        <Button
+                                android:id="@+id/trainInfoSettingButton"
+                                android:background="@drawable/ic_more_vert_black_24dp" android:layout_width="32dp"
+                                android:layout_height="32dp" android:layout_margin="8dp"/>
                     </LinearLayout>
-                    <View android:layout_width="match_parent" android:layout_height="1dp"
-                          android:background="#E0E0E0" android:layout_marginBottom="8dp"
-                          android:layout_marginTop="8dp" android:layout_marginLeft="16dp"
-                          android:layout_marginRight="16dp"/>
-                    <Button android:layout_width="match_parent" android:layout_height="wrap_content"
-                            android:textColor="@color/colorPrimary" android:text="詳しくみる"
-                            android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
-                            android:layout_marginBottom="8dp"
-                            style="@style/Widget.MaterialComponents.Button.TextButton" android:textSize="14sp"
-                            android:textAlignment="textStart" android:id="@+id/weatherDetailsButton"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
+                </android.support.v7.widget.CardView>
+                <Space
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="200dp"/>
-                    <TextView
-                            android:text="@string/information_forecast_title"
-                            android:layout_width="match_parent"
-                            android:id="@+id/textView6"
-                            android:textSize="18sp" android:textColor="#fff"
-                            android:paddingLeft="16dp" android:layout_height="40dp" android:gravity="center_vertical"
-                            android:background="@color/information_black_opaque"
-                            android:layout_marginBottom="8dp" android:paddingRight="16dp"/>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <android.support.v7.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:background="#fff" android:layout_margin="16dp"
-                    app:cardCornerRadius="8dp" android:id="@+id/trainInfo">
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:background="#fff"
-                        android:id="@+id/trainInfoLayout">
-                    <ImageView
-                            android:layout_width="match_parent"
-                            app:srcCompat="@drawable/train" android:id="@+id/trainImage"
-                            android:scaleType="matrix" android:layout_height="240dp"
-                            android:transitionName="trainImage"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-                    <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="172dp"/>
-                    <TextView
-                            android:text="@string/information_train_title"
-                            android:layout_width="match_parent"
-                            android:id="@+id/trainTitle"
-                            android:textSize="18sp" android:textColor="#fff"
-                            android:layout_height="40dp" android:gravity="center_vertical"
-                            android:background="@color/information_black_opaque" android:transitionName="trainTitle"
-                            android:paddingLeft="16dp" android:paddingRight="16dp"
-                    />
-                    <TextView
-                            android:text="以下の情報が正確とは限りません。"
-                            android:layout_width="match_parent"
-                            android:layout_height="28dp" android:id="@+id/textView36"
-                            android:background="@color/information_black_opaque"
-                            android:paddingLeft="16dp" android:paddingRight="16dp" android:textColor="#fff"
-                            android:layout_marginBottom="8dp" android:paddingBottom="8dp"/>
-                </LinearLayout>
-                <LinearLayout
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:gravity="right">
-                    <Button
-                            android:id="@+id/trainInfoSettingButton"
-                            android:background="@drawable/ic_more_vert_black_24dp" android:layout_width="32dp"
-                            android:layout_height="32dp" android:layout_margin="8dp"/>
-                </LinearLayout>
-            </android.support.v7.widget.CardView>
-            <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"/>
-        </LinearLayout>
-    </ScrollView>
-</android.support.v4.widget.SwipeRefreshLayout>
+                        android:layout_height="120dp"/>
+            </LinearLayout>
+        </ScrollView>
+    </android.support.v4.widget.SwipeRefreshLayout>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true">
+        <com.google.android.gms.ads.AdView
+                xmlns:ads="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/informationAdView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ads:adSize="BANNER"
+                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+            <!-- 本番用 ca-app-pub-5096422984251090/9218952381 -->
+        </com.google.android.gms.ads.AdView>
+        <android.support.v4.widget.Space android:layout_width="wrap_content" android:layout_height="60dp"/>
+    </LinearLayout>
+</RelativeLayout>

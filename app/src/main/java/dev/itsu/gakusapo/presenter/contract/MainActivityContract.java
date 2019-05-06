@@ -10,5 +10,6 @@ public interface MainActivityContract {
 
     interface Presenter {
         void checkPermission();
+        void initialize();
     }
 }

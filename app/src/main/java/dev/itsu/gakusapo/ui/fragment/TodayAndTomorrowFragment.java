@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.*;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.github.sundeepk.compactcalendarview.domain.Event;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.entity.Subject;
 import dev.itsu.gakusapo.presenter.TodayAndTomorrowPresenter;
@@ -93,6 +95,9 @@ public class TodayAndTomorrowFragment extends Fragment implements onDestroy.View
                 presenter.onContentButtonClicked(TodayAndTomorrowPresenter.TYPE_REMINDER);
             }
         });
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        ((AdView) view.findViewById(R.id.todayandtomorrowAdView)).loadAd(adRequest);
 
         final CompactCalendarView calendarView = view.findViewById(R.id.calendarView);
         calendarView.setFirstDayOfWeek(Calendar.SUNDAY);
