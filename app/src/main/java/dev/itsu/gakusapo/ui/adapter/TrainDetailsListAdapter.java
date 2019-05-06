@@ -53,7 +53,7 @@ public class TrainDetailsListAdapter extends RecyclerView.Adapter<TrainDetailsLi
         return trains != null ? trains.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         private Button deleteButton;
 

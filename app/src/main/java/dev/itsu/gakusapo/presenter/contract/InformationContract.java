@@ -28,7 +28,6 @@ public interface InformationContract {
     interface Presenter {
         void reloadWeatherForecast();
         void reloadTrainInfo();
-        void onDestroy();
         void onWeatherDetailsButtonClicked();
         void onWeatherLoaded(Map<String, Object> data);
         void onWeatherIconGot(Bitmap bitmap);
@@ -40,6 +39,7 @@ public interface InformationContract {
         void onRefresh();
         void onRefreshed();
         void onRefreshError();
+        void onDestroy();
     }
 
 }

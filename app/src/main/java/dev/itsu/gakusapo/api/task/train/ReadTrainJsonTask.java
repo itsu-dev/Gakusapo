@@ -7,14 +7,15 @@ import dev.itsu.gakusapo.MainApplication;
 import dev.itsu.gakusapo.presenter.contract.AddTrainDialogContract;
 
 import java.io.*;
+import java.lang.ref.WeakReference;
 import java.util.LinkedList;
 
 public class ReadTrainJsonTask extends AsyncTask<Void, Void, String> {
 
-    private AddTrainDialogContract.Presenter presenter;
+    private WeakReference<AddTrainDialogContract.Presenter> presenter;
 
     public ReadTrainJsonTask(AddTrainDialogContract.Presenter presenter) {
-        this.presenter = presenter;
+        this.presenter = new WeakReference<>(presenter);
     }
 
     @Override
@@ -35,6 +36,6 @@ public class ReadTrainJsonTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String json) {
-        if (json != null) presenter.onJsonReaded((LinkedList<String>) new Gson().fromJson(json, new TypeToken<LinkedList>(){}.getType()));
+        if (json != null) presenter.get().onJsonReaded((LinkedList<String>) new Gson().fromJson(json, new TypeToken<LinkedList>(){}.getType()));
     }
 }

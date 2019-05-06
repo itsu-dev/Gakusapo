@@ -52,7 +52,7 @@ public class DateEventContentAdapter extends RecyclerView.Adapter<DateEventConte
         return data != null ? data.size() : 0;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView name;
         public Button delete;
 

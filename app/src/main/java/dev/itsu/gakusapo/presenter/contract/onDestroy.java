@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public interface TodayAndTomorrowContract {
+public interface onDestroy {
 
     interface View {
         Activity getActivity();
@@ -35,7 +35,7 @@ public interface TodayAndTomorrowContract {
         void onMemoDialogCallback(String memo);
         void onDateEventDialogCallback(List<String> data, int type);
         void onReminderChecked(String text, boolean checked);
-
+        void onPause();
         void onCalendarScrolled(Date date);
         void onCalendarDateClicked(Date date);
     }

@@ -23,5 +23,6 @@ public interface SettingContract {
         void onLicenseButtonClicked();
         void onFormulaButtonClicked();
         void onTimetableSpinnerSelected(String name);
+        void onDestroy();
     }
 }

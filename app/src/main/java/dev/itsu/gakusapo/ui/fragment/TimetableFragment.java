@@ -158,4 +158,10 @@ public class TimetableFragment extends Fragment implements TimetableContract.Vie
         if (bool) Toast.makeText(view.getContext(), R.string.timetable_select, Toast.LENGTH_SHORT).show();
         else Toast.makeText(view.getContext(), R.string.timetable_unselect, Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+    }
 }

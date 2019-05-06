@@ -31,5 +31,6 @@ public interface TimetableContract {
         void onTimetableEditSubjectButtonClicked();
         void onRegisterSubjectDialogCallback(String name, String className, String description, int background);
         void onCreateTimetableDialogCallback(String name, int dayType, int timeType);
+        void onDestroy();
     }
 }

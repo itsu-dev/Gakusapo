@@ -175,8 +175,8 @@ public class InformationFragment extends Fragment implements InformationContract
     }
 
     @Override
-    public void onPause() {
-        super.onPause();
+    public void onDestroy() {
+        super.onDestroy();
         presenter.onDestroy();
     }
 }

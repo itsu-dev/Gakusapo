@@ -1,4 +1,4 @@
-package dev.itsu.gakusapo.ui.fragment;
+package dev.itsu.gakusapo.ui.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -10,50 +10,52 @@ import android.widget.TextView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.presenter.MemoDialogPresenter;
 import dev.itsu.gakusapo.presenter.contract.MemoDialogContract;
-import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
+import dev.itsu.gakusapo.presenter.contract.onDestroy;
+
+import java.lang.ref.WeakReference;
 
 public class MemoDialogFragment extends DialogFragment implements MemoDialogContract.View {
 
     private MemoDialogContract.Presenter presenter;
-    private TodayAndTomorrowContract.Presenter todayAndTomorrowPresenter;
-    private Dialog dialog;
+    private onDestroy.Presenter todayAndTomorrowPresenter;
+    private WeakReference<Dialog> dialog;
     private String memo;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         this.presenter = new MemoDialogPresenter(this, todayAndTomorrowPresenter);
 
-        dialog = new Dialog(getActivity());
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_today_memo);
-        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        dialog = new WeakReference<>(new Dialog(getActivity()));
+        dialog.get().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.get().setContentView(R.layout.dialog_today_memo);
+        dialog.get().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
 
-        dialog.findViewById(R.id.memoCloseButton).setOnClickListener(new View.OnClickListener() {
+        dialog.get().findViewById(R.id.memoCloseButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onCloseButtonClicked();
-                dialog.dismiss();
+                dialog.get().dismiss();
             }
         });
 
         setMemo(memo);
 
-        return dialog;
+        return dialog.get();
     }
 
     @Override
     public void setMemo(String memo) {
-        TextView textView = dialog.findViewById(R.id.dialogMemoField);
+        TextView textView = dialog.get().findViewById(R.id.dialogMemoField);
         textView.setText(memo);
     }
 
     @Override
     public String getMemo() {
-        TextView textView = dialog.findViewById(R.id.dialogMemoField);
+        TextView textView = dialog.get().findViewById(R.id.dialogMemoField);
         return textView.getText().toString();
     }
 
-    public static MemoDialogFragment newInstance(TodayAndTomorrowContract.Presenter presenter, String memo) {
+    public static MemoDialogFragment newInstance(onDestroy.Presenter presenter, String memo) {
         MemoDialogFragment fragment = new MemoDialogFragment();
         fragment.todayAndTomorrowPresenter = presenter;
         fragment.memo = memo;

@@ -5,15 +5,15 @@ import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.DateEvent;
 import dev.itsu.gakusapo.entity.Timetable;
-import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
+import dev.itsu.gakusapo.presenter.contract.onDestroy;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
-import dev.itsu.gakusapo.ui.fragment.MemoDialogFragment;
-import dev.itsu.gakusapo.ui.fragment.RegisterDateEventListDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.MemoDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.RegisterDateEventListDialogFragment;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
 import java.util.*;
 
-public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Presenter {
+public class TodayAndTomorrowPresenter implements onDestroy.Presenter {
 
     public static final int TYPE_HOMEWORK = 0;
     public static final int TYPE_SUBMISSION = 1;
@@ -22,11 +22,11 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
     public static final int TYPE_EVENT = 4;
     public static final int TYPE_REMINDER = 5;
 
-    private TodayAndTomorrowContract.View view;
+    private onDestroy.View view;
 
     private DateEvent currentDateEvent;
 
-    public TodayAndTomorrowPresenter(TodayAndTomorrowContract.View view) {
+    public TodayAndTomorrowPresenter(onDestroy.View view) {
         this.view = view;
     }
 
@@ -230,5 +230,18 @@ public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Prese
         }
         saveDateEvent();
         reloadData(currentDateEvent.getDate());
+    }
+
+    @Override
+    public void onPause() {
+        view.setTimetables(null);
+        view.setHomeworks(null);
+        view.setSubmissions(null);
+        view.setEvents(null);
+        view.setTests(null);
+        view.setClasses(null);
+
+        currentDateEvent = null;
+        view = null;
     }
 }

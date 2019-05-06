@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         DatabaseDAO.openDatabase();
 
         //TODO
+        /*
         Calendar triggerTime = Calendar.getInstance();
         triggerTime.set(Calendar.HOUR_OF_DAY, 16);
         triggerTime.set(Calendar.MINUTE, 5);
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);*/
     }
 
     @Override

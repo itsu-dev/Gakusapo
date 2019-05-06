@@ -11,10 +11,10 @@ import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.presenter.contract.TimetableContract;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
 import dev.itsu.gakusapo.ui.adapter.TimetableAdapter;
-import dev.itsu.gakusapo.ui.fragment.AlertDialogFragment;
-import dev.itsu.gakusapo.ui.fragment.RegisterSubjectDialogFragment;
-import dev.itsu.gakusapo.ui.fragment.RegisterTimetableDialogFragment;
-import dev.itsu.gakusapo.ui.fragment.SubjectDetailsDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.AlertDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.RegisterSubjectDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.RegisterTimetableDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.SubjectDetailsDialogFragment;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
 import java.util.*;
@@ -23,8 +23,8 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     private TimetableContract.View view;
 
-    private String currentTimetableName;
-    private Timetable currentTimetable;
+    private static String currentTimetableName;
+    private static Timetable currentTimetable;
 
     private TimetableEditService editService;
     private boolean editMode;
@@ -229,5 +229,14 @@ public class TimetablePresenter implements TimetableContract.Presenter {
                 this.view.setSubjectBackground(editService.getOneSubject().getPosition(), editService.getOneSubject().getBackground());
             }
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        view.setSubjects(null);
+        view = null;
+        editService = null;
+        currentTimetable = null;
+        currentTimetableName = null;
     }
 }

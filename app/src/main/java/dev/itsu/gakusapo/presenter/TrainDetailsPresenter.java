@@ -4,7 +4,7 @@ import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.contract.TrainDetailsContract;
 import dev.itsu.gakusapo.ui.activity.TrainDetailsActivity;
 import dev.itsu.gakusapo.ui.adapter.TrainDetailsListAdapter;
-import dev.itsu.gakusapo.ui.fragment.AddTrainDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.AddTrainDialogFragment;
 
 public class TrainDetailsPresenter implements TrainDetailsContract.Presenter {
 

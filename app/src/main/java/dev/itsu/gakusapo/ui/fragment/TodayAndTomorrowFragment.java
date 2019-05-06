@@ -14,7 +14,7 @@ import com.github.sundeepk.compactcalendarview.domain.Event;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.entity.Subject;
 import dev.itsu.gakusapo.presenter.TodayAndTomorrowPresenter;
-import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
+import dev.itsu.gakusapo.presenter.contract.onDestroy;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
 import java.util.Calendar;
@@ -22,9 +22,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorrowContract.View {
+public class TodayAndTomorrowFragment extends Fragment implements onDestroy.View {
 
-    private TodayAndTomorrowContract.Presenter presenter;
+    private onDestroy.Presenter presenter;
 
     private View view;
 
@@ -196,6 +196,9 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
         space2.setLayoutParams(new LinearLayout.LayoutParams(padding8, padding8));
 
         layout.removeAllViews();
+
+        if (subjects == null) return;
+
         layout.addView(space1);
         layout.addView(space2);
 
@@ -225,6 +228,8 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
     private void setData(int id, List<String> data) {
         LinearLayout layout = view.findViewById(id);
         layout.removeAllViews();
+
+        if (data == null) return;
 
         int bottom = getActivity().getResources().getDimensionPixelSize(R.dimen.padding_8);
         int leftRight = getActivity().getResources().getDimensionPixelSize(R.dimen.padding_16);
@@ -258,4 +263,9 @@ public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorr
         }
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onPause();
+    }
 }

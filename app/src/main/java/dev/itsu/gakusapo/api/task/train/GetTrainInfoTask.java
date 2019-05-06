@@ -4,15 +4,16 @@ import android.os.AsyncTask;
 import dev.itsu.gakusapo.presenter.contract.InformationContract;
 
 import java.io.*;
+import java.lang.ref.WeakReference;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class GetTrainInfoTask extends AsyncTask<Void, Void, String> {
 
-    private InformationContract.Presenter presenter;
+    private WeakReference<InformationContract.Presenter> presenter;
 
     public GetTrainInfoTask(InformationContract.Presenter presenter) {
-        this.presenter = presenter;
+        this.presenter = new WeakReference<>(presenter);
     }
 
     @Override
@@ -40,6 +41,6 @@ public class GetTrainInfoTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String json) {
-        presenter.onTrainInfoGot(json);
+        presenter.get().onTrainInfoGot(json);
     }
 }

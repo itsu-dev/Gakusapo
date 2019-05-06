@@ -25,7 +25,7 @@ import dev.itsu.gakusapo.presenter.contract.InformationContract;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
 import dev.itsu.gakusapo.ui.activity.TrainDetailsActivity;
 import dev.itsu.gakusapo.ui.activity.WebActivity;
-import dev.itsu.gakusapo.ui.fragment.AlertDialogFragment;
+import dev.itsu.gakusapo.ui.dialog.AlertDialogFragment;
 import dev.itsu.gakusapo.utils.LocationProviderClient;
 import dev.itsu.gakusapo.utils.TrainInfoUtils;
 import dev.itsu.gakusapo.utils.WeatherUtils;
@@ -104,8 +104,10 @@ public class InformationPresenter implements InformationContract.Presenter {
 
             onRefreshed();
         } catch (Exception e) {
-            view.setWeatherCity("Error");
-            onRefreshError();
+            if (!destroyed) {
+                view.setWeatherCity("Error");
+                onRefreshError();
+            }
         }
     }
 
@@ -214,11 +216,6 @@ public class InformationPresenter implements InformationContract.Presenter {
         }
     }
 
-    @Override
-    public void onDestroy() {
-        destroyed = true;
-    }
-
     private void openWeb(String url) {
         Intent intent = new Intent(view.getActivity(), WebActivity.class);
         Bundle bundle = new Bundle();
@@ -227,4 +224,12 @@ public class InformationPresenter implements InformationContract.Presenter {
         view.getActivity().startActivity(intent);
     }
 
+    @Override
+    public void onDestroy() {
+        view.setImage(null);
+        view.setIcon(null);
+        destroyed = true;
+        view = null;
+        weatherURL = null;
+    }
 }

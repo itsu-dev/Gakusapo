@@ -102,4 +102,10 @@ public class SettingPresenter implements SettingContract.Presenter {
         intent.putExtras(bundle);
         view.getActivity().startActivity(intent);
     }
+
+    @Override
+    public void onDestroy() {
+        view.setTimetableItem(null);
+        view = null;
+    }
 }

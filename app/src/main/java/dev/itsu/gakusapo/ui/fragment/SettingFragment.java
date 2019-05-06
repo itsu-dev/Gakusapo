@@ -74,6 +74,7 @@ public class SettingFragment extends Fragment implements SettingContract.View {
 
     @Override
     public void setTimetableItem(String[] item) {
+        if (item == null) return;
         Spinner spinner = view.findViewById(R.id.settingTimetableSpinner);
         spinner.setAdapter(new ArrayAdapter<>(view.getContext(), R.layout.support_simple_spinner_dropdown_item, item));
     }
@@ -118,5 +119,11 @@ public class SettingFragment extends Fragment implements SettingContract.View {
         } else {
             view.findViewById(R.id.settingScheduleError).setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
     }
 }

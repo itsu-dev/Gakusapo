@@ -64,7 +64,7 @@ public class TimetableAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ViewHolder {
+    public static class ViewHolder {
         public TextView name;
         public TextView className;
     }

@@ -1,4 +1,4 @@
-package dev.itsu.gakusapo.ui.fragment;
+package dev.itsu.gakusapo.ui.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -14,31 +14,33 @@ import dev.itsu.gakusapo.presenter.AddTrainPresenter;
 import dev.itsu.gakusapo.presenter.contract.AddTrainDialogContract;
 import dev.itsu.gakusapo.presenter.contract.TrainDetailsContract;
 
+import java.lang.ref.WeakReference;
+
 public class AddTrainDialogFragment extends DialogFragment implements AddTrainDialogContract.View {
 
     private AddTrainDialogContract.Presenter presenter;
     private TrainDetailsContract.Presenter trainPresenter;
-    private Dialog dialog;
+    private WeakReference<Dialog> dialog;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        dialog = new Dialog(getActivity());
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_trainchooser);
-        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        dialog = new WeakReference<>(new Dialog(getActivity()));
+        dialog.get().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.get().setContentView(R.layout.dialog_trainchooser);
+        dialog.get().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
 
         presenter = new AddTrainPresenter(this, trainPresenter);
         presenter.reloadJson();
 
-        dialog.findViewById(R.id.addTrainButton).setOnClickListener(new View.OnClickListener() {
+        dialog.get().findViewById(R.id.addTrainButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onAddButtonClicked();
             }
         });
 
-        final ListView listView = dialog.findViewById(R.id.addTrainList);
+        final ListView listView = dialog.get().findViewById(R.id.addTrainList);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -46,7 +48,7 @@ public class AddTrainDialogFragment extends DialogFragment implements AddTrainDi
             }
         });
 
-        final EditText search = dialog.findViewById(R.id.addTrainTextField);
+        final EditText search = dialog.get().findViewById(R.id.addTrainTextField);
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void afterTextChanged(Editable s) {
@@ -62,22 +64,22 @@ public class AddTrainDialogFragment extends DialogFragment implements AddTrainDi
             }
         });
 
-        return dialog;
+        return dialog.get();
     }
 
     @Override
     public void setNotFound(boolean bool) {
         if (bool) {
-            dialog.findViewById(R.id.addTrainNotFoundError).setVisibility(View.VISIBLE);
+            dialog.get().findViewById(R.id.addTrainNotFoundError).setVisibility(View.VISIBLE);
             //dialog.findViewById(R.id.addTrainList).setVisibility(View.GONE);
-            Button button = dialog.findViewById(R.id.addTrainButton);
+            Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setText(R.string.add_train_button_add);
             button.setClickable(false);
 
         } else {
-            dialog.findViewById(R.id.addTrainNotFoundError).setVisibility(View.GONE);
+            dialog.get().findViewById(R.id.addTrainNotFoundError).setVisibility(View.GONE);
             //dialog.findViewById(R.id.addTrainList).setVisibility(View.VISIBLE);
-            Button button = dialog.findViewById(R.id.addTrainButton);
+            Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setText(R.string.add_train_button_add);
             button.setClickable(true);
         }
@@ -86,32 +88,32 @@ public class AddTrainDialogFragment extends DialogFragment implements AddTrainDi
     @Override
     public void setAlreadyExists(boolean bool) {
         if (bool) {
-            dialog.findViewById(R.id.addTrainExistsError).setVisibility(View.VISIBLE);
-            Button button = dialog.findViewById(R.id.addTrainButton);
+            dialog.get().findViewById(R.id.addTrainExistsError).setVisibility(View.VISIBLE);
+            Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setClickable(false);
 
         } else {
-            dialog.findViewById(R.id.addTrainExistsError).setVisibility(View.GONE);
-            Button button = dialog.findViewById(R.id.addTrainButton);
+            dialog.get().findViewById(R.id.addTrainExistsError).setVisibility(View.GONE);
+            Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setClickable(true);
         }
     }
 
     @Override
     public void setListAdapter(ArrayAdapter<String> adapter) {
-        ListView listView = dialog.findViewById(R.id.addTrainList);
+        ListView listView = dialog.get().findViewById(R.id.addTrainList);
         listView.setAdapter(adapter);
     }
 
     @Override
     public void setAddButtonEnabled(boolean bool) {
-        Button button = dialog.findViewById(R.id.addTrainButton);
+        Button button = dialog.get().findViewById(R.id.addTrainButton);
         button.setClickable(bool);
     }
 
     @Override
     public void setButtonText(String text) {
-        Button button = dialog.findViewById(R.id.addTrainButton);
+        Button button = dialog.get().findViewById(R.id.addTrainButton);
         button.setText(text);
     }
 

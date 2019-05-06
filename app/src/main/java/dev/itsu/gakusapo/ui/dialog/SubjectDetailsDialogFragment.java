@@ -1,4 +1,4 @@
-package dev.itsu.gakusapo.ui.fragment;
+package dev.itsu.gakusapo.ui.dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -9,9 +9,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import dev.itsu.gakusapo.R;
 
+import java.lang.ref.WeakReference;
+
 public class SubjectDetailsDialogFragment extends DialogFragment {
 
-    private Dialog dialog;
+    private WeakReference<Dialog> dialog;
 
     private String time;
     private String name;
@@ -21,15 +23,15 @@ public class SubjectDetailsDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        dialog = new Dialog(getActivity());
-        dialog.getWindow().requestFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.dialog_subject_details);
-        dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        dialog = new WeakReference<>(new Dialog(getActivity()));
+        dialog.get().getWindow().requestFeature(Window.FEATURE_NO_TITLE);
+        dialog.get().setContentView(R.layout.dialog_subject_details);
+        dialog.get().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
 
-        dialog.findViewById(R.id.dialogDetailCloseButton).setOnClickListener(new View.OnClickListener() {
+        dialog.get().findViewById(R.id.dialogDetailCloseButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialog.dismiss();
+                dialog.get().dismiss();
             }
         });
 
@@ -38,26 +40,26 @@ public class SubjectDetailsDialogFragment extends DialogFragment {
         setClassName(className);
         setDescription(description);
 
-        return dialog;
+        return dialog.get();
     }
 
     public void setTime(String time) {
-        TextView textView = dialog.findViewById(R.id.dialogDetailTime);
+        TextView textView = dialog.get().findViewById(R.id.dialogDetailTime);
         textView.setText(time);
     }
 
     public void setName(String name) {
-        TextView textView = dialog.findViewById(R.id.dialogDetailName);
+        TextView textView = dialog.get().findViewById(R.id.dialogDetailName);
         textView.setText(name);
     }
 
     public void setClassName(String name) {
-        TextView textView = dialog.findViewById(R.id.dialogDetailClassName);
+        TextView textView = dialog.get().findViewById(R.id.dialogDetailClassName);
         textView.setText(name);
     }
 
     public void setDescription(String description) {
-        TextView textView = dialog.findViewById(R.id.dialogDetailDescription);
+        TextView textView = dialog.get().findViewById(R.id.dialogDetailDescription);
         textView.setText(description);
     }
 
