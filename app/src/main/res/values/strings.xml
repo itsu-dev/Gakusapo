@@ -6,8 +6,7 @@
     <string name="title_activity_main2">Main2Activity</string>
 
     <string name="navigation_timetable">時間割表</string>
-    <string name="navigation_schedule">予定</string>
-    <string name="navigation_today_and_tomorrow">今日と明日</string>
+    <string name="navigation_today_and_tomorrow">予定</string>
     <string name="navigation_info">情報</string>
     <string name="navigation_settings">設定</string>
 
@@ -48,6 +47,9 @@
     <string name="today_and_tomorrow_class">補習</string>
     <string name="today_and_tomorrow_event">行事</string>
     <string name="today_and_tomorrow_reminder">リマインダー</string>
+
+    <string name="add_train_button_add">追加</string>
+    <string name="add_train_button_add_train">%sを追加</string>
 
     <string name="notification_title">Gakusapo - 明日の時間割</string>
     <string name="notification_message">明日の準備もしっかりと！</string>

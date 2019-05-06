@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content" android:orientation="vertical">
+
+    <TextView
+            android:text="路線を選択"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/textView33" android:textColor="#fff"
+            android:background="@color/colorPrimary" android:padding="16dp"/>
+    <ListView
+            android:layout_width="match_parent"
+            android:layout_height="360dp" android:id="@+id/addTrainList">
+    </ListView>
+    <TextView
+            android:text="路線が見つかりません"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/addTrainNotFoundError" android:padding="16dp"
+            android:visibility="gone"/>
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/addTrainTextField" android:padding="16dp" android:hint="路線名/鉄道会社名で検索"/>
+    <TextView
+            android:text="その路線は既に追加されています。"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/addTrainExistsError" android:paddingLeft="16dp"
+            android:paddingRight="16dp" android:textColor="@color/default_red" android:visibility="gone"/>
+    <Button
+            android:text="追加"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/addTrainButton"
+            android:layout_margin="16dp" style="@style/Widget.AppCompat.Button.Colored"/>
+</LinearLayout>

@@ -14,5 +14,7 @@ public interface TrainDetailsContract {
     interface Presenter {
         void reloadAddedTrains();
         void removeTrain(String trainName);
+        void onAddTrainButtonClicked();
+        void onAddedTrain(String companyName, String name);
     }
 }

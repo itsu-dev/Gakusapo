@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import gakusapo.android.itsu.R;
 import gakusapo.android.itsu.presenter.TrainDetailsPresenter;
 import gakusapo.android.itsu.presenter.contract.TrainDetailsContract;
@@ -23,6 +24,13 @@ public class TrainDetailsActivity extends AppCompatActivity implements TrainDeta
 
         this.presenter = new TrainDetailsPresenter(this);
         presenter.reloadAddedTrains();
+
+        findViewById(R.id.trainDetailsTrainAddButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onAddTrainButtonClicked();
+            }
+        });
     }
 
     @Override

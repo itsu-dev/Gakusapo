@@ -222,6 +222,11 @@ public class DatabaseDAO {
         return result;
     }
 
+    public static boolean existsTrain(String name) {
+        if (getTrains().containsKey(name)) return true;
+        else return false;
+    }
+
     public static void removeTrain(String name) {
         if (!getTrains().keySet().contains(name)) return;
         writableDatabase.delete(DatabaseHelper.TABLE_TRAIN, "name = \'" + name + "\'", null);

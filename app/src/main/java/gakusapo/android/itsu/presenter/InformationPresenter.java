@@ -153,7 +153,7 @@ public class InformationPresenter implements InformationContract.Presenter {
             int status = R.string.information_train_available;
             String trainName = train.getName();
             for (Map<String, Object> entry : data) {
-                if (String.valueOf(entry.get("name")).contains(trainName)) {
+                if (String.valueOf(entry.get("name")).contains(trainName.replaceAll("ＪＲ", "JR"))) {
                     status = R.string.information_train_unavailable;
                 }
                 view.addTrainInfo(train.getCompany() + " " + train.getName(), status);
