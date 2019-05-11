@@ -23,8 +23,8 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     private TimetableContract.View view;
 
-    private static String currentTimetableName;
-    private static Timetable currentTimetable;
+    private  String currentTimetableName;
+    private  Timetable currentTimetable;
 
     private TimetableEditService editService;
     private boolean editMode;
@@ -72,18 +72,18 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     @Override
     public void reloadTimetable(Timetable timetable) {
-        this.currentTimetable = timetable;
-        this.currentTimetableName = timetable.getName();
+        currentTimetable = timetable;
+        currentTimetableName = timetable.getName();
 
-        List<Subject> subjects = TimetableUtils.sortByPosition(timetable.getSubjects());
+        List<Subject> subjects = TimetableUtils.sortByPosition(currentTimetable.getSubjects());
         view.setSubjects(new TimetableAdapter(view.getActivity(), subjects));
-        view.setTimetableTitle(timetable.getName());
-        view.setTimetableType(timetable.getDayType(), timetable.getTimeType());
+        view.setTimetableTitle(currentTimetable.getName());
+        view.setTimetableType(currentTimetable.getDayType(), currentTimetable.getTimeType());
     }
 
     @Override
     public void setCurrentTimetableName(String name) {
-        this.currentTimetableName = name;
+        currentTimetableName = name;
     }
 
     @Override

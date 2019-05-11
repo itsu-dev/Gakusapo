@@ -3,6 +3,7 @@ package dev.itsu.gakusapo.presenter.contract;
 import android.app.Activity;
 import android.widget.ArrayAdapter;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 
 public interface AddTrainDialogContract {
@@ -22,7 +23,7 @@ public interface AddTrainDialogContract {
         void onAddButtonClicked();
         void onListClicked(String name);
         void onKeyTyped(String text);
-        void onJsonReaded(LinkedList<String> data);
+        void onJsonReaded(LinkedHashMap<String, String> data);
     }
 
 }

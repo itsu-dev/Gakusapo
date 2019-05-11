@@ -17,7 +17,7 @@ public interface InformationContract {
         void setIcon(Bitmap icon);
         void setImage(Bitmap image);
         void setWeatherName(String name);
-        void addTrainInfo(String trainName, int trainStatus);
+        void addTrainInfo(String trainName, String trainStatus);
         void removeAllTrainInfo();
         void setRefreshing(boolean bool);
         void showRefreshingToast();
@@ -34,7 +34,7 @@ public interface InformationContract {
         void onGPSPermissionGranted();
         void onGPSPermissionNotGranted();
         void onLocationChanged(Location location);
-        void onTrainInfoGot(String json);
+        void onTrainInfoGot(Map<String, String> data);
         void onTrainInfoSettingButtonClicked();
         void onRefresh();
         void onRefreshed();

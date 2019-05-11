@@ -108,7 +108,7 @@ public class InformationFragment extends Fragment implements InformationContract
     }
 
     @Override
-    public void addTrainInfo(String trainName, int statusId) {
+    public void addTrainInfo(String trainName, String statusText) {
         LinearLayout layout = view.findViewById(R.id.trainInfoLayout);
         View view;
 
@@ -133,9 +133,9 @@ public class InformationFragment extends Fragment implements InformationContract
 
         TextView status = new TextView(getActivity());
         status.setPadding(padding16, 0, padding16, padding8);
-        status.setText(statusId);
+        status.setText(statusText);
 
-        if (statusId == R.string.information_train_unavailable) status.setTextColor(getActivity().getColor(R.color.default_red));
+        if (!statusText.equals("事故・遅延情報はありません。")) status.setTextColor(getActivity().getColor(R.color.default_red));
         else status.setTextColor(getActivity().getColor(R.color.black));
 
         layout.addView(name);

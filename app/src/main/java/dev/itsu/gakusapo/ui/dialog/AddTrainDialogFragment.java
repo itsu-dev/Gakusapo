@@ -71,14 +71,14 @@ public class AddTrainDialogFragment extends DialogFragment implements AddTrainDi
     public void setNotFound(boolean bool) {
         if (bool) {
             dialog.get().findViewById(R.id.addTrainNotFoundError).setVisibility(View.VISIBLE);
-            //dialog.findViewById(R.id.addTrainList).setVisibility(View.GONE);
+            //dialog.get().findViewById(R.id.addTrainList).setVisibility(View.VISIBLE);
             Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setText(R.string.add_train_button_add);
             button.setClickable(false);
 
         } else {
             dialog.get().findViewById(R.id.addTrainNotFoundError).setVisibility(View.GONE);
-            //dialog.findViewById(R.id.addTrainList).setVisibility(View.VISIBLE);
+            //dialog.get().findViewById(R.id.addTrainList).setVisibility(View.INVISIBLE);
             Button button = dialog.get().findViewById(R.id.addTrainButton);
             button.setText(R.string.add_train_button_add);
             button.setClickable(true);

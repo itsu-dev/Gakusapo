@@ -8,7 +8,7 @@ import dev.itsu.gakusapo.presenter.contract.AddTrainDialogContract;
 
 import java.io.*;
 import java.lang.ref.WeakReference;
-import java.util.LinkedList;
+import java.util.LinkedHashMap;
 
 public class ReadTrainJsonTask extends AsyncTask<Void, Void, String> {
 
@@ -36,6 +36,6 @@ public class ReadTrainJsonTask extends AsyncTask<Void, Void, String> {
 
     @Override
     protected void onPostExecute(String json) {
-        if (json != null) presenter.get().onJsonReaded((LinkedList<String>) new Gson().fromJson(json, new TypeToken<LinkedList>(){}.getType()));
+        if (json != null) presenter.get().onJsonReaded((LinkedHashMap<String, String>) new Gson().fromJson(json, new TypeToken<LinkedHashMap<String, String>>(){}.getType()));
     }
 }

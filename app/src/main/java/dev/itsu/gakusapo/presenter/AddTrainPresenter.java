@@ -7,6 +7,7 @@ import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.contract.AddTrainDialogContract;
 import dev.itsu.gakusapo.presenter.contract.TrainDetailsContract;
 
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class AddTrainPresenter implements AddTrainDialogContract.Presenter {
     private AddTrainDialogContract.View view;
     private TrainDetailsContract.Presenter presenter;
 
-    private LinkedList<String> trains;
+    private LinkedHashMap<String, String> trains;
     private String selectedTrain;
 
     public AddTrainPresenter(AddTrainDialogContract.View view, TrainDetailsContract.Presenter presenter) {
@@ -32,8 +33,7 @@ public class AddTrainPresenter implements AddTrainDialogContract.Presenter {
     @Override
     public void onAddButtonClicked() {
         if (selectedTrain != null) {
-            String[] data = selectedTrain.split(" ");
-            presenter.onAddedTrain(data[0], data[1]);
+            presenter.onAddedTrain(selectedTrain, trains.get(selectedTrain));
             view.dismiss();
         }
     }
@@ -41,20 +41,19 @@ public class AddTrainPresenter implements AddTrainDialogContract.Presenter {
     @Override
     public void onListClicked(String name) {
         selectedTrain = name;
-        String trainName = name.split(" ")[1];
-        if (DatabaseDAO.existsTrain(trainName)) {
+        if (DatabaseDAO.existsTrain(name)) {
             view.setAlreadyExists(true);
-            view.setButtonText(view.getActivity().getResources().getString(R.string.add_train_button_add_train, trainName));
+            view.setButtonText(view.getActivity().getResources().getString(R.string.add_train_button_add_train, name));
         } else {
             view.setAlreadyExists(false);
-            view.setButtonText(view.getActivity().getResources().getString(R.string.add_train_button_add_train, trainName));
+            view.setButtonText(view.getActivity().getResources().getString(R.string.add_train_button_add_train, name));
         }
     }
 
     @Override
     public void onKeyTyped(String text) {
         List<String> newData = new LinkedList<>();
-        for (String train : trains) {
+        for (String train : trains.keySet()) {
             if (train.trim().contains(text)) newData.add(train);
         }
         if (!newData.isEmpty()) {
@@ -66,9 +65,9 @@ public class AddTrainPresenter implements AddTrainDialogContract.Presenter {
     }
 
     @Override
-    public void onJsonReaded(LinkedList<String> data) {
+    public void onJsonReaded(LinkedHashMap<String, String> data) {
         this.trains = data;
-        view.setListAdapter(new ArrayAdapter<>(view.getActivity(), android.R.layout.simple_list_item_1, data));
+        view.setListAdapter(new ArrayAdapter<>(view.getActivity(), android.R.layout.simple_list_item_1, data.keySet().toArray(new String[0])));
     }
 
 }

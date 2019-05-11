@@ -8,7 +8,7 @@ import dev.itsu.gakusapo.MainApplication;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "db_data.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     public static final String TABLE_TIMETABLE = "timetable";
     public static final String TABLE_DATEEVENT = "dateevent";
@@ -37,8 +37,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String SQL_TRAIN =
             "CREATE TABLE " + TABLE_TRAIN + " (" +
                     "_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    "company TEXT NOT NULL, " +
-                    "name TEXT NOT NULL)";
+                    "name TEXT NOT NULL, " +
+                    "url TEXT NOT NULL)";
 
     private static final String SQL_DROP_TABLE = "DROP TABLE IF EXISTS ";
 

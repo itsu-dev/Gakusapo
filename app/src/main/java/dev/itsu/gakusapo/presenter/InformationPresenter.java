@@ -118,23 +118,15 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void reloadTrainInfo() {
-        //TODO for test
-        /*
-        DatabaseDAO.addTrain("JR東日本", "山手線");
-        DatabaseDAO.addTrain("JR西日本", "芸備線");*/
-
         view.removeAllTrainInfo();
 
         GetTrainInfoTask task = new GetTrainInfoTask(this);
-        task.execute();
+        task.execute(DatabaseDAO.getTrains().values().toArray(new Train[0]));
     }
 
     @Override
-    public void onTrainInfoGot(String json) {
+    public void onTrainInfoGot(Map<String, String> data) {
         if (destroyed) return;
-
-        List<Map<String, Object>> data = TrainInfoUtils.getData(json);
-        Collection<Train> registeredTrain = DatabaseDAO.getTrains().values();
 
         if (data == null) {
             final MainActivity activity = (MainActivity) view.getActivity();
@@ -151,15 +143,8 @@ public class InformationPresenter implements InformationContract.Presenter {
             return;
         }
 
-        for (Train train : registeredTrain) {
-            int status = R.string.information_train_available;
-            String trainName = train.getName();
-            for (Map<String, Object> entry : data) {
-                if (String.valueOf(entry.get("name")).contains(trainName.replaceAll("ＪＲ", "JR"))) {
-                    status = R.string.information_train_unavailable;
-                }
-                view.addTrainInfo(train.getCompany() + " " + train.getName(), status);
-            }
+        for (Map.Entry<String, String> entry : data.entrySet()) {
+            view.addTrainInfo(entry.getKey(), entry.getValue());
         }
     }
 

@@ -190,12 +190,12 @@ public class DatabaseDAO {
         return true;
     }
 
-    public static void addTrain(String company, String name) {
+    public static void addTrain(String name, String url) {
         if (getTrains().containsKey(name)) return;
 
         ContentValues values = new ContentValues();
-        values.put("company", company);
         values.put("name", name);
+        values.put("url", url);
 
         writableDatabase.insert(DatabaseHelper.TABLE_TRAIN, null, values);
     }
@@ -205,7 +205,7 @@ public class DatabaseDAO {
 
         Cursor cursor = writableDatabase.query(
                 DatabaseHelper.TABLE_TRAIN,
-                new String[]{"company", "name"},
+                new String[]{"name", "url"},
                 null,
                 null,
                 null,
@@ -215,7 +215,7 @@ public class DatabaseDAO {
         cursor.moveToFirst();
 
         for (int i = 0; i < cursor.getCount(); i++) {
-            result.put(cursor.getString(1), new Train(cursor.getString(0), cursor.getString(1)));
+            result.put(cursor.getString(0), new Train(cursor.getString(0), cursor.getString(1)));
             cursor.moveToNext();
         }
 

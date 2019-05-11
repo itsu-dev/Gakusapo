@@ -1,5 +1,6 @@
 package dev.itsu.gakusapo.presenter;
 
+import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.contract.TrainDetailsContract;
 import dev.itsu.gakusapo.ui.activity.TrainDetailsActivity;
@@ -34,6 +35,7 @@ public class TrainDetailsPresenter implements TrainDetailsContract.Presenter {
 
     @Override
     public void onAddedTrain(String companyName, String name) {
+        PreferencesService.setTrainReloadTime(0);
         DatabaseDAO.addTrain(companyName, name);
         reloadAddedTrains();
     }

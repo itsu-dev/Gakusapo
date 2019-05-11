@@ -2,24 +2,24 @@ package dev.itsu.gakusapo.entity;
 
 public class Train {
 
-    private String company;
+    private String url;
     private String name;
 
     public Train() {
         this(null, null);
     }
 
-    public Train(String company, String name) {
-        this.company = company;
+    public Train(String name, String url) {
+        this.url = url;
         this.name = name;
     }
 
-    public String getCompany() {
-        return company;
+    public String getURL() {
+        return url;
     }
 
-    public void setCompany(String company) {
-        this.company = company;
+    public void setURL(String url) {
+        this.url = url;
     }
 
     public String getName() {

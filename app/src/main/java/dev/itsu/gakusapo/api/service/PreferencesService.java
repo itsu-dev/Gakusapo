@@ -68,4 +68,24 @@ public class PreferencesService {
         editor.apply();
     }
 
+    public static long getTrainReloadTime() {
+        return preferences.getLong("TrainReloadTime", 0);//unix
+    }
+
+    public static void setTrainReloadTime(long time) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putLong("TrainReloadTime", time);
+        editor.apply();
+    }
+
+    public static String getTrainCache() {
+        return preferences.getString("TrainCache", null);
+    }
+
+    public static void setTrainCache(String json) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putString("TrainCache", json);
+        editor.apply();
+    }
+
 }
