@@ -16,6 +16,7 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.api.notification.TimetableAlarmNotifier;
+import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.InformationPresenter;
 import dev.itsu.gakusapo.presenter.contract.MainActivityContract;
@@ -43,19 +44,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
         Toolbar toolbar = findViewById(R.id.mainToolbar);
         setSupportActionBar(toolbar);
-
-        //TODO
-        /*
-        Calendar triggerTime = Calendar.getInstance();
-        triggerTime.set(Calendar.HOUR_OF_DAY, 16);
-        triggerTime.set(Calendar.MINUTE, 5);
-        triggerTime.set(Calendar.SECOND, 0);
-
-        Intent intent = new Intent(MainActivity.this, TimetableAlarmNotifier.class);
-        PendingIntent sender = PendingIntent.getBroadcast(MainActivity.this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-        AlarmManager manager = (AlarmManager) getSystemService(ALARM_SERVICE);
-        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, triggerTime.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);*/
     }
 
     @Override

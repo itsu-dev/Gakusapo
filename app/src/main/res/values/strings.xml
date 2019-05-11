@@ -47,6 +47,7 @@
     <string name="today_and_tomorrow_class">補習</string>
     <string name="today_and_tomorrow_event">行事</string>
     <string name="today_and_tomorrow_reminder">リマインダー</string>
+    <string name="today_and_tomorrow_error">時間割を作成してください。</string>
 
     <string name="add_train_button_add">追加</string>
     <string name="add_train_button_add_train">%sを追加</string>
@@ -60,4 +61,5 @@
     <string name="no">いいえ</string>
     <string name="open">開く</string>
     <string name="close">閉じる</string>
+    <string name="create">作成する</string>
 </resources>

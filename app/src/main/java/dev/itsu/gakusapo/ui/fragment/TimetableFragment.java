@@ -34,6 +34,7 @@ public class TimetableFragment extends Fragment implements TimetableContract.Vie
         this.view = view;
 
         this.presenter = new TimetablePresenter(this);
+        presenter.initialize();
         presenter.reloadTimetable();
 
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -113,6 +114,15 @@ public class TimetableFragment extends Fragment implements TimetableContract.Vie
             this.view.findViewById(R.id.timetableEditSubjectButton).setVisibility(View.GONE);
             this.view.findViewById(R.id.timetableAddButton).setVisibility(View.VISIBLE);
             this.view.findViewById(R.id.timetableEditButton).setBackground(getActivity().getDrawable(R.drawable.dr_editmode_ripple));
+        }
+    }
+
+    @Override
+    public void setTimetableButtonVisible(boolean bool) {
+        if (bool) {
+            this.view.findViewById(R.id.timetableEditButton).setVisibility(View.VISIBLE);
+        } else {
+            this.view.findViewById(R.id.timetableEditButton).setVisibility(View.GONE);
         }
     }
 

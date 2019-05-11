@@ -1,11 +1,13 @@
 package dev.itsu.gakusapo.api.notification;
 
+import android.app.AlarmManager;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import dev.itsu.gakusapo.MainApplication;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
@@ -14,11 +16,13 @@ import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
+import java.util.Calendar;
 import java.util.List;
+import java.util.Random;
+
+import static android.content.Context.ALARM_SERVICE;
 
 public class TimetableAlarmNotifier extends BroadcastReceiver {
-
-    public static final int NOTIFICATION_ID = 183639;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -48,7 +52,24 @@ public class TimetableAlarmNotifier extends BroadcastReceiver {
                 .build();
 
         NotificationManager manager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        if (manager != null) manager.notify(NOTIFICATION_ID, notification);
+        if (manager != null) manager.notify(PreferencesService.getNotificationId(), notification);
+    }
+
+    public static void set(Calendar trigger) {
+        NotificationManager nm = (NotificationManager) MainApplication.getContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.cancel(PreferencesService.getNotificationId());
+
+        PreferencesService.setNotificationId(createId());
+
+        Intent intent = new Intent(MainApplication.getContext(), TimetableAlarmNotifier.class);
+        PendingIntent sender = PendingIntent.getBroadcast(MainApplication.getContext(), 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        AlarmManager manager = (AlarmManager) MainApplication.getContext().getSystemService(Context.ALARM_SERVICE);
+        manager.setInexactRepeating(AlarmManager.RTC_WAKEUP, trigger.getTimeInMillis(), AlarmManager.INTERVAL_DAY, sender);
+    }
+
+    private static int createId() {
+        return new Random().nextInt(99999999) + 1;
     }
 
 }

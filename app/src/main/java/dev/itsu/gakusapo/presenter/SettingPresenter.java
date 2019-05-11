@@ -2,12 +2,14 @@ package dev.itsu.gakusapo.presenter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import dev.itsu.gakusapo.api.notification.TimetableAlarmNotifier;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.presenter.contract.SettingContract;
 import dev.itsu.gakusapo.ui.activity.WebActivity;
 
+import java.util.Calendar;
 import java.util.Map;
 
 public class SettingPresenter implements SettingContract.Presenter {
@@ -52,6 +54,13 @@ public class SettingPresenter implements SettingContract.Presenter {
             } else {
                 PreferencesService.setNotificationTime(notificationTime);
                 view.showNotificationError(false);
+
+                Calendar triggerTime = Calendar.getInstance();
+                triggerTime.set(Calendar.HOUR_OF_DAY, notificationTime);
+                triggerTime.set(Calendar.MINUTE, 5);
+                triggerTime.set(Calendar.SECOND, 0);
+
+                TimetableAlarmNotifier.set(triggerTime);
             }
         } catch (NumberFormatException e) {
             view.showNotificationError(true);

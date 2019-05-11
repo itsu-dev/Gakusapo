@@ -88,4 +88,14 @@ public class PreferencesService {
         editor.apply();
     }
 
+    public static int getNotificationId() {
+        return preferences.getInt("NotificationId", 0);
+    }
+
+    public static void setNotificationId(int id) {
+        SharedPreferences.Editor editor = preferences.edit();
+        editor.putInt("NotificationId", id);
+        editor.apply();
+    }
+
 }

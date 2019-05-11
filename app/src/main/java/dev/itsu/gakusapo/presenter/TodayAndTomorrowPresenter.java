@@ -7,6 +7,7 @@ import dev.itsu.gakusapo.entity.DateEvent;
 import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.presenter.contract.onDestroy;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
+import dev.itsu.gakusapo.ui.dialog.AlertDialogFragment;
 import dev.itsu.gakusapo.ui.dialog.MemoDialogFragment;
 import dev.itsu.gakusapo.ui.dialog.RegisterDateEventListDialogFragment;
 import dev.itsu.gakusapo.utils.TimetableUtils;
@@ -203,6 +204,14 @@ public class TodayAndTomorrowPresenter implements onDestroy.Presenter {
 
     private void processTimetable(String date) {
         Timetable timetable = DatabaseDAO.getTimetable(PreferencesService.getCurrentTimetable());
+
+        if (timetable == null) {
+            AlertDialogFragment fragment = AlertDialogFragment.newInstance(R.string.error, R.string.today_and_tomorrow_error, R.string.close, 0, true);
+            MainActivity activity = (MainActivity) view.getActivity();
+            fragment.show(activity.getSupportFragmentManager(), "dialog");
+            view.setTimetables(null);
+            return;
+        }
 
         int day = TimetableUtils.dayToWeek(date);
 

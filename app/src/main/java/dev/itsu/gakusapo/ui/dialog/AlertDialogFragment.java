@@ -80,13 +80,21 @@ public class AlertDialogFragment extends DialogFragment implements AlertDialogCo
     @Override
     public void setNegativeButton(int id) {
         Button button = dialog.get().findViewById(R.id.dialogAlertNegative);
-        button.setText(id);
+        if (id == 0) {
+            button.setVisibility(View.GONE);
+        } else {
+            button.setText(id);
+        }
     }
 
     @Override
     public void setPositiveButton(int id) {
         Button button = dialog.get().findViewById(R.id.dialogAlertPositive);
-        button.setText(id);
+        if (id == 0) {
+            button.setVisibility(View.GONE);
+        } else {
+            button.setText(id);
+        }
     }
 
     public static AlertDialogFragment newInstance(int titleId, int contentId, int negativeId, int positiveId, boolean cancelable) {

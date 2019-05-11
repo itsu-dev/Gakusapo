@@ -35,6 +35,13 @@ public class TimetablePresenter implements TimetableContract.Presenter {
     }
 
     @Override
+    public void initialize() {
+        if (DatabaseDAO.getTimetables().size() == 0) {
+            view.setTimetableButtonVisible(false);
+        }
+    }
+
+    @Override
     public void reloadTimetable() {
         Timetable timetable;
         currentTimetableName = PreferencesService.getCurrentTimetable();

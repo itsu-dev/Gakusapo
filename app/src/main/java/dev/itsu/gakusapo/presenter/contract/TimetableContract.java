@@ -16,11 +16,13 @@ public interface TimetableContract {
         void setTimetableType(int dayType, int timeType);
         void setSubjectBackground(int position, int colorId);
         void setSelectButtonClicked(boolean bool);
+        void setTimetableButtonVisible(boolean bool);
         void showEditmodeToast(boolean bool);
         void showSelectToast(boolean bool);
     }
 
     interface Presenter {
+        void initialize();
         void reloadTimetable();
         void reloadTimetable(Timetable timetable);
         void setCurrentTimetableName(String name);
