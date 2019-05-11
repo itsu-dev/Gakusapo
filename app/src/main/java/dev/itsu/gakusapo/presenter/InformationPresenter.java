@@ -82,8 +82,10 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void onLocationChanged(Location location) {
-        GetWeatherForecastTask task = new GetWeatherForecastTask(this);
-        task.execute(location.getLatitude(), location.getLongitude());
+        if (location != null) {
+            GetWeatherForecastTask task = new GetWeatherForecastTask(this);
+            task.execute(location.getLatitude(), location.getLongitude());
+        }
     }
 
     @Override
