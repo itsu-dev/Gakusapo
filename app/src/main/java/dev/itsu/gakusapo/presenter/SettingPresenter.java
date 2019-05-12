@@ -85,18 +85,23 @@ public class SettingPresenter implements SettingContract.Presenter {
     }
 
     @Override
-    public void onOSLicenseButtonClicked() {
-        openWeb("file:///android_asset/opensourcelicense.html");
+    public void onHowToUseButtonClicked()  {
+        openWeb("https://gakusapo.itsu.dev/how_to_use.html");
     }
 
     @Override
-    public void onLicenseButtonClicked() {
-        openWeb("file:///android_asset/license.html");
+    public void onOSLicenseButtonClicked() {
+        openWeb("https://gakusapo.itsu.dev/license.html");
+    }
+
+    @Override
+    public void onPrivacyPolicyButtonClicked() {
+        openWeb("https://gakusapo.itsu.dev/privacy_policy.html");
     }
 
     @Override
     public void onFormulaButtonClicked() {
-        openWeb("file:///android_asset/formula.html");
+        openWeb("https://gakusapo.itsu.dev/formula.html");
     }
 
     @Override

@@ -51,6 +51,13 @@ public class SettingFragment extends Fragment implements SettingContract.View {
             }
         });
 
+        this.view.findViewById(R.id.settingHowToUseButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onHowToUseButtonClicked();
+            }
+        });
+
         this.view.findViewById(R.id.settingOSLicenseButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,10 +65,10 @@ public class SettingFragment extends Fragment implements SettingContract.View {
             }
         });
 
-        this.view.findViewById(R.id.settingLicenseButton).setOnClickListener(new View.OnClickListener() {
+        this.view.findViewById(R.id.settingPrivacyPolicyButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.onLicenseButtonClicked();
+                presenter.onPrivacyPolicyButtonClicked();
             }
         });
 
