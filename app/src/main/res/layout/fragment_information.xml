@@ -201,7 +201,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                ads:adUnitId="ca-app-pub-5096422984251090/9218952381">
             <!-- 本番用 ca-app-pub-5096422984251090/9218952381 -->
         </com.google.android.gms.ads.AdView>
         <android.support.v4.widget.Space android:layout_width="wrap_content" android:layout_height="60dp"/>

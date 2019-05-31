@@ -16,7 +16,7 @@
                     android:layout_height="wrap_content" android:id="@+id/textView25"
                     android:textSize="24sp" android:paddingTop="16dp" android:paddingBottom="16dp"/>
             <TextView
-                    android:text="表示する時間割"
+                    android:text="@string/setting_subject"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView26"/>
             <Spinner
@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="16dp"/>
             <TextView
-                    android:text="時間割を通知する時間（24時間表記）"
+                    android:text="@string/setting_time1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView32"/>
             <TextView
@@ -54,7 +54,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="16dp"/>
             <TextView
-                    android:text="「明日の予定」に表示を更新する時間（24時間表記）"
+                    android:text="@string/setting_time2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView34"/>
             <TextView
@@ -124,7 +124,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 ads:adSize="BANNER"
-                ads:adUnitId="ca-app-pub-3940256099942544/6300978111">
+                ads:adUnitId="ca-app-pub-5096422984251090/1288491472">
             <!-- 本番用 ca-app-pub-5096422984251090/1288491472-->
         </com.google.android.gms.ads.AdView>
         <android.support.v4.widget.Space android:layout_width="wrap_content" android:layout_height="60dp"/>
