@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="TestAppForCPhone:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/TestAppForCPhone_jar</output-path>
-    <root id="archive" name="TestAppForCPhone.jar">
-      <element id="module-output" name="TestAppForCPhone" />
-    </root>
-  </artifact>
-</component>

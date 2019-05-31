@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="MapBuilder:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/MapBuilder_jar</output-path>
-    <root id="archive" name="MapBuilder.jar">
-      <element id="module-output" name="MapBuilder" />
-    </root>
-  </artifact>
-</component>
