@@ -65,7 +65,7 @@ public class SettingFragment extends Fragment implements SettingContract.View {
             }
         });
 
-        this.view.findViewById(R.id.settingLicenseButton).setOnClickListener(new View.OnClickListener() {
+        this.view.findViewById(R.id.settingPrivacyPolicyButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.onPrivacyPolicyButtonClicked();
