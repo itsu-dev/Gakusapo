@@ -209,7 +209,6 @@ public class TimetablePresenter implements TimetableContract.Presenter {
             editService = new TimetableEditService(currentTimetable);
             view.setEditmode(true);
             view.showEditmodeToast(true);
-            view.setTimetableButtonVisible(true);
 
         } else {
             resetSelectedSubjectColor();

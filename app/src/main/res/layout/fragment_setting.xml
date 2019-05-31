@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
+                xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                 android:layout_height="match_parent" android:background="@drawable/background">
 
     <ScrollView android:layout_width="match_parent"
@@ -88,21 +88,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="32dp"/>
             <Button
-                    android:text="アプリの使い方"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/settingHowToUseButton"
-                    style="@style/Widget.AppCompat.Button"/>
-            <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="32dp"/>
-            <Button
                     android:text="オープンソースライセンス"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/settingOSLicenseButton"/>
             <Button
-                    android:text="プライバシーポリシー"
+                    android:text="ライセンス"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" android:id="@+id/settingPrivacyPolicyButton"/>
+                    android:layout_height="wrap_content" android:id="@+id/settingLicenseButton"/>
             <Button
                     android:text="利用規約"
                     android:layout_width="match_parent"
