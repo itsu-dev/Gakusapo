@@ -19,8 +19,9 @@ public interface SettingContract {
         void reloadData();
         void save();
         void onSaveButtonClicked();
+        void onHowToUseButtonClicked();
         void onOSLicenseButtonClicked();
-        void onLicenseButtonClicked();
+        void onPrivacyPolicyButtonClicked();
         void onFormulaButtonClicked();
         void onTimetableSpinnerSelected(String name);
         void onDestroy();
