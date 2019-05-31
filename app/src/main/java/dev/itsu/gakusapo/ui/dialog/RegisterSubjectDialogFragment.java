@@ -113,6 +113,12 @@ public class RegisterSubjectDialogFragment extends DialogFragment implements Reg
                 presenter.onColorButtonClicked(R.color.subjectDarkGreen);
             }
         });
+        dialog.get().findViewById(R.id.button5).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onColorButtonClicked(R.color.subjectDarkOrange);
+            }
+        });
         dialog.get().findViewById(R.id.button6).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

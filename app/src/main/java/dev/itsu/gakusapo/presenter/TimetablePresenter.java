@@ -5,6 +5,7 @@ import android.widget.AdapterView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.api.service.TimetableEditService;
+import dev.itsu.gakusapo.api.task.LoadTimetableTask;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.Subject;
 import dev.itsu.gakusapo.entity.Timetable;
@@ -43,15 +44,6 @@ public class TimetablePresenter implements TimetableContract.Presenter {
 
     @Override
     public void reloadTimetable() {
-        Timetable timetable;
-        currentTimetableName = PreferencesService.getCurrentTimetable();
-
-        if (currentTimetableName != null) {
-            timetable = DatabaseDAO.getTimetable(currentTimetableName);
-        } else {
-            timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
-        }
-
         if (PreferencesService.isEditing() && PreferencesService.getEditdata() != null) {
             MainActivity activity = (MainActivity) view.getActivity();
             AlertDialogFragment fragment = AlertDialogFragment.newInstance(R.string.notice, R.string.timetable_edited_date_exists, R.string.close, R.string.yes, false);
@@ -74,7 +66,17 @@ public class TimetablePresenter implements TimetableContract.Presenter {
             fragment.show(activity.getSupportFragmentManager(), "dialog");
         }
 
-        reloadTimetable(timetable);
+        Timetable timetable = null;
+        currentTimetableName = PreferencesService.getCurrentTimetable();
+
+        if (currentTimetableName != null) {
+            //timetable = DatabaseDAO.getTimetable(currentTimetableName);
+            loadTimetableFromDatabase(currentTimetableName);
+        } else {
+            timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
+        }
+
+        if (timetable != null) reloadTimetable(timetable);
     }
 
     @Override
@@ -209,6 +211,7 @@ public class TimetablePresenter implements TimetableContract.Presenter {
             editService = new TimetableEditService(currentTimetable);
             view.setEditmode(true);
             view.showEditmodeToast(true);
+            view.setTimetableButtonVisible(true);
 
         } else {
             resetSelectedSubjectColor();
@@ -236,6 +239,15 @@ public class TimetablePresenter implements TimetableContract.Presenter {
                 this.view.setSubjectBackground(editService.getOneSubject().getPosition(), editService.getOneSubject().getBackground());
             }
         }
+    }
+
+    private void loadTimetableFromDatabase(String name) {
+        LoadTimetableTask task = new LoadTimetableTask(this);
+        task.execute(name);
+    }
+
+    public void onTimetableLoadedFromDatabase(Timetable timetable) {
+        reloadTimetable(timetable);
     }
 
     @Override

@@ -115,7 +115,7 @@ public class InformationPresenter implements InformationContract.Presenter {
 
     @Override
     public void onWeatherIconGot(Bitmap bitmap) {
-        view.setIcon(bitmap);
+        if (!destroyed) view.setIcon(bitmap);
     }
 
     @Override
