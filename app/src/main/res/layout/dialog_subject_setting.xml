@@ -15,14 +15,14 @@
         <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView18"
-                android:text="教科情報を入力してください。" android:paddingLeft="16dp" android:paddingRight="16dp"
+                android:text="@string/subjectsetting_description" android:paddingLeft="16dp" android:paddingRight="16dp"
                 android:paddingTop="16dp" android:paddingBottom="8dp"/>
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/dialogName" android:hint="教科名"
+                android:id="@+id/dialogName" android:hint="@string/subjectsetting_subject"
                 android:layout_marginBottom="8dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"/>
         <EditText
@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/dialogClassName" android:hint="教室名"
+                android:id="@+id/dialogClassName" android:hint="@string/subjectsetting_class"
                 android:layout_marginBottom="8dp" android:layout_marginLeft="16dp" android:layout_marginRight="16dp"
                 android:layout_marginTop="8dp"/>
         <EditText
@@ -39,13 +39,14 @@
                 android:inputType="textMultiLine"
                 android:ems="10"
                 android:id="@+id/dialogDescription" android:layout_marginBottom="8dp" android:layout_marginLeft="16dp"
-                android:layout_marginRight="16dp" android:layout_marginTop="8dp" android:hint="メモ"/>
+                android:layout_marginRight="16dp" android:layout_marginTop="8dp"
+                android:hint="@string/subjectsetting_memo"/>
         <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:padding="16dp" android:gravity="center_vertical">
             <TextView
-                    android:text="教科の色"
+                    android:text="@string/subjectsetting_color"
                     android:layout_height="wrap_content" android:id="@+id/textView19" android:layout_weight="1"
                     android:layout_width="0dp"/>
             <View
@@ -127,7 +128,7 @@
             </TableRow>
         </TableLayout>
         <Button
-                android:text="登録"
+                android:text="@string/register"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/dialogRegisterButton"
                 style="@style/Widget.AppCompat.Button.Colored" android:layout_margin="16dp"/>

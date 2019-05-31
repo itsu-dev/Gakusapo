@@ -12,13 +12,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
         <TextView
-                android:text="trainname"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/trainDetailTrainName"
                 android:textSize="18sp" android:layout_marginLeft="8dp" android:layout_marginRight="8dp"
                 android:layout_marginTop="8dp"/>
         <TextView
-                android:text="company"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/trainDetailCompany"
                 android:layout_marginLeft="8dp"

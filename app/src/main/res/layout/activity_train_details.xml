@@ -42,9 +42,9 @@
             </LinearLayout>
         </RelativeLayout>
         <TextView
-                android:text="登録済みの路線"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/textView" android:padding="16dp"/>
+                android:layout_height="wrap_content" android:id="@+id/textView" android:padding="16dp"
+                android:text="@string/information_train_registered"/>
         <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:id="@+id/trainDetailsAddedTrainList"/>

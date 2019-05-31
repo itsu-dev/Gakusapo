@@ -180,7 +180,13 @@ public class TimetablePresenter implements TimetableContract.Presenter {
     @Override
     public void onTimetableEditSubjectButtonClicked() {
         if ((selectMode && editService.getSelectedSubject().size() > 0) || editService.getOneSubject() != null) {
-            RegisterSubjectDialogFragment fragment = RegisterSubjectDialogFragment.newInstance(this);
+            RegisterSubjectDialogFragment fragment = RegisterSubjectDialogFragment.newInstance(
+                    this,
+                    editService.getSelectedSubject().size() == 0 ? editService.getOneSubject().getName() : null,
+                    editService.getSelectedSubject().size() == 0 ? editService.getOneSubject().getClassName() : null,
+                    editService.getSelectedSubject().size() == 0 ? editService.getOneSubject().getDescription() : null,
+                    editService.getSelectedSubject().size() == 0 ? editService.getOneSubject().getBackground() : -1
+            );
             MainActivity activity = (MainActivity) view.getActivity();
             fragment.show(activity.getSupportFragmentManager(), "dialog");
         }

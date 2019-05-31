@@ -22,14 +22,14 @@
             android:layout_height="wrap_content"
             android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/addTrainTextField" android:padding="16dp" android:hint="路線名/鉄道会社名で検索"/>
+            android:id="@+id/addTrainTextField" android:padding="16dp" android:hint="@string/trainchooser_description"/>
     <TextView
             android:text="その路線は既に追加されています。"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/addTrainExistsError" android:paddingLeft="16dp"
             android:paddingRight="16dp" android:textColor="@color/default_red" android:visibility="gone"/>
     <Button
-            android:text="追加"
+            android:text="@string/add"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" android:id="@+id/addTrainButton"
             android:layout_margin="16dp" style="@style/Widget.AppCompat.Button.Colored"/>

@@ -20,6 +20,11 @@ public class RegisterSubjectDialogFragment extends DialogFragment implements Reg
     private TimetableContract.Presenter timetablePresenter;
     private WeakReference<Dialog> dialog;
 
+    private String subjectName;
+    private String className;
+    private String memo;
+    private int colorId;
+
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         this.presenter = new RegisterSubjectDialogPresenter(this, timetablePresenter);
@@ -38,6 +43,14 @@ public class RegisterSubjectDialogFragment extends DialogFragment implements Reg
         });
 
         setColorButtonListener();
+
+        if (subjectName != null) setName(subjectName);
+        if (className != null) setClassName(className);
+        if (memo != null) setDescription(memo);
+        if (colorId != -1) {
+            setBackgroundColor(colorId);
+            presenter.onColorButtonClicked(colorId);
+        }
 
         return dialog.get();
     }
@@ -91,6 +104,16 @@ public class RegisterSubjectDialogFragment extends DialogFragment implements Reg
     public static RegisterSubjectDialogFragment newInstance(TimetableContract.Presenter presenter) {
         RegisterSubjectDialogFragment fragment = new RegisterSubjectDialogFragment();
         fragment.setTimetablePresenter(presenter);
+        return fragment;
+    }
+
+    public static RegisterSubjectDialogFragment newInstance(TimetableContract.Presenter presenter, String subjectName, String className, String memo, int colorId) {
+        RegisterSubjectDialogFragment fragment = new RegisterSubjectDialogFragment();
+        fragment.setTimetablePresenter(presenter);
+        fragment.subjectName = subjectName;
+        fragment.className = className;
+        fragment.memo = memo;
+        fragment.colorId = colorId;
         return fragment;
     }
 

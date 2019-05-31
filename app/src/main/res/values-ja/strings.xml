@@ -1,0 +1,97 @@
+<resources>
+    <string name="app_name">Gakusapo</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_timetable">時間割表</string>
+    <string name="navigation_today_and_tomorrow">予定</string>
+    <string name="navigation_info">情報</string>
+    <string name="navigation_settings">設定</string>
+
+    <string name="mainactivity_permission_error">権限を設定してください。</string>
+
+    <string name="information_forecast_title">現在地の天気</string>
+    <string name="information_forecast_temp">%s℃</string>
+    <string name="information_forecast_percent">%s"%"</string>
+    <string name="information_forecast_city">%s（%s 発表）</string>
+    <string name="information_forecast_humidity">湿度</string>
+    <string name="information_forecast_sunset">日の入り</string>
+    <string name="information_train_title">運行状況</string>
+    <string name="information_train_registered">登録済みの路線</string>
+    <string name="information_train_available">現在、通常通り運転しています。</string>
+    <string name="information_train_unavailable">遅延または運転見合わせの情報があります。</string>
+    <string name="information_now_refreshing">更新中です&#8230;</string>
+    <string name="information_refreshed">最新の情報に更新しました。</string>
+    <string name="information_refresh_error">エラーが発生しました。再度お試しください。</string>
+    <string name="information_network_error">ネットワーク接続がありません。</string>
+    <string name="information_network_error_button">設定を開く</string>
+
+    <string name="timetable_primary_title">新しい時間割</string>
+    <string name="timetable_editmode_toast">編集モード</string>
+    <string name="timetable_uneditmode_toast">編集モードを解除しました。</string>
+    <string name="timetable_select">[編集]選択モード</string>
+    <string name="timetable_unselect">[編集]選択モードを解除しました。</string>
+    <string name="timetable_already_exists">同じ名前の時間割が既に存在しています。</string>
+    <string name="timetable_name_notinputed">時間割名を入力してください。</string>
+    <string name="timetable_edited_date_exists">前回編集中だった時間割があります。編集を再開しますか？</string>
+
+    <string name="today_and_tomorrow_timetable">時間割</string>
+    <string name="today_and_tomorrow_today">今日の予定</string>
+    <string name="today_and_tomorrow_tomorrow">明日の予定</string>
+    <string name="today_and_tomorrow_schedule">予定</string>
+    <string name="today_and_tomorrow_nothing">なし</string>
+    <string name="today_and_tomorrow_memo">メモ</string>
+    <string name="today_and_tomorrow_homework">課題</string>
+    <string name="today_and_tomorrow_submission">提出物</string>
+    <string name="today_and_tomorrow_test">テスト</string>
+    <string name="today_and_tomorrow_class">補習</string>
+    <string name="today_and_tomorrow_event">行事</string>
+    <string name="today_and_tomorrow_reminder">リマインダー</string>
+    <string name="today_and_tomorrow_error">時間割を作成してください。</string>
+
+    <string name="setting_subject">表示する時間割</string>
+    <string name="setting_time1">時間割を通知する時間（24時間表記）</string>
+    <string name="setting_time2">「明日の予定」に表示を更新する時間（24時間表記）</string>
+    <string name="setting_timeunit">時</string>
+    <string name="setting_howtouse">アプリの使い方</string>
+    <string name="setting_license">オープンソースライブラリ</string>
+    <string name="setting_privacypolicy">プライバシーポリシー</string>
+    <string name="setting_formula">利用規約</string>
+
+    <string name="subjectdetails_subject">科目</string>
+    <string name="subjectdetails_class">場所</string>
+    <string name="subjectdetails_memo">メモ</string>
+
+    <string name="subjectsetting_description">教科情報を入力してください。</string>
+    <string name="subjectsetting_subject">教科名</string>
+    <string name="subjectsetting_class">場所</string>
+    <string name="subjectsetting_memo">メモ</string>
+    <string name="subjectsetting_color">教科の色</string>
+
+    <string name="timetabletype_title1">時間割名（設定後は変更できません）</string>
+    <string name="timetabletype_title2">時間割タイプ（設定後は変更できません）</string>
+    <string name="timetabletype_name">時間割名</string>
+
+    <string name="trainchooser_description">路線名/鉄道会社名で検索</string>
+
+    <string name="add_train_button_add">追加</string>
+    <string name="add_train_button_add_train">%sを追加</string>
+
+    <string name="notification_title">Gakusapo - 明日の時間割</string>
+    <string name="notification_message">明日の準備もしっかりと！</string>
+
+    <string name="notice">おしらせ</string>
+    <string name="error">エラー</string>
+    <string name="yes">はい</string>
+    <string name="no">いいえ</string>
+    <string name="open">開く</string>
+    <string name="close">閉じる</string>
+    <string name="register">登録</string>
+    <string name="create">作成</string>
+    <string name="add">追加</string>
+    <string name="save">保存</string>
+    <string name="delete">削除</string>
+    <string name="please_input">入力してください</string>
+</resources>

@@ -25,15 +25,16 @@
                     android:inputType="textPersonName"
                     android:ems="10"
                     android:id="@+id/dialogContentFIeld" android:layout_weight="3"
-                    android:layout_height="wrap_content" android:layout_width="0dp" android:hint="コンテンツを追加"/>
+                    android:layout_height="wrap_content" android:layout_width="0dp" android:hint="@string/please_input"
+            />
             <Button
-                    android:text="追加"
+                    android:text="@string/add"
                     android:layout_height="wrap_content" android:id="@+id/dialogAddContentButton"
                     android:layout_weight="1"
                     android:layout_width="0dp"/>
         </LinearLayout>
         <Button
-                android:text="OK"
+                android:text="@string/close"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/dialogListCloseButton"
                 style="@style/Widget.AppCompat.Button.Colored" android:layout_margin="16dp"/>

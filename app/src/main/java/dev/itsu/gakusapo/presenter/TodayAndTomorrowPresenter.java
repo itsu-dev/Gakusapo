@@ -224,7 +224,7 @@ public class TodayAndTomorrowPresenter implements onDestroy.Presenter {
     }
 
     private void saveDateEvent() {
-        if (DatabaseDAO.existsTimetable(currentDateEvent.getDate())) {
+        if (DatabaseDAO.existsDateEvent(currentDateEvent.getDate())) {
             DatabaseDAO.addDateEvent(currentDateEvent);
         } else {
             DatabaseDAO.updateDateEvent(currentDateEvent);

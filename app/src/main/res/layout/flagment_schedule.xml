@@ -13,12 +13,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" android:gravity="center_vertical">
             <TextView
-                    android:text="予定"
+                    android:text="@string/navigation_today_and_tomorrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" android:id="@+id/textView21" android:padding="16dp"
                     android:textSize="24sp" android:layout_weight="1"/>
             <TextView
-                    android:text="TextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/calendarMonth" android:textSize="18sp"
                     android:padding="16dp"/>

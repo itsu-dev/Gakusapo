@@ -13,7 +13,7 @@
                 android:layout_height="wrap_content" android:id="@+id/textView8" android:padding="16dp"
                 android:background="@color/colorPrimary" android:textColor="#fff"/>
         <TextView
-                android:text="時間割名（設定後は変更できません）"
+                android:text="@string/timetabletype_title1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView9" android:paddingTop="16dp"
                 android:paddingLeft="16dp" android:paddingRight="16dp" android:paddingBottom="8dp"/>
@@ -22,10 +22,11 @@
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/dialogTimetableNewName" android:hint="時間割名" android:layout_marginRight="16dp"
+                android:id="@+id/dialogTimetableNewName" android:hint="@string/timetabletype_name"
+                android:layout_marginRight="16dp"
                 android:layout_marginLeft="16dp" android:layout_marginBottom="16dp"/>
         <TextView
-                android:text="時間割タイプ（設定後は変更できません）"
+                android:text="@string/timetabletype_title2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/textView16" android:paddingRight="16dp"
                 android:paddingLeft="16dp" android:paddingTop="16dp" android:paddingBottom="8dp"/>
@@ -44,7 +45,7 @@
                 android:text="@string/timetable_already_exists" android:textColor="@color/default_red"
                 android:visibility="gone"/>
         <Button
-                android:text="作成"
+                android:text="@string/create"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/dialogTimetableCreateButton"
                 android:layout_margin="16dp"

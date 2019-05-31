@@ -24,7 +24,6 @@
                         android:textSize="24sp" android:layout_height="60dp" android:padding="16dp"
                         android:visibility="gone" android:layout_width="200dp"/>
                 <TextView
-                        android:text="TextView"
                         android:layout_width="wrap_content"
                         android:id="@+id/timetableTitle" android:textSize="24sp"
                         android:padding="16dp" android:layout_height="60dp" android:gravity="center_vertical"
