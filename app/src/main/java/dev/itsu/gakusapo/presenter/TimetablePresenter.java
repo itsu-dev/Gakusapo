@@ -5,7 +5,6 @@ import android.widget.AdapterView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.api.service.TimetableEditService;
-import dev.itsu.gakusapo.api.task.LoadTimetableTask;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.Subject;
 import dev.itsu.gakusapo.entity.Timetable;
@@ -70,8 +69,7 @@ public class TimetablePresenter implements TimetableContract.Presenter {
         currentTimetableName = PreferencesService.getCurrentTimetable();
 
         if (currentTimetableName != null) {
-            //timetable = DatabaseDAO.getTimetable(currentTimetableName);
-            loadTimetableFromDatabase(currentTimetableName);
+            timetable = DatabaseDAO.getTimetable(currentTimetableName);
         } else {
             timetable = TimetableUtils.createNewTimetable(view.getActivity().getResources().getString(R.string.timetable_primary_title));
         }
@@ -245,15 +243,6 @@ public class TimetablePresenter implements TimetableContract.Presenter {
                 this.view.setSubjectBackground(editService.getOneSubject().getPosition(), editService.getOneSubject().getBackground());
             }
         }
-    }
-
-    private void loadTimetableFromDatabase(String name) {
-        LoadTimetableTask task = new LoadTimetableTask(this);
-        task.execute(name);
-    }
-
-    public void onTimetableLoadedFromDatabase(Timetable timetable) {
-        reloadTimetable(timetable);
     }
 
     @Override
