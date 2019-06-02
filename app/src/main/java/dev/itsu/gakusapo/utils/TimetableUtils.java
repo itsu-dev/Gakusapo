@@ -62,9 +62,10 @@ public class TimetableUtils {
 
     public static int timeTypeStringToInt(String type) {
         String[] array = MainApplication.getContext().getResources().getStringArray(R.array.timetableTimeType);
-        if (type.equals(array[0])) return Timetable.TIME_TYPE_5;
-        else if (type.equals(array[1])) return Timetable.TIME_TYPE_6;
-        else if (type.equals(array[2])) return Timetable.TIME_TYPE_7;
+        if (type.equals(array[0])) return Timetable.TIME_TYPE_4;
+        else if (type.equals(array[1])) return Timetable.TIME_TYPE_5;
+        else if (type.equals(array[2])) return Timetable.TIME_TYPE_6;
+        else if (type.equals(array[3])) return Timetable.TIME_TYPE_7;
         else return Timetable.TIME_TYPE_8;
     }
 
@@ -82,7 +83,7 @@ public class TimetableUtils {
         Date date = fromString(dateStr);
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(date);
-        return calendar.get(Calendar.DAY_OF_WEEK) - 2;//TODO DAY_TO_WEEK -2
+        return calendar.get(Calendar.DAY_OF_WEEK) - 2;
     }
 
     public static String parseDate(Date date) {

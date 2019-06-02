@@ -139,6 +139,11 @@ public class TimetableFragment extends Fragment implements TimetableContract.Vie
         }
 
         switch (timeType) {
+            case Timetable.TIME_TYPE_4: {
+                this.view.findViewById(R.id.fiveLabel).setVisibility(View.GONE);
+                this.view.findViewById(R.id.fiveSpace).setVisibility(View.GONE);
+            }
+
             case Timetable.TIME_TYPE_5: {
                 this.view.findViewById(R.id.sixLabel).setVisibility(View.GONE);
                 this.view.findViewById(R.id.sixSpace).setVisibility(View.GONE);

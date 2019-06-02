@@ -13,10 +13,8 @@ import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.LinkedList;
 import java.util.Locale;
 
 public class TimetableWidget extends AppWidgetProvider {
