@@ -5,6 +5,7 @@
     <color name="colorAccent">#CDDC39</color>
 
     <color name="information_black_opaque">#6f000000</color>
+    <color name="black_opaque_2">#8f000000</color>
     <color name="default_gray">#e0e0e0</color>
     <color name="default_gray_dark">#9E9E9E</color>
 

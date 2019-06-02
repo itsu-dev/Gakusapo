@@ -7,12 +7,11 @@ public class Timetable {
     public static final int DAY_TYPE_MONDAY_TO_FRIDAY = 5;
     public static final int DAY_TYPE_MONDAY_TO_SATURDAY =6;
 
+    public static final int TIME_TYPE_4 = 4;
     public static final int TIME_TYPE_5 = 5;
     public static final int TIME_TYPE_6 = 6;
     public static final int TIME_TYPE_7 = 7;
     public static final int TIME_TYPE_8 = 8;
-
-    public static final String DEFAULT_TIMETABLE_NAME = "ba2b084d-2592-4c06-91c8-3bf10c68caa7";
 
     private String name;
     private int dayType;

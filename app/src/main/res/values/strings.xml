@@ -35,7 +35,9 @@
     <string name="timetable_unselect">[Edit]Disabled select mode</string>
     <string name="timetable_already_exists">Same name one is already exists.</string>
     <string name="timetable_name_notinputed">Input timetable name.</string>
-    <string name="timetable_edited_date_exists">There is a timetable which was editing when you used this app last time. Resume editing?</string>
+    <string name="timetable_edited_date_exists">There is a timetable which was editing when you used this app last time.
+        Resume editing?
+    </string>
 
     <string name="today_and_tomorrow_timetable">Timetable</string>
     <string name="today_and_tomorrow_today">Today\'s schedule</string>
@@ -52,7 +54,8 @@
     <string name="today_and_tomorrow_error">Create a timetable.</string>
 
     <string name="setting_subject">Displayed timetable</string>
-    <string name="setting_time1">Time when this app send a notification on tomorrow\'s timetable to you (24 hours)</string>
+    <string name="setting_time1">Time when this app send a notification on tomorrow\'s timetable to you (24 hours)
+    </string>
     <string name="setting_time2">Time when this app refresh the schedule (24 hours)</string>
     <string name="setting_timeunit">h</string>
     <string name="setting_howtouse">How to use (Japanese)</string>
@@ -82,6 +85,8 @@
     <string name="notification_title">Gakusapo - Tomorrow\'s timetable</string>
     <string name="notification_message">Prepare to tomorrow!</string>
 
+    <string name="widget_noschedule">No schedules</string>
+
     <string name="notice">Notice</string>
     <string name="error">Error</string>
     <string name="yes">Yes</string>
@@ -94,4 +99,6 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="please_input">Input&#8230;</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 </resources>

@@ -92,12 +92,12 @@
                             android:layout_height="4dp"/>
                     <TextView
                             android:text="5"
-                            android:layout_height="64dp" android:id="@+id/textView15"
+                            android:layout_height="64dp" android:id="@+id/fiveLabel"
                             android:layout_width="match_parent"
                             android:textAlignment="center" android:gravity="center" android:textColor="@color/black"/>
                     <Space
                             android:layout_width="match_parent"
-                            android:layout_height="4dp"/>
+                            android:layout_height="4dp" android:id="@+id/fiveSpace"/>
                     <TextView
                             android:text="6"
                             android:layout_height="64dp" android:id="@+id/sixLabel" android:layout_width="match_parent"

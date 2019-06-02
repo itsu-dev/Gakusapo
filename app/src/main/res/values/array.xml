@@ -6,6 +6,7 @@
     </string-array>
 
     <string-array name="timetableTimeType">
+        <item>4時間授業</item>
         <item>5時間授業</item>
         <item>6時間授業</item>
         <item>7時間授業</item>
