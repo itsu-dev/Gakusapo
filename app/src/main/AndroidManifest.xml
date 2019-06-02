@@ -38,6 +38,19 @@
         <meta-data
                 android:name="com.google.android.gms.ads.APPLICATION_ID"
                 android:value="ca-app-pub-5096422984251090~5581770338"/>
+
+        <receiver android:name=".ui.widget.TimetableWidget">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/timetable_widget_info"/>
+        </receiver>
+
+        <service android:name=".api.service.TimetableWidgetRemoteViewsService"
+                 android:permission="android.permission.BIND_REMOTEVIEWS"/>
     </application>
 
 </manifest>

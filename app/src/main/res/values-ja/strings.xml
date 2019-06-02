@@ -82,6 +82,8 @@
     <string name="notification_title">Gakusapo - 明日の時間割</string>
     <string name="notification_message">明日の準備もしっかりと！</string>
 
+    <string name="widget_noschedule">予定はありません</string>
+
     <string name="notice">おしらせ</string>
     <string name="error">エラー</string>
     <string name="yes">はい</string>

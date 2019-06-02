@@ -1,0 +1,53 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="@dimen/widget_margin"
+>
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/widgetStatus" android:paddingLeft="8dp"
+                android:background="#6fffffff"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:background="@color/information_black_opaque"
+                android:gravity="center_vertical">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_height="match_parent" android:layout_width="76dp"
+                    android:background="@color/information_black_opaque">
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/widgetMonth"
+                        android:gravity="center_horizontal" android:textColor="@color/browser_actions_bg_grey"
+                        android:textSize="14sp" android:textAlignment="center" android:paddingTop="16dp"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/widgetDate" android:textSize="24sp"
+                        android:textAlignment="center" android:textColor="@color/browser_actions_bg_grey"
+                        android:textStyle="bold"/>
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/widgetWeek" android:textAlignment="center"
+                        android:textColor="@color/browser_actions_bg_grey"/>
+            </LinearLayout>
+            <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" android:id="@+id/widgetTimetableList"
+                    android:visibility="visible">
+            </ListView>
+            <TextView
+                    android:text="@string/widget_noschedule"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/widget_noschedule" android:layout_weight="1"
+                    android:textAlignment="center" android:textColor="@color/browser_actions_bg_grey"
+                    android:visibility="gone"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
