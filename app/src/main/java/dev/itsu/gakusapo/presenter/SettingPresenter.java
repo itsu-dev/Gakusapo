@@ -1,13 +1,19 @@
 package dev.itsu.gakusapo.presenter;
 
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
-import dev.itsu.gakusapo.api.notification.TimetableAlarmNotifier;
+import dev.itsu.gakusapo.MainApplication;
+import dev.itsu.gakusapo.R;
+import dev.itsu.gakusapo.api.receiver.TimetableAlarmNotifier;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.Timetable;
 import dev.itsu.gakusapo.presenter.contract.SettingContract;
+import dev.itsu.gakusapo.ui.activity.MainActivity;
 import dev.itsu.gakusapo.ui.activity.WebActivity;
+import dev.itsu.gakusapo.ui.widget.TimetableWidget;
 
 import java.util.Calendar;
 import java.util.Map;
@@ -106,7 +112,12 @@ public class SettingPresenter implements SettingContract.Presenter {
 
     @Override
     public void onTimetableSpinnerSelected(String name) {
-        if (name != null && !name.isEmpty()) PreferencesService.setCurrentTimetable(name);
+        if (name != null && !name.isEmpty()) {
+            PreferencesService.setCurrentTimetable(name);
+
+            AppWidgetManager manager = AppWidgetManager.getInstance(MainApplication.getContext());
+            manager.notifyAppWidgetViewDataChanged(manager.getAppWidgetIds(new ComponentName(MainApplication.getContext(), TimetableWidget.class)), R.id.widgetTimetableList);
+        }
     }
 
     private void openWeb(String url) {

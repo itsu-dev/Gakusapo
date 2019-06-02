@@ -5,7 +5,7 @@ import android.content.pm.PackageManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import com.google.android.gms.ads.MobileAds;
-import dev.itsu.gakusapo.api.notification.TimetableAlarmNotifier;
+import dev.itsu.gakusapo.api.receiver.TimetableAlarmNotifier;
 import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.contract.MainActivityContract;

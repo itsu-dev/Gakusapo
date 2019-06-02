@@ -25,19 +25,17 @@ public class TimetableWidgetRemoteViewsFactory implements RemoteViewsService.Rem
 
     @Override
     public void onCreate() {
-        reloadTimetable();
     }
 
     @Override
     public void onDataSetChanged() {
         reloadTimetable();
-        Binder.restoreCallingIdentity(Binder.clearCallingIdentity());
     }
 
     @Override
     public void onDestroy() {
         if (subjects != null) {
-            subjects = null;
+            subjects.clear();
         }
     }
 
@@ -82,6 +80,8 @@ public class TimetableWidgetRemoteViewsFactory implements RemoteViewsService.Rem
     }
 
     private void reloadTimetable() {
+        if (PreferencesService.getCurrentTimetable() == null) return;
+
         int day = TimetableUtils.dayToWeek(TimetableUtils.getDate());
         Timetable timetable = DatabaseDAO.getTimetable(PreferencesService.getCurrentTimetable());
 

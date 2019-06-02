@@ -1,9 +1,6 @@
 package dev.itsu.gakusapo.ui.activity;
 
 import android.app.Activity;
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,14 +12,10 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 import dev.itsu.gakusapo.R;
-import dev.itsu.gakusapo.api.notification.TimetableAlarmNotifier;
-import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.presenter.InformationPresenter;
 import dev.itsu.gakusapo.presenter.contract.MainActivityContract;
 import dev.itsu.gakusapo.presenter.MainActivityPresenter;
-
-import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements MainActivityContract.View {
 

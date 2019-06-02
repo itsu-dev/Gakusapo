@@ -30,7 +30,7 @@
                 android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
-        <receiver android:name=".api.notification.TimetableAlarmNotifier"/>
+        <receiver android:name=".api.receiver.TimetableAlarmNotifier"/>
 
         <activity android:name=".ui.activity.WebActivity">
         </activity>
@@ -42,6 +42,17 @@
         <receiver android:name=".ui.widget.TimetableWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+            </intent-filter>
+
+            <meta-data
+                    android:name="android.appwidget.provider"
+                    android:resource="@xml/timetable_widget_info"/>
+        </receiver>
+
+        <receiver android:name=".api.receiver.TimetableWidgetIntentReceiver"
+                  android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="ACTION_RELOAD" />
             </intent-filter>
 
             <meta-data

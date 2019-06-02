@@ -86,6 +86,7 @@
     <string name="notification_message">Prepare to tomorrow!</string>
 
     <string name="widget_noschedule">No schedules</string>
+    <string name="widget_notimetable">No available timetables</string>
 
     <string name="notice">Notice</string>
     <string name="error">Error</string>

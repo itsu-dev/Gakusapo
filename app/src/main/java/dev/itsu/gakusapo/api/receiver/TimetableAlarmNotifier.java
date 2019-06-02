@@ -1,4 +1,4 @@
-package dev.itsu.gakusapo.api.notification;
+package dev.itsu.gakusapo.api.receiver;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -19,8 +19,6 @@ import dev.itsu.gakusapo.utils.TimetableUtils;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Random;
-
-import static android.content.Context.ALARM_SERVICE;
 
 public class TimetableAlarmNotifier extends BroadcastReceiver {
 

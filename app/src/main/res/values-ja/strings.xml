@@ -83,6 +83,7 @@
     <string name="notification_message">明日の準備もしっかりと！</string>
 
     <string name="widget_noschedule">予定はありません</string>
+    <string name="widget_notimetable">時間割を設定してください</string>
 
     <string name="notice">おしらせ</string>
     <string name="error">エラー</string>

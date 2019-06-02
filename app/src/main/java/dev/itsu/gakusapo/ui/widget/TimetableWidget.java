@@ -1,7 +1,9 @@
 package dev.itsu.gakusapo.ui.widget;
 
+import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -19,11 +21,14 @@ import java.util.Locale;
 
 public class TimetableWidget extends AppWidgetProvider {
 
-    static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
+    public static final String ACTION_RELOAD = "ACTION_RELOAD";
+
+    private static void updateAppWidget(Context context, AppWidgetManager appWidgetManager, int appWidgetId) {
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.widget_timetable);
         views.setTextViewText(R.id.widgetMonth, getMonth());
         views.setTextViewText(R.id.widgetDate, getDate());
         views.setTextViewText(R.id.widgetWeek, getWeek());
+        views.setOnClickPendingIntent(R.id.widgetReloadButton, onReloadButtonClick(context));
         views.setRemoteAdapter(R.id.widgetTimetableList, new Intent(context, TimetableWidgetRemoteViewsService.class));
 
         if (TimetableUtils.isTomorrow()) {
@@ -35,12 +40,19 @@ public class TimetableWidget extends AppWidgetProvider {
         int day = TimetableUtils.dayToWeek(TimetableUtils.getDate());
         Timetable timetable = DatabaseDAO.getTimetable(PreferencesService.getCurrentTimetable());
 
-        if (day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) {
+        if (PreferencesService.getCurrentTimetable() == null) {
             views.setViewVisibility(R.id.widgetTimetableList, View.GONE);
-            views.setViewVisibility(R.id.widget_noschedule, View.VISIBLE);
+            views.setViewVisibility(R.id.widgetErrorText, View.VISIBLE);
+            views.setTextViewText(R.id.widgetErrorText, context.getText(R.string.widget_notimetable));
+
+        } else if (day == -1 || (day == 5 && timetable.getDayType() == Timetable.DAY_TYPE_MONDAY_TO_FRIDAY)) {
+            views.setViewVisibility(R.id.widgetTimetableList, View.GONE);
+            views.setViewVisibility(R.id.widgetErrorText, View.VISIBLE);
+            views.setTextViewText(R.id.widgetErrorText, context.getText(R.string.widget_noschedule));
+
         } else {
             views.setViewVisibility(R.id.widgetTimetableList, View.VISIBLE);
-            views.setViewVisibility(R.id.widget_noschedule, View.GONE);
+            views.setViewVisibility(R.id.widgetErrorText, View.GONE);
         }
 
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -68,16 +80,28 @@ public class TimetableWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 
-    private static String getMonth() {
+    public static String getMonth() {
         return String.valueOf(Calendar.getInstance().get(Calendar.MONTH) + 1);
     }
 
-    private static String getDate() {
+    public static String getDate() {
         return String.valueOf(Calendar.getInstance().get(Calendar.DATE));
     }
 
-    private static String getWeek() {
+    public static String getWeek() {
         return new SimpleDateFormat("(EEEE)", Locale.getDefault()).format(Calendar.getInstance().getTime());
+    }
+
+    public static PendingIntent onReloadButtonClick(Context context) {
+        Intent intent = new Intent();
+        intent.setAction(ACTION_RELOAD);
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
+        ComponentName myWidget = new ComponentName(context, TimetableWidget.class);
+        AppWidgetManager manager = AppWidgetManager.getInstance(context);
+        manager.updateAppWidget(myWidget, remoteViews);
     }
 }
 
