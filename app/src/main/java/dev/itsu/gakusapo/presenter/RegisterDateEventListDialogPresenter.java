@@ -1,7 +1,7 @@
 package dev.itsu.gakusapo.presenter;
 
 import dev.itsu.gakusapo.presenter.contract.RegisterDateEventListDialogContract;
-import dev.itsu.gakusapo.presenter.contract.onDestroy;
+import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
 import dev.itsu.gakusapo.ui.adapter.DateEventContentAdapter;
 
 import java.util.List;
@@ -9,11 +9,11 @@ import java.util.List;
 public class RegisterDateEventListDialogPresenter implements RegisterDateEventListDialogContract.Presenter {
 
     private RegisterDateEventListDialogContract.View view;
-    private onDestroy.Presenter presenter;
+    private TodayAndTomorrowContract.Presenter presenter;
     private int type;
     private List<String> data;
 
-    public RegisterDateEventListDialogPresenter(RegisterDateEventListDialogContract.View view, onDestroy.Presenter presenter, int type, List<String> data) {
+    public RegisterDateEventListDialogPresenter(RegisterDateEventListDialogContract.View view, TodayAndTomorrowContract.Presenter presenter, int type, List<String> data) {
         this.view = view;
         this.presenter = presenter;
         this.type = type;

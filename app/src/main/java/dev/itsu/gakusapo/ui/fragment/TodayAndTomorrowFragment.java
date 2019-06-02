@@ -16,7 +16,7 @@ import com.google.android.gms.ads.AdView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.entity.Subject;
 import dev.itsu.gakusapo.presenter.TodayAndTomorrowPresenter;
-import dev.itsu.gakusapo.presenter.contract.onDestroy;
+import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
 import dev.itsu.gakusapo.utils.TimetableUtils;
 
 import java.util.Calendar;
@@ -24,9 +24,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public class TodayAndTomorrowFragment extends Fragment implements onDestroy.View {
+public class TodayAndTomorrowFragment extends Fragment implements TodayAndTomorrowContract.View {
 
-    private onDestroy.Presenter presenter;
+    private TodayAndTomorrowContract.Presenter presenter;
 
     private View view;
 

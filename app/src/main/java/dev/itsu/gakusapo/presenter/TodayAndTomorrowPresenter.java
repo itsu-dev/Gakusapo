@@ -5,7 +5,7 @@ import dev.itsu.gakusapo.api.service.PreferencesService;
 import dev.itsu.gakusapo.db.DatabaseDAO;
 import dev.itsu.gakusapo.entity.DateEvent;
 import dev.itsu.gakusapo.entity.Timetable;
-import dev.itsu.gakusapo.presenter.contract.onDestroy;
+import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
 import dev.itsu.gakusapo.ui.activity.MainActivity;
 import dev.itsu.gakusapo.ui.dialog.AlertDialogFragment;
 import dev.itsu.gakusapo.ui.dialog.MemoDialogFragment;
@@ -14,7 +14,7 @@ import dev.itsu.gakusapo.utils.TimetableUtils;
 
 import java.util.*;
 
-public class TodayAndTomorrowPresenter implements onDestroy.Presenter {
+public class TodayAndTomorrowPresenter implements TodayAndTomorrowContract.Presenter {
 
     public static final int TYPE_HOMEWORK = 0;
     public static final int TYPE_SUBMISSION = 1;
@@ -23,11 +23,11 @@ public class TodayAndTomorrowPresenter implements onDestroy.Presenter {
     public static final int TYPE_EVENT = 4;
     public static final int TYPE_REMINDER = 5;
 
-    private onDestroy.View view;
+    private TodayAndTomorrowContract.View view;
 
     private DateEvent currentDateEvent;
 
-    public TodayAndTomorrowPresenter(onDestroy.View view) {
+    public TodayAndTomorrowPresenter(TodayAndTomorrowContract.View view) {
         this.view = view;
     }
 

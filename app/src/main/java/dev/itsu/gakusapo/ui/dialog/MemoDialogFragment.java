@@ -10,14 +10,14 @@ import android.widget.TextView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.presenter.MemoDialogPresenter;
 import dev.itsu.gakusapo.presenter.contract.MemoDialogContract;
-import dev.itsu.gakusapo.presenter.contract.onDestroy;
+import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
 
 import java.lang.ref.WeakReference;
 
 public class MemoDialogFragment extends DialogFragment implements MemoDialogContract.View {
 
     private MemoDialogContract.Presenter presenter;
-    private onDestroy.Presenter todayAndTomorrowPresenter;
+    private TodayAndTomorrowContract.Presenter todayAndTomorrowPresenter;
     private WeakReference<Dialog> dialog;
     private String memo;
 
@@ -55,7 +55,7 @@ public class MemoDialogFragment extends DialogFragment implements MemoDialogCont
         return textView.getText().toString();
     }
 
-    public static MemoDialogFragment newInstance(onDestroy.Presenter presenter, String memo) {
+    public static MemoDialogFragment newInstance(TodayAndTomorrowContract.Presenter presenter, String memo) {
         MemoDialogFragment fragment = new MemoDialogFragment();
         fragment.todayAndTomorrowPresenter = presenter;
         fragment.memo = memo;

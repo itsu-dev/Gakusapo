@@ -13,7 +13,7 @@ import android.widget.TextView;
 import dev.itsu.gakusapo.R;
 import dev.itsu.gakusapo.presenter.RegisterDateEventListDialogPresenter;
 import dev.itsu.gakusapo.presenter.contract.RegisterDateEventListDialogContract;
-import dev.itsu.gakusapo.presenter.contract.onDestroy;
+import dev.itsu.gakusapo.presenter.contract.TodayAndTomorrowContract;
 import dev.itsu.gakusapo.ui.adapter.DateEventContentAdapter;
 
 import java.lang.ref.WeakReference;
@@ -22,7 +22,7 @@ import java.util.List;
 public class RegisterDateEventListDialogFragment extends DialogFragment implements RegisterDateEventListDialogContract.View {
 
     private RegisterDateEventListDialogContract.Presenter presenter;
-    private onDestroy.Presenter todayAndTomorrowPresenter;
+    private TodayAndTomorrowContract.Presenter todayAndTomorrowPresenter;
     private WeakReference<Dialog> dialog;
 
     private List<String> data;
@@ -87,7 +87,7 @@ public class RegisterDateEventListDialogFragment extends DialogFragment implemen
         return textView.getText().toString();
     }
 
-    public static RegisterDateEventListDialogFragment newInstance(onDestroy.Presenter presenter, List<String> data, int titleId, int type) {
+    public static RegisterDateEventListDialogFragment newInstance(TodayAndTomorrowContract.Presenter presenter, List<String> data, int titleId, int type) {
         RegisterDateEventListDialogFragment fragment = new RegisterDateEventListDialogFragment();
         fragment.todayAndTomorrowPresenter = presenter;
         fragment.data = data;

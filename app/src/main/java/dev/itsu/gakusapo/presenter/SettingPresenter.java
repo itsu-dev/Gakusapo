@@ -63,7 +63,7 @@ public class SettingPresenter implements SettingContract.Presenter {
 
                 Calendar triggerTime = Calendar.getInstance();
                 triggerTime.set(Calendar.HOUR_OF_DAY, notificationTime);
-                triggerTime.set(Calendar.MINUTE, 5);
+                triggerTime.set(Calendar.MINUTE, 0);
                 triggerTime.set(Calendar.SECOND, 0);
 
                 TimetableAlarmNotifier.set(triggerTime);
